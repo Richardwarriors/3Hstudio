@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking | Jiajie He x 3H-Studio</title>
+  <title>Booking | 3H-Studio Official Website</title>
   <style>
     :root {
       --bg-1: #f7fafb;
@@ -97,11 +97,27 @@
     }
 
     .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: 1.42rem;
       font-weight: 700;
       letter-spacing: 0.02em;
       color: var(--text);
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.16), rgba(2, 132, 199, 0.14));
+      color: var(--brand);
+      font-size: 0.96rem;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px rgba(15, 118, 110, 0.14);
     }
 
     .brand:hover {
@@ -992,14 +1008,16 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="index.html">Jiajie He</a>
-      <nav aria-label="Primary">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">3H</span>
+        <span>3H-Studio</span>
+      </a>
+      <nav aria-label="Studio navigation">
         <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="experience.html">Experience</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="publication.html">Publications</a></li>
-          <li><a href="booking.html" aria-current="page">Booking</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#galleries">Client Galleries</a></li>
+          <li><a href="booking.html" aria-current="page">Book</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -1009,26 +1027,26 @@
     <section class="hero-card" aria-labelledby="page-title">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow">Photography Booking</span>
-          <h1 id="page-title" class="hero-title">Book thoughtful sessions for clients, while keeping photographers organized.</h1>
+          <span class="eyebrow">Official Booking</span>
+          <h1 id="page-title" class="hero-title">Book a polished 3H-Studio session with a client flow built for a real studio business.</h1>
           <p class="hero-text">
-            This booking page is designed for both sides of the experience: clients can choose session types and submit requests, while photographers can manage availability, specialties, and incoming shoots from one place.
+            This booking page is designed as part of the 3H-Studio official website: clients can explore services, submit inquiries, and receive structured follow-up while the studio team manages availability, specialties, and incoming requests in one place.
           </p>
           <div class="chip-row" aria-label="Booking highlights">
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client and photographer channels</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Landscape, graduation, and artistic portrait bookings</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Live booking summary and request inbox</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client booking and studio operations views</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Portrait, graduation, and destination session inquiries</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Live quote summary and inquiry dashboard</span>
           </div>
           <div class="hero-actions">
             <a class="cta-button" href="#booking-studio">Start a booking request</a>
-            <a class="ghost-button" href="#channel-switcher">Open photographer channel</a>
+            <a class="ghost-button" href="#channel-switcher">Open studio dashboard</a>
           </div>
         </div>
 
         <aside class="hero-panel">
-          <h2 class="panel-title">Built for 3H-Studio and personal sessions</h2>
+          <h2 class="panel-title">Built for 3H-Studio client operations</h2>
           <p class="panel-copy">
-            A clean front-end booking flow that can later connect to email, payment, or calendar tools once you are ready to make it production-ready.
+            A clean front-end booking experience that can later connect to CRM, payment, email, and calendar tools when the studio is ready to launch it in production.
           </p>
           <div class="feature-stack">
             <div class="feature-row">
@@ -1041,15 +1059,15 @@
             <div class="feature-row">
               <div class="feature-mark">PH</div>
               <div>
-                <h3>Photographer workspace</h3>
-                <p>Track requests, mark available slots, and present specialties clearly for clients.</p>
+                <h3>Studio workspace</h3>
+                <p>Track inquiries, manage open slots, and keep team specialties visible for client routing.</p>
               </div>
             </div>
             <div class="feature-row">
               <div class="feature-mark">BR</div>
               <div>
-                <h3>Brandable flow</h3>
-                <p>Use it for 3H-Studio, your own portfolio, or a joint booking experience for multiple photographers.</p>
+                <h3>Official brand flow</h3>
+                <p>Present 3H-Studio as a complete business website with a dedicated studio booking experience.</p>
               </div>
             </div>
           </div>
@@ -1061,7 +1079,7 @@
       <section class="section-card" aria-labelledby="session-title">
         <h2 id="session-title" class="section-title">Session Types</h2>
         <p class="section-copy">
-          These are the core shoot categories currently featured on the site. Clicking a card pre-fills the booking form below.
+          These are the core 3H-Studio services currently featured on the site. Clicking a card pre-fills the booking form below.
         </p>
 
         <div class="service-grid">
@@ -1107,7 +1125,7 @@
               <ul class="service-list">
                 <li>Editorial, cinematic, or studio-inspired direction</li>
                 <li>Wardrobe, mood, and concept planning support</li>
-                <li>Built for creative identity and personal branding</li>
+                <li>Built for brand campaigns, founder portraits, and editorial storytelling</li>
               </ul>
               <button class="service-button" type="button" data-fill-session="portrait">Use for booking</button>
             </div>
@@ -1118,12 +1136,12 @@
       <section id="booking-studio" class="section-card" aria-labelledby="booking-title">
         <h2 id="booking-title" class="section-title">Booking Studio</h2>
         <p class="section-copy">
-          Switch between the client experience and the photographer dashboard. This prototype keeps everything local in the browser, so it works as a front-end concept without a backend yet.
+          Switch between the client experience and the studio operations dashboard. This prototype keeps everything local in the browser, so it works as a front-end concept without a backend yet.
         </p>
 
         <div id="channel-switcher" class="channel-bar" role="tablist" aria-label="Booking channels">
-          <button class="channel-tab active" type="button" role="tab" aria-selected="true" data-channel="client-panel">Client Channel</button>
-          <button class="channel-tab" type="button" role="tab" aria-selected="false" data-channel="photographer-panel">Photographer Channel</button>
+          <button class="channel-tab active" type="button" role="tab" aria-selected="true" data-channel="client-panel">Client Booking</button>
+          <button class="channel-tab" type="button" role="tab" aria-selected="false" data-channel="photographer-panel">Studio Operations</button>
         </div>
 
         <section id="client-panel" class="channel-panel active" aria-labelledby="client-panel-title">
@@ -1131,7 +1149,7 @@
             <article class="form-card">
               <h3 id="client-panel-title" class="card-heading">Client Request Form</h3>
               <p class="card-copy">
-                Choose a session type, select a preferred slot, and send a booking request with enough context for fast follow-up.
+                Choose a session type, select a preferred slot, and send a booking request with enough detail for the 3H-Studio team to reply quickly.
               </p>
 
               <form id="booking-form" class="booking-form">
@@ -1156,9 +1174,9 @@
                     </select>
                   </div>
                   <div class="field">
-                    <label for="photographer">Photographer channel</label>
+                    <label for="photographer">Studio assignment</label>
                     <select id="photographer" name="photographer">
-                      <option value="jiajie">Jiajie He</option>
+                      <option value="lead">Lead Photographer</option>
                       <option value="studio">3H-Studio Team</option>
                       <option value="associate">Associate Photographer</option>
                     </select>
@@ -1218,30 +1236,30 @@
                 </div>
 
                 <div class="field">
-                  <label for="notes">Notes for the photographer</label>
+                  <label for="notes">Notes for the studio team</label>
                   <textarea id="notes" name="notes" placeholder="Tell us about the mood, purpose of the shoot, or any must-have details."></textarea>
                 </div>
 
                 <div class="form-actions">
                   <button class="submit-button" type="submit">Submit booking request</button>
-                  <span class="form-note">This demo stores requests locally in your browser and mirrors them into the photographer channel below.</span>
+                  <span class="form-note">This demo stores requests locally in your browser and mirrors them into the studio dashboard below.</span>
                 </div>
               </form>
 
               <div id="success-banner" class="success-banner">
-                Booking request submitted. A new inquiry has been added to the photographer channel.
+                Booking request submitted. A new inquiry has been added to the studio dashboard.
               </div>
             </article>
 
             <aside class="summary-card">
               <h3 class="card-heading">Live Booking Summary</h3>
               <p class="card-copy">
-                A quick view of the current package, photographer assignment, timing, and estimated starting investment.
+                A quick view of the current package, team assignment, timing, and estimated starting investment.
               </p>
 
               <div class="summary-panel">
                 <div class="summary-row"><span>Session</span><strong id="summary-session">Landscape Photography</strong></div>
-                <div class="summary-row"><span>Photographer</span><strong id="summary-photographer">Jiajie He</strong></div>
+                <div class="summary-row"><span>Assignment</span><strong id="summary-photographer">Lead Photographer</strong></div>
                 <div class="summary-row"><span>Duration</span><strong id="summary-duration">90 minutes</strong></div>
                 <div class="summary-row"><span>Deliverables</span><strong id="summary-deliverables">18 edited images</strong></div>
                 <div class="summary-row"><span>Time slot</span><strong id="summary-slot">Golden hour</strong></div>
@@ -1253,7 +1271,7 @@
                 </div>
                 <div class="note-card">
                   <h3>Suggested workflow</h3>
-                  <p>Client submits the request, photographer confirms the concept, then date, payment, and delivery are finalized through your preferred backend later.</p>
+                  <p>Client submits the request, the studio confirms the concept, and then date, payment, and delivery are finalized through the production backend later.</p>
                 </div>
               </div>
             </aside>
@@ -1263,9 +1281,9 @@
         <section id="photographer-panel" class="channel-panel" aria-labelledby="photographer-panel-title">
           <div class="photographer-grid">
             <article class="dashboard-card">
-              <h3 id="photographer-panel-title" class="card-heading">Photographer Dashboard</h3>
+              <h3 id="photographer-panel-title" class="card-heading">Studio Operations Dashboard</h3>
               <p class="card-copy">
-                Review incoming requests, keep your booking pace visible, and present core specialties so clients know what each channel is best for.
+                Review incoming requests, keep booking capacity visible, and present core specialties so clients understand the studio's main service lanes.
               </p>
 
               <div class="stat-grid">
@@ -1287,7 +1305,7 @@
                 <span class="specialty-chip">Landscape direction</span>
                 <span class="specialty-chip">Graduation sessions</span>
                 <span class="specialty-chip">Artistic portraits</span>
-                <span class="specialty-chip">3H-Studio workflow</span>
+                <span class="specialty-chip">Studio booking workflow</span>
               </div>
 
               <ul id="request-list" class="request-list" aria-label="Incoming booking requests"></ul>
@@ -1297,15 +1315,15 @@
               <article class="dashboard-card">
                 <h3 class="card-heading">Availability Board</h3>
                 <p class="card-copy">
-                  Toggle open slots for the next booking cycle. This helps illustrate how a future photographer backend could work.
+                  Toggle open slots for the next booking cycle. This helps illustrate how a future studio scheduling backend could work.
                 </p>
 
                 <div id="availability-grid" class="availability-grid" aria-label="Availability slots"></div>
               </article>
 
               <article class="note-card">
-                <h3>Photographer channel essentials</h3>
-                <p>For a production build, this area would connect to a database for real inquiries, photographer profiles, payments, and final calendar syncing.</p>
+                <h3>Studio operations essentials</h3>
+                <p>For a production build, this area would connect to a database for real inquiries, team profiles, payments, and final calendar syncing.</p>
               </article>
             </div>
           </div>
@@ -1315,7 +1333,7 @@
       <section class="section-card" aria-labelledby="faq-title">
         <h2 id="faq-title" class="section-title">Helpful Details</h2>
         <p class="section-copy">
-          Key pieces that clients and photographers usually want clarified before a booking site goes live.
+          Key pieces that clients and studio teams usually want clarified before a booking site goes live.
         </p>
 
         <div class="faq-grid">
@@ -1324,8 +1342,8 @@
             <p>Choose a session, submit the inquiry, receive a follow-up, confirm date and package, then move into payment and delivery.</p>
           </article>
           <article class="note-card">
-            <h3>Photographer journey</h3>
-            <p>Review requests, accept or reschedule, lock availability, and keep each shoot aligned with your specialty and capacity.</p>
+            <h3>Studio team journey</h3>
+            <p>Review requests, accept or reschedule, lock availability, and route each shoot to the right team member based on specialty and capacity.</p>
           </article>
           <article class="note-card">
             <h3>Next production step</h3>
@@ -1336,11 +1354,11 @@
     </div>
 
     <footer class="footer-card">
-      <span>Booking prototype for photography sessions with separate client and photographer channels.</span>
+      <span>3H-Studio booking experience with separate client and studio operations views.</span>
       <div class="footer-links">
-        <a href="portfolio.html">Portfolio</a>
-        <a href="mailto:jiajieh1@umbc.edu">Email</a>
-        <a href="index.html">Back Home</a>
+        <a href="index.html#services">Services</a>
+        <a href="index.html#galleries">Client Galleries</a>
+        <a href="index.html#contact">Contact</a>
       </div>
     </footer>
   </main>
@@ -1368,7 +1386,7 @@
     };
 
     const photographerNames = {
-      jiajie: "Jiajie He",
+      lead: "Lead Photographer",
       studio: "3H-Studio Team",
       associate: "Associate Photographer"
     };
@@ -1623,7 +1641,7 @@
       });
       addonButtons.forEach((button) => button.classList.remove("active"));
       sessionField.value = "landscape";
-      photographerField.value = "jiajie";
+      photographerField.value = "lead";
       updateSummary();
       setActiveChannel("photographer-panel");
     });
