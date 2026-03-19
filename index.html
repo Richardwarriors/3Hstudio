@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3H-Studio | Official Website</title>
+  <style>
+    :root {
+      --bg-1: #fbf8f4;
+      --bg-2: #f1eee8;
+      --surface: rgba(255, 255, 255, 0.82);
+      --surface-strong: #fffdf9;
+      --text: #1f262c;
+      --muted: #6c737b;
+      --brand: #8b5a4a;
+      --brand-2: #295f6b;
+      --accent: #d0a35f;
+      --line: rgba(31, 38, 44, 0.12);
+      --ring: rgba(41, 95, 107, 0.18);
+      --shadow: 0 20px 44px rgba(31, 38, 44, 0.1);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(900px circle at -10% -10%, #f4ddcf 0%, transparent 38%),
+        radial-gradient(860px circle at 100% 0%, #dbeef1 0%, transparent 32%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(31, 38, 44, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 38, 44, 0.028) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: var(--brand-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 244, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139, 90, 74, 0.16), rgba(41, 95, 107, 0.14));
+      color: var(--brand);
+      font-size: 0.96rem;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px rgba(139, 90, 74, 0.14);
+    }
+
+    .brand:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-list a {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .nav-list a:hover {
+      text-decoration: none;
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .page-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .hero-card,
+    .section-card,
+    .service-card,
+    .feature-card,
+    .channel-card,
+    .showcase-card,
+    .footer-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 4vw, 44px);
+      animation: fade-up 520ms ease both;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 90, 74, 0.18) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(139, 90, 74, 0.1);
+      color: var(--brand);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 16px 0 12px;
+      max-width: 760px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.9rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-text {
+      max-width: 680px;
+      margin: 0;
+      color: #495159;
+      font-size: 1.04rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 38, 44, 0.1);
+      background: rgba(255, 255, 255, 0.74);
+      color: #2a3741;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .chip-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 5px rgba(139, 90, 74, 0.1);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .cta-button,
+    .ghost-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      box-shadow: 0 16px 28px rgba(41, 95, 107, 0.2);
+    }
+
+    .cta-button:hover,
+    .ghost-button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .ghost-button {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .contact-sheet {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 18px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 244, 240, 0.92));
+      border: 1px solid rgba(31, 38, 44, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .sheet-frame {
+      min-height: 170px;
+      padding: 14px;
+      border-radius: 18px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(160deg, rgba(139, 90, 74, 0.88), rgba(41, 95, 107, 0.56)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+      color: #ffffff;
+      box-shadow: 0 12px 18px rgba(31, 38, 44, 0.08);
+    }
+
+    .sheet-frame:nth-child(2) {
+      background:
+        linear-gradient(160deg, rgba(208, 163, 95, 0.9), rgba(139, 90, 74, 0.62)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .sheet-frame:nth-child(3) {
+      background:
+        linear-gradient(160deg, rgba(41, 95, 107, 0.9), rgba(31, 38, 44, 0.6)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .sheet-frame:nth-child(4) {
+      background:
+        linear-gradient(160deg, rgba(104, 121, 133, 0.9), rgba(139, 90, 74, 0.58)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .sheet-frame span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .section-card {
+      padding: 28px clamp(18px, 4vw, 34px);
+      animation: fade-up 560ms ease both;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.45rem, 2vw, 1.85rem);
+      line-height: 1.2;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 44px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .service-grid,
+    .feature-grid,
+    .channel-grid,
+    .showcase-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .service-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .channel-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .showcase-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .service-card,
+    .feature-card,
+    .channel-card,
+    .showcase-card {
+      padding: 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 247, 243, 0.94));
+      border: 1px solid rgba(31, 38, 44, 0.1);
+      box-shadow: 0 10px 22px rgba(31, 38, 44, 0.08);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .service-card:hover,
+    .feature-card:hover,
+    .channel-card:hover,
+    .showcase-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 28px rgba(31, 38, 44, 0.1);
+      border-color: var(--ring);
+    }
+
+    .service-mark,
+    .feature-mark {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139, 90, 74, 0.14), rgba(41, 95, 107, 0.12));
+      color: var(--brand);
+      font-size: 0.84rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      box-shadow: inset 0 0 0 1px rgba(139, 90, 74, 0.1);
+    }
+
+    .service-card h3,
+    .feature-card h3,
+    .channel-card h3,
+    .showcase-card h3 {
+      margin: 14px 0 0;
+      font-size: 1.04rem;
+      color: #182126;
+    }
+
+    .service-card p,
+    .feature-card p,
+    .channel-card p,
+    .showcase-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .service-meta {
+      display: inline-flex;
+      padding: 7px 10px;
+      margin-top: 12px;
+      border-radius: 999px;
+      background: rgba(41, 95, 107, 0.08);
+      color: var(--brand-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .channel-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .mini-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--text);
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .mini-link:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      border-color: var(--ring);
+      box-shadow: 0 10px 18px rgba(31, 38, 44, 0.08);
+    }
+
+    .showcase-card {
+      min-height: 240px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(160deg, rgba(139, 90, 74, 0.9), rgba(41, 95, 107, 0.5)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+      color: #ffffff;
+    }
+
+    .showcase-card:nth-child(2) {
+      background:
+        linear-gradient(160deg, rgba(208, 163, 95, 0.92), rgba(139, 90, 74, 0.58)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .showcase-card:nth-child(3) {
+      background:
+        linear-gradient(160deg, rgba(41, 95, 107, 0.9), rgba(31, 38, 44, 0.58)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .showcase-card:nth-child(4) {
+      background:
+        linear-gradient(160deg, rgba(90, 89, 121, 0.9), rgba(139, 90, 74, 0.58)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    }
+
+    .showcase-card p {
+      color: rgba(255, 255, 255, 0.86);
+    }
+
+    .cta-strip {
+      margin-top: 22px;
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(41, 95, 107, 0.12), rgba(139, 90, 74, 0.12));
+      border: 1px solid rgba(41, 95, 107, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .cta-strip h3 {
+      margin: 0;
+      font-size: 1.06rem;
+      color: #182126;
+    }
+
+    .cta-strip p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      max-width: 700px;
+    }
+
+    .footer-card {
+      margin-top: 22px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      font-weight: 700;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .service-grid,
+      .feature-grid,
+      .channel-grid,
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner,
+      .cta-strip,
+      .footer-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-list {
+        width: 100%;
+      }
+
+      .nav-list li {
+        flex: 1 1 auto;
+      }
+
+      .nav-list a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="studio.html">
+        <span class="brand-mark">3H</span>
+        <span>3H-Studio</span>
+      </a>
+      <nav aria-label="Studio navigation">
+        <ul class="nav-list">
+          <li><a href="studio.html">Home</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#galleries">Client Galleries</a></li>
+          <li><a href="#channels">Channels</a></li>
+          <li><a href="booking.html">Book</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Official Studio Website</span>
+          <h1 id="page-title" class="hero-title">Visual storytelling for portraits, graduation milestones, and destination sessions.</h1>
+          <p class="hero-text">
+            3H-Studio is a photography studio built around atmosphere, memory, and intentional presentation. We create polished sessions for individual clients while also keeping the experience organized through bookings, client galleries, and delivery workflows.
+          </p>
+          <div class="chip-row" aria-label="Studio highlights">
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Portrait and graduation photography</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Landscape and destination sessions</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client galleries and booking flow</span>
+          </div>
+          <div class="hero-actions">
+            <a class="cta-button" href="booking.html">Book a session</a>
+            <a class="ghost-button" href="#galleries">Explore the studio flow</a>
+          </div>
+        </div>
+
+        <aside class="contact-sheet" aria-hidden="true">
+          <div class="sheet-frame"><span>Portrait</span></div>
+          <div class="sheet-frame"><span>Graduation</span></div>
+          <div class="sheet-frame"><span>Landscape</span></div>
+          <div class="sheet-frame"><span>Studio concept</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section id="services" class="section-card" aria-labelledby="services-title">
+        <h2 id="services-title" class="section-title">Services</h2>
+        <p class="section-copy">
+          A studio offering built around elegant photography presentation, client clarity, and well-structured booking flows.
+        </p>
+
+        <div class="service-grid">
+          <article class="service-card">
+            <div class="service-mark">LS</div>
+            <h3>Landscape Sessions</h3>
+            <p>Travel-focused outdoor sessions with strong location storytelling, scenic composition, and natural light direction.</p>
+            <span class="service-meta">Scenic and destination work</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-mark">GR</div>
+            <h3>Graduation Portraits</h3>
+            <p>Clean, celebratory coverage for graduates, solo portraits, family add-ons, and landmark campus locations.</p>
+            <span class="service-meta">Milestone photography</span>
+          </article>
+
+          <article class="service-card">
+            <div class="service-mark">AP</div>
+            <h3>Artistic Portraits</h3>
+            <p>Editorial and concept-driven portrait sessions for personal branding, creative identity, and mood-led storytelling.</p>
+            <span class="service-meta">Studio and creative direction</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="galleries" class="section-card" aria-labelledby="galleries-title">
+        <h2 id="galleries-title" class="section-title">Client Galleries</h2>
+        <p class="section-copy">
+          Inspired by the best photography platforms, the studio site is structured around more than just a gallery: it is meant to support presentation, proofing, booking, and delivery in one polished experience.
+        </p>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-mark">GL</div>
+            <h3>Beautiful gallery delivery</h3>
+            <p>Present finished work with a clean, elevated visual style that feels premium and easy for clients to browse.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-mark">PR</div>
+            <h3>Proofing workflow</h3>
+            <p>Give clients a simple way to review, shortlist, and respond without getting lost in email threads.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-mark">BK</div>
+            <h3>Booking and scheduling</h3>
+            <p>Let clients request sessions at any time while photographers maintain availability and workload visibility.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-mark">DL</div>
+            <h3>Digital delivery and packages</h3>
+            <p>Set up the site so it can later support downloads, print packages, and commercial-ready delivery steps.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="channels" class="section-card" aria-labelledby="channels-title">
+        <h2 id="channels-title" class="section-title">Separate Channels</h2>
+        <p class="section-copy">
+          The official studio workflow is separated into two perspectives so the website can serve both the client experience and the photographer workflow.
+        </p>
+
+        <div class="channel-grid">
+          <article class="channel-card">
+            <h3>Client Channel</h3>
+            <p>Clients can choose a session type, request a date, describe the mood of the shoot, and get a clear package summary before follow-up.</p>
+            <div class="channel-actions">
+              <a class="mini-link" href="booking.html">Open booking flow</a>
+            </div>
+          </article>
+
+          <article class="channel-card">
+            <h3>Photographer Channel</h3>
+            <p>Photographers can review incoming requests, track open slots, and keep specialties and workload visible inside the same booking experience.</p>
+            <div class="channel-actions">
+              <a class="mini-link" href="booking.html#channel-switcher">Open photographer workspace</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-card" aria-labelledby="showcase-title">
+        <h2 id="showcase-title" class="section-title">Studio Direction</h2>
+        <p class="section-copy">
+          The visual direction of the site is meant to feel commercial, modern, and photography-first rather than academic or portfolio-only.
+        </p>
+
+        <div class="showcase-grid">
+          <article class="showcase-card">
+            <div>
+              <h3>Signature portraits</h3>
+              <p>Expressive portrait work for individuals, creative projects, and personal branding.</p>
+            </div>
+          </article>
+          <article class="showcase-card">
+            <div>
+              <h3>Graduation moments</h3>
+              <p>Milestone sessions designed to feel polished, warm, and memorable.</p>
+            </div>
+          </article>
+          <article class="showcase-card">
+            <div>
+              <h3>Outdoor narratives</h3>
+              <p>Landscape-driven sessions that use place and atmosphere as part of the story.</p>
+            </div>
+          </article>
+          <article class="showcase-card">
+            <div>
+              <h3>Concept and studio work</h3>
+              <p>Creative direction for images that need mood, styling, or a stronger editorial identity.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="cta-strip">
+          <div>
+            <h3>Ready to turn this into the public studio site?</h3>
+            <p>
+              The next step is to connect the booking page to email, payments, and a live gallery backend so 3H-Studio can operate as a complete client-facing platform.
+            </p>
+          </div>
+          <a class="cta-button" href="booking.html">Continue to booking</a>
+        </div>
+      </section>
+    </div>
+
+    <footer id="contact" class="footer-card">
+      <span>3H-Studio official website concept with separate studio identity, booking flow, and client-facing presentation.</span>
+      <div class="footer-links">
+        <a href="booking.html">Book a Session</a>
+        <a href="mailto:jiajieh1@umbc.edu">Email</a>
+        <a href="portfolio.html">Referenced from Portfolio</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>

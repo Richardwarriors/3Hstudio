@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking | Jiajie He x 3H-Studio</title>
+  <style>
+    :root {
+      --bg-1: #f7fafb;
+      --bg-2: #edf4f7;
+      --surface: rgba(255, 255, 255, 0.84);
+      --surface-strong: #ffffff;
+      --text: #132534;
+      --muted: #526677;
+      --brand: #0f766e;
+      --brand-2: #0284c7;
+      --accent: #f59e0b;
+      --rose: #c3627f;
+      --line: rgba(19, 37, 52, 0.12);
+      --ring: rgba(2, 132, 199, 0.2);
+      --shadow: 0 18px 42px rgba(19, 37, 52, 0.12);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(920px circle at -8% -12%, #d9f5ff 0%, transparent 42%),
+        radial-gradient(860px circle at 100% 0%, #ffe5ec 0%, transparent 34%),
+        radial-gradient(720px circle at 86% 18%, #d5fbec 0%, transparent 28%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(19, 37, 52, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(19, 37, 52, 0.03) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(248, 251, 252, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: 1.42rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .brand:hover {
+      text-decoration: none;
+      opacity: 0.88;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-list a {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .nav-list a:hover {
+      text-decoration: none;
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .nav-list a[aria-current="page"] {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(195, 98, 127, 0.12));
+      box-shadow: inset 0 0 0 1px rgba(15, 118, 110, 0.16);
+    }
+
+    .page-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .hero-card,
+    .section-card,
+    .service-card,
+    .form-card,
+    .summary-card,
+    .dashboard-card,
+    .note-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 4vw, 42px);
+      animation: fade-up 520ms ease both;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -110px;
+      top: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(195, 98, 127, 0.18) 0%, transparent 66%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(195, 98, 127, 0.1);
+      color: var(--rose);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin: 16px 0 12px;
+      max-width: 760px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text {
+      max-width: 700px;
+      margin: 0;
+      color: #294154;
+      font-size: 1.04rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      background: rgba(255, 255, 255, 0.72);
+      color: #223a4d;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .chip-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--rose));
+      box-shadow: 0 0 0 5px rgba(195, 98, 127, 0.1);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .cta-button,
+    .ghost-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      box-shadow: 0 16px 28px rgba(2, 132, 199, 0.24);
+    }
+
+    .cta-button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .ghost-button {
+      background: rgba(255, 255, 255, 0.76);
+      border-color: var(--line);
+      color: var(--text);
+    }
+
+    .ghost-button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+      border-color: var(--ring);
+      box-shadow: 0 10px 20px rgba(19, 37, 52, 0.1);
+    }
+
+    .hero-panel {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 251, 252, 0.9) 100%);
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      box-shadow: 0 18px 32px rgba(19, 37, 52, 0.1);
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 1.05rem;
+      color: #102434;
+    }
+
+    .panel-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .feature-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .feature-row {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .feature-mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.16), rgba(195, 98, 127, 0.14));
+      color: var(--rose);
+      font-weight: 900;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-row h3 {
+      margin: 0;
+      font-size: 0.98rem;
+    }
+
+    .feature-row p {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .section-card {
+      padding: 28px clamp(18px, 4vw, 34px);
+      animation: fade-up 560ms ease both;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.45rem, 2vw, 1.8rem);
+      line-height: 1.2;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 44px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--rose));
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 780px;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .service-card {
+      overflow: hidden;
+      padding: 0;
+      border-radius: var(--radius-lg);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 32px rgba(19, 37, 52, 0.12);
+      border-color: var(--ring);
+    }
+
+    .service-visual {
+      min-height: 160px;
+      padding: 18px;
+      display: flex;
+      align-items: flex-end;
+      background:
+        linear-gradient(150deg, rgba(15, 118, 110, 0.9), rgba(2, 132, 199, 0.68)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
+      color: #ffffff;
+    }
+
+    .service-card[data-theme="rose"] .service-visual {
+      background:
+        linear-gradient(150deg, rgba(195, 98, 127, 0.92), rgba(2, 132, 199, 0.58)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
+    }
+
+    .service-card[data-theme="amber"] .service-visual {
+      background:
+        linear-gradient(150deg, rgba(245, 158, 11, 0.94), rgba(195, 98, 127, 0.7)),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
+    }
+
+    .service-visual span {
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .service-body {
+      padding: 18px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .service-title {
+      margin: 0;
+      font-size: 1.06rem;
+      color: #102434;
+    }
+
+    .service-meta {
+      margin: 6px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .service-list {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .service-list li {
+      color: #2d4254;
+      font-size: 0.92rem;
+    }
+
+    .service-list li::before {
+      content: "+";
+      margin-right: 8px;
+      color: var(--brand);
+      font-weight: 900;
+    }
+
+    .service-button {
+      margin-top: 14px;
+      width: 100%;
+      min-height: 42px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--surface-strong);
+      color: var(--text);
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .service-button:hover {
+      transform: translateY(-2px);
+      border-color: var(--ring);
+      box-shadow: 0 10px 20px rgba(19, 37, 52, 0.1);
+    }
+
+    .channel-bar {
+      margin-top: 24px;
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 8px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(19, 37, 52, 0.08);
+    }
+
+    .channel-tab {
+      min-height: 44px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    .channel-tab.active {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(195, 98, 127, 0.12));
+      color: var(--text);
+      border-color: rgba(15, 118, 110, 0.12);
+    }
+
+    .channel-panel {
+      display: none;
+      margin-top: 22px;
+    }
+
+    .channel-panel.active {
+      display: block;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .form-card,
+    .summary-card,
+    .dashboard-card,
+    .note-card {
+      padding: 22px;
+      border-radius: var(--radius-lg);
+    }
+
+    .card-heading {
+      margin: 0;
+      font-size: 1.08rem;
+      color: #102434;
+    }
+
+    .card-copy {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #23384a;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(19, 37, 52, 0.12);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 12px 14px;
+      color: var(--text);
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: rgba(2, 132, 199, 0.36);
+      box-shadow: 0 0 0 4px rgba(2, 132, 199, 0.12);
+    }
+
+    .slot-grid,
+    .addon-grid,
+    .specialty-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .slot-button,
+    .addon-chip,
+    .specialty-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      background: rgba(255, 255, 255, 0.84);
+      color: #274052;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+
+    .slot-button:hover,
+    .addon-chip:hover {
+      transform: translateY(-1px);
+      border-color: var(--ring);
+      box-shadow: 0 8px 16px rgba(19, 37, 52, 0.08);
+    }
+
+    .slot-button.active,
+    .addon-chip.active {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(195, 98, 127, 0.12));
+      border-color: rgba(15, 118, 110, 0.18);
+      color: var(--text);
+    }
+
+    .form-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .submit-button {
+      min-height: 48px;
+      padding: 12px 18px;
+      border-radius: 14px;
+      border: 0;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      font-weight: 800;
+      box-shadow: 0 14px 26px rgba(2, 132, 199, 0.22);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .summary-panel {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(19, 37, 52, 0.08);
+      color: #274052;
+      font-size: 0.94rem;
+    }
+
+    .summary-row strong {
+      color: #102434;
+    }
+
+    .summary-total {
+      padding: 16px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.12), rgba(195, 98, 127, 0.1));
+      border: 1px solid rgba(15, 118, 110, 0.1);
+    }
+
+    .summary-total span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .summary-total strong {
+      display: block;
+      margin-top: 4px;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: 2rem;
+      line-height: 1;
+      color: #102434;
+    }
+
+    .success-banner {
+      display: none;
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(15, 118, 110, 0.1);
+      border: 1px solid rgba(15, 118, 110, 0.14);
+      color: #144338;
+      font-weight: 700;
+    }
+
+    .success-banner.show {
+      display: block;
+    }
+
+    .photographer-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.76);
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: 1.55rem;
+      line-height: 1;
+      color: #102434;
+    }
+
+    .stat-card span {
+      display: block;
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.83rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .request-list {
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .request-item {
+      padding: 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .request-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(19, 37, 52, 0.08);
+      border-color: var(--ring);
+    }
+
+    .request-topline {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .request-title {
+      margin: 0;
+      font-size: 0.99rem;
+      color: #102434;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .status-badge.new {
+      background: rgba(245, 158, 11, 0.14);
+      color: #925900;
+    }
+
+    .status-badge.pending {
+      background: rgba(2, 132, 199, 0.1);
+      color: var(--brand-2);
+    }
+
+    .status-badge.review {
+      background: rgba(15, 118, 110, 0.1);
+      color: var(--brand);
+    }
+
+    .request-meta,
+    .request-notes {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .availability-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .availability-slot {
+      min-height: 56px;
+      padding: 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      background: rgba(255, 255, 255, 0.88);
+      color: #274052;
+      font-weight: 700;
+      text-align: left;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+    }
+
+    .availability-slot small {
+      display: block;
+      margin-top: 4px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.82rem;
+    }
+
+    .availability-slot:hover {
+      transform: translateY(-1px);
+      border-color: var(--ring);
+      box-shadow: 0 10px 18px rgba(19, 37, 52, 0.08);
+    }
+
+    .availability-slot.open {
+      background: linear-gradient(135deg, rgba(15, 118, 110, 0.14), rgba(2, 132, 199, 0.1));
+      border-color: rgba(15, 118, 110, 0.16);
+    }
+
+    .availability-slot.closed {
+      background: rgba(255, 255, 255, 0.74);
+      opacity: 0.7;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .note-card h3 {
+      margin: 0;
+      font-size: 1rem;
+      color: #102434;
+    }
+
+    .note-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .footer-card {
+      margin-top: 22px;
+      padding: 18px 22px;
+      border-radius: var(--radius-xl);
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      font-weight: 700;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .workflow-grid,
+      .photographer-grid,
+      .service-grid,
+      .faq-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .field-grid,
+      .availability-grid,
+      .stat-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-list {
+        width: 100%;
+      }
+
+      .nav-list li {
+        flex: 1 1 auto;
+      }
+
+      .nav-list a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-actions,
+      .form-actions,
+      .footer-card,
+      .request-topline {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .channel-bar {
+        width: 100%;
+      }
+
+      .channel-tab {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">Jiajie He</a>
+      <nav aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="publication.html">Publications</a></li>
+          <li><a href="booking.html" aria-current="page">Booking</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Photography Booking</span>
+          <h1 id="page-title" class="hero-title">Book thoughtful sessions for clients, while keeping photographers organized.</h1>
+          <p class="hero-text">
+            This booking page is designed for both sides of the experience: clients can choose session types and submit requests, while photographers can manage availability, specialties, and incoming shoots from one place.
+          </p>
+          <div class="chip-row" aria-label="Booking highlights">
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client and photographer channels</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Landscape, graduation, and artistic portrait bookings</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Live booking summary and request inbox</span>
+          </div>
+          <div class="hero-actions">
+            <a class="cta-button" href="#booking-studio">Start a booking request</a>
+            <a class="ghost-button" href="#channel-switcher">Open photographer channel</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <h2 class="panel-title">Built for 3H-Studio and personal sessions</h2>
+          <p class="panel-copy">
+            A clean front-end booking flow that can later connect to email, payment, or calendar tools once you are ready to make it production-ready.
+          </p>
+          <div class="feature-stack">
+            <div class="feature-row">
+              <div class="feature-mark">CL</div>
+              <div>
+                <h3>Client bookings</h3>
+                <p>Choose a shoot type, preferred date, style, and add-ons without sending messy email chains.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-mark">PH</div>
+              <div>
+                <h3>Photographer workspace</h3>
+                <p>Track requests, mark available slots, and present specialties clearly for clients.</p>
+              </div>
+            </div>
+            <div class="feature-row">
+              <div class="feature-mark">BR</div>
+              <div>
+                <h3>Brandable flow</h3>
+                <p>Use it for 3H-Studio, your own portfolio, or a joint booking experience for multiple photographers.</p>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="section-card" aria-labelledby="session-title">
+        <h2 id="session-title" class="section-title">Session Types</h2>
+        <p class="section-copy">
+          These are the core shoot categories currently featured on the site. Clicking a card pre-fills the booking form below.
+        </p>
+
+        <div class="service-grid">
+          <article class="service-card" data-theme="amber">
+            <div class="service-visual">
+              <span>Outdoor session</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Landscape Photography</h3>
+              <p class="service-meta">From $280 · 90 minutes · 18 edited images</p>
+              <ul class="service-list">
+                <li>Travel and location storytelling</li>
+                <li>Golden hour direction and route planning</li>
+                <li>Great for destination portraits and scenic sessions</li>
+              </ul>
+              <button class="service-button" type="button" data-fill-session="landscape">Use for booking</button>
+            </div>
+          </article>
+
+          <article class="service-card" data-theme="rose">
+            <div class="service-visual">
+              <span>Campus session</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Graduation Photos</h3>
+              <p class="service-meta">From $360 · 75 minutes · 25 edited images</p>
+              <ul class="service-list">
+                <li>Cap and gown coverage with family options</li>
+                <li>Efficient location flow for campus landmarks</li>
+                <li>Perfect for solo or group graduation shoots</li>
+              </ul>
+              <button class="service-button" type="button" data-fill-session="graduation">Use for booking</button>
+            </div>
+          </article>
+
+          <article class="service-card">
+            <div class="service-visual">
+              <span>Creative portrait</span>
+            </div>
+            <div class="service-body">
+              <h3 class="service-title">Artistic Portraits</h3>
+              <p class="service-meta">From $420 · 2 hours · 18 retouched portraits</p>
+              <ul class="service-list">
+                <li>Editorial, cinematic, or studio-inspired direction</li>
+                <li>Wardrobe, mood, and concept planning support</li>
+                <li>Built for creative identity and personal branding</li>
+              </ul>
+              <button class="service-button" type="button" data-fill-session="portrait">Use for booking</button>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="booking-studio" class="section-card" aria-labelledby="booking-title">
+        <h2 id="booking-title" class="section-title">Booking Studio</h2>
+        <p class="section-copy">
+          Switch between the client experience and the photographer dashboard. This prototype keeps everything local in the browser, so it works as a front-end concept without a backend yet.
+        </p>
+
+        <div id="channel-switcher" class="channel-bar" role="tablist" aria-label="Booking channels">
+          <button class="channel-tab active" type="button" role="tab" aria-selected="true" data-channel="client-panel">Client Channel</button>
+          <button class="channel-tab" type="button" role="tab" aria-selected="false" data-channel="photographer-panel">Photographer Channel</button>
+        </div>
+
+        <section id="client-panel" class="channel-panel active" aria-labelledby="client-panel-title">
+          <div class="workflow-grid">
+            <article class="form-card">
+              <h3 id="client-panel-title" class="card-heading">Client Request Form</h3>
+              <p class="card-copy">
+                Choose a session type, select a preferred slot, and send a booking request with enough context for fast follow-up.
+              </p>
+
+              <form id="booking-form" class="booking-form">
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="client-name">Client name</label>
+                    <input id="client-name" name="client-name" type="text" placeholder="Your full name" required />
+                  </div>
+                  <div class="field">
+                    <label for="client-email">Email</label>
+                    <input id="client-email" name="client-email" type="email" placeholder="you@example.com" required />
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="session-type">Session type</label>
+                    <select id="session-type" name="session-type" required>
+                      <option value="landscape">Landscape Photography</option>
+                      <option value="graduation">Graduation Photos</option>
+                      <option value="portrait">Artistic Portraits</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="photographer">Photographer channel</label>
+                    <select id="photographer" name="photographer">
+                      <option value="jiajie">Jiajie He</option>
+                      <option value="studio">3H-Studio Team</option>
+                      <option value="associate">Associate Photographer</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="city">Location or city</label>
+                    <input id="city" name="city" type="text" placeholder="Baltimore, New York, campus, studio..." required />
+                  </div>
+                  <div class="field">
+                    <label for="shoot-date">Preferred date</label>
+                    <input id="shoot-date" name="shoot-date" type="date" required />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Preferred time slot</label>
+                  <div class="slot-grid" id="slot-grid">
+                    <button class="slot-button active" type="button" data-slot="Golden hour">Golden hour</button>
+                    <button class="slot-button" type="button" data-slot="Morning light">Morning light</button>
+                    <button class="slot-button" type="button" data-slot="Studio evening">Studio evening</button>
+                    <button class="slot-button" type="button" data-slot="Flexible">Flexible</button>
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="group-size">Group size</label>
+                    <select id="group-size" name="group-size">
+                      <option value="1">1 person</option>
+                      <option value="2">2 people</option>
+                      <option value="3-5">3-5 people</option>
+                      <option value="6+">6+ people</option>
+                    </select>
+                  </div>
+                  <div class="field">
+                    <label for="style">Visual style</label>
+                    <select id="style" name="style">
+                      <option value="Natural and cinematic">Natural and cinematic</option>
+                      <option value="Clean and classic">Clean and classic</option>
+                      <option value="Editorial and artistic">Editorial and artistic</option>
+                      <option value="Travel documentary">Travel documentary</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label>Add-ons</label>
+                  <div class="addon-grid" id="addon-grid">
+                    <button class="addon-chip" type="button" data-addon="rush">Rush edit</button>
+                    <button class="addon-chip" type="button" data-addon="retouch">Extra retouching</button>
+                    <button class="addon-chip" type="button" data-addon="reel">Short highlight reel</button>
+                    <button class="addon-chip" type="button" data-addon="looks">Extra look change</button>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="notes">Notes for the photographer</label>
+                  <textarea id="notes" name="notes" placeholder="Tell us about the mood, purpose of the shoot, or any must-have details."></textarea>
+                </div>
+
+                <div class="form-actions">
+                  <button class="submit-button" type="submit">Submit booking request</button>
+                  <span class="form-note">This demo stores requests locally in your browser and mirrors them into the photographer channel below.</span>
+                </div>
+              </form>
+
+              <div id="success-banner" class="success-banner">
+                Booking request submitted. A new inquiry has been added to the photographer channel.
+              </div>
+            </article>
+
+            <aside class="summary-card">
+              <h3 class="card-heading">Live Booking Summary</h3>
+              <p class="card-copy">
+                A quick view of the current package, photographer assignment, timing, and estimated starting investment.
+              </p>
+
+              <div class="summary-panel">
+                <div class="summary-row"><span>Session</span><strong id="summary-session">Landscape Photography</strong></div>
+                <div class="summary-row"><span>Photographer</span><strong id="summary-photographer">Jiajie He</strong></div>
+                <div class="summary-row"><span>Duration</span><strong id="summary-duration">90 minutes</strong></div>
+                <div class="summary-row"><span>Deliverables</span><strong id="summary-deliverables">18 edited images</strong></div>
+                <div class="summary-row"><span>Time slot</span><strong id="summary-slot">Golden hour</strong></div>
+                <div class="summary-row"><span>Add-ons</span><strong id="summary-addons">None selected</strong></div>
+                <div class="summary-row"><span>Location</span><strong id="summary-location">To be decided</strong></div>
+                <div class="summary-total">
+                  <span>Estimated starting total</span>
+                  <strong id="summary-total">$280</strong>
+                </div>
+                <div class="note-card">
+                  <h3>Suggested workflow</h3>
+                  <p>Client submits the request, photographer confirms the concept, then date, payment, and delivery are finalized through your preferred backend later.</p>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section id="photographer-panel" class="channel-panel" aria-labelledby="photographer-panel-title">
+          <div class="photographer-grid">
+            <article class="dashboard-card">
+              <h3 id="photographer-panel-title" class="card-heading">Photographer Dashboard</h3>
+              <p class="card-copy">
+                Review incoming requests, keep your booking pace visible, and present core specialties so clients know what each channel is best for.
+              </p>
+
+              <div class="stat-grid">
+                <div class="stat-card">
+                  <strong>24h</strong>
+                  <span>Reply goal</span>
+                </div>
+                <div class="stat-card">
+                  <strong>3</strong>
+                  <span>Core shoot types</span>
+                </div>
+                <div class="stat-card">
+                  <strong>6</strong>
+                  <span>Weekly open slots</span>
+                </div>
+              </div>
+
+              <div class="specialty-grid" style="margin-top: 18px;">
+                <span class="specialty-chip">Landscape direction</span>
+                <span class="specialty-chip">Graduation sessions</span>
+                <span class="specialty-chip">Artistic portraits</span>
+                <span class="specialty-chip">3H-Studio workflow</span>
+              </div>
+
+              <ul id="request-list" class="request-list" aria-label="Incoming booking requests"></ul>
+            </article>
+
+            <div style="display: grid; gap: 18px;">
+              <article class="dashboard-card">
+                <h3 class="card-heading">Availability Board</h3>
+                <p class="card-copy">
+                  Toggle open slots for the next booking cycle. This helps illustrate how a future photographer backend could work.
+                </p>
+
+                <div id="availability-grid" class="availability-grid" aria-label="Availability slots"></div>
+              </article>
+
+              <article class="note-card">
+                <h3>Photographer channel essentials</h3>
+                <p>For a production build, this area would connect to a database for real inquiries, photographer profiles, payments, and final calendar syncing.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <section class="section-card" aria-labelledby="faq-title">
+        <h2 id="faq-title" class="section-title">Helpful Details</h2>
+        <p class="section-copy">
+          Key pieces that clients and photographers usually want clarified before a booking site goes live.
+        </p>
+
+        <div class="faq-grid">
+          <article class="note-card">
+            <h3>Client journey</h3>
+            <p>Choose a session, submit the inquiry, receive a follow-up, confirm date and package, then move into payment and delivery.</p>
+          </article>
+          <article class="note-card">
+            <h3>Photographer journey</h3>
+            <p>Review requests, accept or reschedule, lock availability, and keep each shoot aligned with your specialty and capacity.</p>
+          </article>
+          <article class="note-card">
+            <h3>Next production step</h3>
+            <p>Connect this front-end to a form backend, email notifications, Stripe, and a shared calendar once you are happy with the workflow.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer-card">
+      <span>Booking prototype for photography sessions with separate client and photographer channels.</span>
+      <div class="footer-links">
+        <a href="portfolio.html">Portfolio</a>
+        <a href="mailto:jiajieh1@umbc.edu">Email</a>
+        <a href="index.html">Back Home</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    const sessionTypes = {
+      landscape: {
+        label: "Landscape Photography",
+        duration: "90 minutes",
+        deliverables: "18 edited images",
+        price: 280
+      },
+      graduation: {
+        label: "Graduation Photos",
+        duration: "75 minutes",
+        deliverables: "25 edited images",
+        price: 360
+      },
+      portrait: {
+        label: "Artistic Portraits",
+        duration: "2 hours",
+        deliverables: "18 retouched portraits",
+        price: 420
+      }
+    };
+
+    const photographerNames = {
+      jiajie: "Jiajie He",
+      studio: "3H-Studio Team",
+      associate: "Associate Photographer"
+    };
+
+    const addonConfig = {
+      rush: { label: "Rush edit", price: 90 },
+      retouch: { label: "Extra retouching", price: 60 },
+      reel: { label: "Short highlight reel", price: 120 },
+      looks: { label: "Extra look change", price: 80 }
+    };
+
+    const sampleRequests = [
+      {
+        client: "Mei Lin",
+        session: "Graduation Photos",
+        meta: "May 18, 2026 · Golden hour · Baltimore campus",
+        notes: "Looking for cap-and-gown plus a few family images after the main set.",
+        status: "pending",
+        badge: "Pending"
+      },
+      {
+        client: "Aaron Park",
+        session: "Artistic Portraits",
+        meta: "April 12, 2026 · Studio evening · New York",
+        notes: "Interested in cinematic portrait lighting with one wardrobe change.",
+        status: "review",
+        badge: "In Review"
+      }
+    ];
+
+    const availabilityDefaults = [
+      { key: "thu-golden", title: "Thu · Golden hour", note: "Landscape and portrait", open: true },
+      { key: "fri-morning", title: "Fri · Morning light", note: "Graduation friendly", open: true },
+      { key: "sat-golden", title: "Sat · Golden hour", note: "High demand slot", open: true },
+      { key: "sat-evening", title: "Sat · Studio evening", note: "Portrait and concept work", open: false },
+      { key: "sun-morning", title: "Sun · Morning light", note: "Family and graduation", open: true },
+      { key: "sun-flex", title: "Sun · Flexible", note: "Travel or destination shoot", open: false }
+    ];
+
+    const storageKeys = {
+      requests: "studio-booking-requests",
+      availability: "studio-booking-availability"
+    };
+
+    const channelTabs = document.querySelectorAll(".channel-tab");
+    const channelPanels = document.querySelectorAll(".channel-panel");
+    const fillButtons = document.querySelectorAll("[data-fill-session]");
+    const form = document.getElementById("booking-form");
+    const sessionField = document.getElementById("session-type");
+    const photographerField = document.getElementById("photographer");
+    const cityField = document.getElementById("city");
+    const slotButtons = document.querySelectorAll(".slot-button");
+    const addonButtons = document.querySelectorAll(".addon-chip");
+    const successBanner = document.getElementById("success-banner");
+    const requestList = document.getElementById("request-list");
+    const availabilityGrid = document.getElementById("availability-grid");
+
+    const summaryEls = {
+      session: document.getElementById("summary-session"),
+      photographer: document.getElementById("summary-photographer"),
+      duration: document.getElementById("summary-duration"),
+      deliverables: document.getElementById("summary-deliverables"),
+      slot: document.getElementById("summary-slot"),
+      addons: document.getElementById("summary-addons"),
+      location: document.getElementById("summary-location"),
+      total: document.getElementById("summary-total")
+    };
+
+    function setActiveChannel(panelId) {
+      channelTabs.forEach((tab) => {
+        const active = tab.dataset.channel === panelId;
+        tab.classList.toggle("active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      channelPanels.forEach((panel) => {
+        panel.classList.toggle("active", panel.id === panelId);
+      });
+    }
+
+    channelTabs.forEach((tab) => {
+      tab.addEventListener("click", () => setActiveChannel(tab.dataset.channel));
+    });
+
+    fillButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        sessionField.value = button.dataset.fillSession;
+        setActiveChannel("client-panel");
+        updateSummary();
+        document.getElementById("booking-studio").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    function getSelectedSlot() {
+      const active = document.querySelector(".slot-button.active");
+      return active ? active.dataset.slot : "Flexible";
+    }
+
+    function getSelectedAddons() {
+      return Array.from(document.querySelectorAll(".addon-chip.active")).map((chip) => chip.dataset.addon);
+    }
+
+    function updateSummary() {
+      const session = sessionTypes[sessionField.value];
+      const selectedAddons = getSelectedAddons();
+      const addonTotal = selectedAddons.reduce((sum, key) => sum + addonConfig[key].price, 0);
+      const addonLabel = selectedAddons.length
+        ? selectedAddons.map((key) => addonConfig[key].label).join(", ")
+        : "None selected";
+
+      summaryEls.session.textContent = session.label;
+      summaryEls.photographer.textContent = photographerNames[photographerField.value];
+      summaryEls.duration.textContent = session.duration;
+      summaryEls.deliverables.textContent = session.deliverables;
+      summaryEls.slot.textContent = getSelectedSlot();
+      summaryEls.addons.textContent = addonLabel;
+      summaryEls.location.textContent = cityField.value.trim() || "To be decided";
+      summaryEls.total.textContent = "$" + String(session.price + addonTotal);
+    }
+
+    slotButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        slotButtons.forEach((slot) => slot.classList.remove("active"));
+        button.classList.add("active");
+        updateSummary();
+      });
+    });
+
+    addonButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        button.classList.toggle("active");
+        updateSummary();
+      });
+    });
+
+    [sessionField, photographerField, cityField].forEach((field) => {
+      field.addEventListener("input", updateSummary);
+      field.addEventListener("change", updateSummary);
+    });
+
+    function formatDate(dateValue) {
+      if (!dateValue) return "Date not selected";
+      const date = new Date(dateValue + "T12:00:00");
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function readStoredRequests() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKeys.requests) || "[]");
+      } catch (error) {
+        return [];
+      }
+    }
+
+    function writeStoredRequests(requests) {
+      localStorage.setItem(storageKeys.requests, JSON.stringify(requests));
+    }
+
+    function renderRequests() {
+      const stored = readStoredRequests();
+      const requests = stored.concat(sampleRequests);
+      requestList.innerHTML = "";
+
+      requests.forEach((request) => {
+        const item = document.createElement("li");
+        item.className = "request-item";
+        item.innerHTML =
+          '<div class="request-topline">' +
+          '<div><h4 class="request-title">' + request.client + " · " + request.session + "</h4></div>" +
+          '<span class="status-badge ' + request.status + '">' + request.badge + "</span>" +
+          "</div>" +
+          '<p class="request-meta">' + request.meta + "</p>" +
+          '<p class="request-notes">' + request.notes + "</p>";
+        requestList.appendChild(item);
+      });
+    }
+
+    function readAvailability() {
+      try {
+        const stored = JSON.parse(localStorage.getItem(storageKeys.availability) || "null");
+        if (!stored) return availabilityDefaults;
+        return availabilityDefaults.map((slot) => {
+          const match = stored.find((item) => item.key === slot.key);
+          return match ? match : slot;
+        });
+      } catch (error) {
+        return availabilityDefaults;
+      }
+    }
+
+    function writeAvailability(slots) {
+      localStorage.setItem(storageKeys.availability, JSON.stringify(slots));
+    }
+
+    function renderAvailability() {
+      const slots = readAvailability();
+      availabilityGrid.innerHTML = "";
+
+      slots.forEach((slot) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "availability-slot " + (slot.open ? "open" : "closed");
+        button.innerHTML = slot.title + "<small>" + (slot.open ? "Open for requests" : "Marked unavailable") + " · " + slot.note + "</small>";
+        button.addEventListener("click", () => {
+          const updated = readAvailability().map((item) =>
+            item.key === slot.key ? { ...item, open: !item.open } : item
+          );
+          writeAvailability(updated);
+          renderAvailability();
+        });
+        availabilityGrid.appendChild(button);
+      });
+    }
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const session = sessionTypes[sessionField.value];
+      const notes = document.getElementById("notes").value.trim() || "No extra notes provided.";
+      const request = {
+        client: document.getElementById("client-name").value.trim(),
+        session: session.label,
+        meta:
+          formatDate(document.getElementById("shoot-date").value) +
+          " · " +
+          getSelectedSlot() +
+          " · " +
+          (cityField.value.trim() || "Location TBD"),
+        notes: notes,
+        status: "new",
+        badge: "New"
+      };
+
+      const stored = readStoredRequests();
+      stored.unshift(request);
+      writeStoredRequests(stored);
+      renderRequests();
+      updateSummary();
+      successBanner.classList.add("show");
+
+      window.setTimeout(() => {
+        successBanner.classList.remove("show");
+      }, 4200);
+
+      form.reset();
+      slotButtons.forEach((button, index) => {
+        button.classList.toggle("active", index === 0);
+      });
+      addonButtons.forEach((button) => button.classList.remove("active"));
+      sessionField.value = "landscape";
+      photographerField.value = "jiajie";
+      updateSummary();
+      setActiveChannel("photographer-panel");
+    });
+
+    renderRequests();
+    renderAvailability();
+    updateSummary();
+  </script>
+</body>
+</html>
