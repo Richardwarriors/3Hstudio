@@ -331,6 +331,67 @@
       margin-top: 16px;
     }
 
+    .hero-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .hero-shot {
+      position: relative;
+      min-height: 132px;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid rgba(19, 37, 52, 0.1);
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-shot.hero-shot-wide {
+      grid-column: 1 / -1;
+      min-height: 176px;
+    }
+
+    .hero-shot img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 220ms ease;
+    }
+
+    .hero-shot::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(11, 21, 28, 0.02) 18%, rgba(11, 21, 28, 0.5) 100%),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.12), transparent 54%);
+    }
+
+    .hero-shot:hover img {
+      transform: scale(1.05);
+    }
+
+    .hero-shot figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 1;
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
     .feature-row {
       display: grid;
       grid-template-columns: 46px 1fr;
@@ -417,29 +478,48 @@
     }
 
     .service-visual {
+      position: relative;
+      overflow: hidden;
       min-height: 160px;
       padding: 18px;
       display: flex;
       align-items: flex-end;
-      background:
-        linear-gradient(150deg, rgba(15, 118, 110, 0.9), rgba(2, 132, 199, 0.68)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
       color: #ffffff;
     }
 
-    .service-card[data-theme="rose"] .service-visual {
-      background:
-        linear-gradient(150deg, rgba(195, 98, 127, 0.92), rgba(2, 132, 199, 0.58)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
+    .service-visual img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 220ms ease;
     }
 
-    .service-card[data-theme="amber"] .service-visual {
+    .service-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(150deg, rgba(245, 158, 11, 0.94), rgba(195, 98, 127, 0.7)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 55%);
+        linear-gradient(150deg, rgba(15, 118, 110, 0.58), rgba(2, 132, 199, 0.42)),
+        linear-gradient(180deg, rgba(12, 22, 29, 0.02) 16%, rgba(12, 22, 29, 0.5) 100%);
+    }
+
+    .service-card[data-theme="rose"] .service-visual::after {
+      background:
+        linear-gradient(150deg, rgba(195, 98, 127, 0.66), rgba(2, 132, 199, 0.36)),
+        linear-gradient(180deg, rgba(12, 22, 29, 0.02) 16%, rgba(12, 22, 29, 0.5) 100%);
+    }
+
+    .service-card[data-theme="amber"] .service-visual::after {
+      background:
+        linear-gradient(150deg, rgba(245, 158, 11, 0.62), rgba(195, 98, 127, 0.42)),
+        linear-gradient(180deg, rgba(12, 22, 29, 0.02) 16%, rgba(12, 22, 29, 0.5) 100%);
     }
 
     .service-visual span {
+      position: relative;
+      z-index: 1;
       display: inline-flex;
       padding: 7px 10px;
       border-radius: 999px;
@@ -503,6 +583,10 @@
       transform: translateY(-2px);
       border-color: var(--ring);
       box-shadow: 0 10px 20px rgba(19, 37, 52, 0.1);
+    }
+
+    .service-card:hover .service-visual img {
+      transform: scale(1.05);
     }
 
     .channel-bar {
@@ -1002,6 +1086,15 @@
       .channel-tab {
         width: 100%;
       }
+
+      .hero-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-shot.hero-shot-wide {
+        grid-column: auto;
+        min-height: 148px;
+      }
     }
   </style>
 </head>
@@ -1071,6 +1164,20 @@
               </div>
             </div>
           </div>
+          <div class="hero-gallery">
+            <figure class="hero-shot hero-shot-wide">
+              <img src="assets/landscape-travel.svg" alt="Stylized destination photography scene" />
+              <figcaption>Destination stories</figcaption>
+            </figure>
+            <figure class="hero-shot">
+              <img src="assets/portrait-editorial.svg" alt="Stylized editorial portrait scene" />
+              <figcaption>Portrait direction</figcaption>
+            </figure>
+            <figure class="hero-shot">
+              <img src="assets/graduation-campus.svg" alt="Stylized graduation session scene" />
+              <figcaption>Milestone sessions</figcaption>
+            </figure>
+          </div>
         </aside>
       </div>
     </section>
@@ -1085,6 +1192,7 @@
         <div class="service-grid">
           <article class="service-card" data-theme="amber">
             <div class="service-visual">
+              <img src="assets/landscape-travel.svg" alt="Stylized landscape booking illustration" loading="lazy" />
               <span>Outdoor session</span>
             </div>
             <div class="service-body">
@@ -1101,6 +1209,7 @@
 
           <article class="service-card" data-theme="rose">
             <div class="service-visual">
+              <img src="assets/graduation-campus.svg" alt="Stylized graduation booking illustration" loading="lazy" />
               <span>Campus session</span>
             </div>
             <div class="service-body">
@@ -1117,6 +1226,7 @@
 
           <article class="service-card">
             <div class="service-visual">
+              <img src="assets/portrait-editorial.svg" alt="Stylized portrait booking illustration" loading="lazy" />
               <span>Creative portrait</span>
             </div>
             <div class="service-body">

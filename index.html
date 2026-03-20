@@ -284,7 +284,7 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
-      padding: 18px;
+      padding: 14px;
       border-radius: 22px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 244, 240, 0.92));
       border: 1px solid rgba(31, 38, 44, 0.08);
@@ -292,41 +292,50 @@
     }
 
     .sheet-frame {
-      min-height: 170px;
-      padding: 14px;
+      position: relative;
+      aspect-ratio: 1 / 1;
+      min-height: 178px;
+      margin: 0;
+      overflow: hidden;
       border-radius: 18px;
-      display: flex;
-      align-items: flex-end;
-      background:
-        linear-gradient(160deg, rgba(139, 90, 74, 0.88), rgba(41, 95, 107, 0.56)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
-      color: #ffffff;
+      border: 1px solid rgba(31, 38, 44, 0.08);
       box-shadow: 0 12px 18px rgba(31, 38, 44, 0.08);
     }
 
-    .sheet-frame:nth-child(2) {
-      background:
-        linear-gradient(160deg, rgba(208, 163, 95, 0.9), rgba(139, 90, 74, 0.62)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    .sheet-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 220ms ease;
     }
 
-    .sheet-frame:nth-child(3) {
+    .sheet-frame::after {
+      content: "";
+      position: absolute;
+      inset: 0;
       background:
-        linear-gradient(160deg, rgba(41, 95, 107, 0.9), rgba(31, 38, 44, 0.6)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+        linear-gradient(180deg, rgba(10, 15, 18, 0.02) 15%, rgba(10, 15, 18, 0.54) 100%),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.12), transparent 50%);
     }
 
-    .sheet-frame:nth-child(4) {
-      background:
-        linear-gradient(160deg, rgba(104, 121, 133, 0.9), rgba(139, 90, 74, 0.58)),
-        linear-gradient(35deg, rgba(255, 255, 255, 0.18), transparent 58%);
+    .sheet-frame:hover img {
+      transform: scale(1.06);
     }
 
-    .sheet-frame span {
+    .sheet-frame figcaption {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      z-index: 1;
       display: inline-flex;
       padding: 7px 10px;
       border-radius: 999px;
       background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
       font-size: 0.8rem;
       font-weight: 800;
       letter-spacing: 0.05em;
@@ -397,7 +406,6 @@
     .feature-card,
     .channel-card,
     .showcase-card {
-      padding: 18px;
       border-radius: var(--radius-lg);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 247, 243, 0.94));
       border: 1px solid rgba(31, 38, 44, 0.1);
@@ -429,6 +437,49 @@
       box-shadow: inset 0 0 0 1px rgba(139, 90, 74, 0.1);
     }
 
+    .service-card,
+    .showcase-card {
+      overflow: hidden;
+    }
+
+    .feature-card,
+    .channel-card {
+      padding: 18px;
+    }
+
+    .service-image {
+      position: relative;
+      aspect-ratio: 1.18;
+      overflow: hidden;
+      border-radius: calc(var(--radius-lg) - 2px) calc(var(--radius-lg) - 2px) 0 0;
+      background: rgba(41, 95, 107, 0.12);
+    }
+
+    .service-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      transition: transform 220ms ease;
+    }
+
+    .service-image::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(8, 14, 18, 0.02) 15%, rgba(8, 14, 18, 0.4) 100%),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.1), transparent 50%);
+    }
+
+    .service-card:hover .service-image img {
+      transform: scale(1.05);
+    }
+
+    .service-copy {
+      padding: 18px;
+    }
+
     .service-card h3,
     .feature-card h3,
     .channel-card h3,
@@ -436,6 +487,10 @@
       margin: 14px 0 0;
       font-size: 1.04rem;
       color: #182126;
+    }
+
+    .service-copy h3 {
+      margin-top: 0;
     }
 
     .service-card p,
@@ -489,6 +544,7 @@
     }
 
     .showcase-card {
+      padding: 18px;
       min-height: 240px;
       display: flex;
       align-items: flex-end;
@@ -612,15 +668,16 @@
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <a class="brand" href="studio.html">
+      <a class="brand" href="index.html">
         <span class="brand-mark">3H</span>
         <span>3H-Studio</span>
       </a>
       <nav aria-label="Studio navigation">
         <ul class="nav-list">
-          <li><a href="studio.html">Home</a></li>
+          <li><a href="index.html">Home</a></li>
           <li><a href="#services">Services</a></li>
           <li><a href="#galleries">Client Galleries</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
           <li><a href="#channels">Channels</a></li>
           <li><a href="booking.html">Book</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -650,10 +707,22 @@
         </div>
 
         <aside class="contact-sheet" aria-hidden="true">
-          <div class="sheet-frame"><span>Portrait</span></div>
-          <div class="sheet-frame"><span>Graduation</span></div>
-          <div class="sheet-frame"><span>Landscape</span></div>
-          <div class="sheet-frame"><span>Studio concept</span></div>
+          <figure class="sheet-frame">
+            <img src="assets/portrait-editorial.svg" alt="" />
+            <figcaption>Portrait</figcaption>
+          </figure>
+          <figure class="sheet-frame">
+            <img src="assets/graduation-campus.svg" alt="" />
+            <figcaption>Graduation</figcaption>
+          </figure>
+          <figure class="sheet-frame">
+            <img src="assets/landscape-travel.svg" alt="" />
+            <figcaption>Landscape</figcaption>
+          </figure>
+          <figure class="sheet-frame">
+            <img src="assets/studio-concept.svg" alt="" />
+            <figcaption>Studio concept</figcaption>
+          </figure>
         </aside>
       </div>
     </section>
@@ -667,24 +736,39 @@
 
         <div class="service-grid">
           <article class="service-card">
-            <div class="service-mark">LS</div>
-            <h3>Landscape Sessions</h3>
-            <p>Travel-focused outdoor sessions with strong location storytelling, scenic composition, and natural light direction.</p>
-            <span class="service-meta">Scenic and destination work</span>
+            <div class="service-image">
+              <img src="assets/landscape-travel.svg" alt="Stylized landscape session scene" loading="lazy" />
+            </div>
+            <div class="service-copy">
+              <div class="service-mark">LS</div>
+              <h3>Landscape Sessions</h3>
+              <p>Travel-focused outdoor sessions with strong location storytelling, scenic composition, and natural light direction.</p>
+              <span class="service-meta">Scenic and destination work</span>
+            </div>
           </article>
 
           <article class="service-card">
-            <div class="service-mark">GR</div>
-            <h3>Graduation Portraits</h3>
-            <p>Clean, celebratory coverage for graduates, solo portraits, family add-ons, and landmark campus locations.</p>
-            <span class="service-meta">Milestone photography</span>
+            <div class="service-image">
+              <img src="assets/graduation-campus.svg" alt="Stylized graduation session scene" loading="lazy" />
+            </div>
+            <div class="service-copy">
+              <div class="service-mark">GR</div>
+              <h3>Graduation Portraits</h3>
+              <p>Clean, celebratory coverage for graduates, solo portraits, family add-ons, and landmark campus locations.</p>
+              <span class="service-meta">Milestone photography</span>
+            </div>
           </article>
 
           <article class="service-card">
-            <div class="service-mark">AP</div>
-            <h3>Artistic Portraits</h3>
-            <p>Editorial and concept-driven portrait sessions for personal branding, creative identity, and mood-led storytelling.</p>
-            <span class="service-meta">Studio and creative direction</span>
+            <div class="service-image">
+              <img src="assets/portrait-editorial.svg" alt="Stylized editorial portrait scene" loading="lazy" />
+            </div>
+            <div class="service-copy">
+              <div class="service-mark">AP</div>
+              <h3>Artistic Portraits</h3>
+              <p>Editorial and concept-driven portrait sessions for personal branding, creative identity, and mood-led storytelling.</p>
+              <span class="service-meta">Studio and creative direction</span>
+            </div>
           </article>
         </div>
       </section>
@@ -794,7 +878,7 @@
       <div class="footer-links">
         <a href="booking.html">Book a Session</a>
         <a href="mailto:jiajieh1@umbc.edu">Email</a>
-        <a href="portfolio.html">Referenced from Portfolio</a>
+        <a href="portfolio.html">Portfolio</a>
       </div>
     </footer>
   </main>
