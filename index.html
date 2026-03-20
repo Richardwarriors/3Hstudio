@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3H-Studio | Official Website</title>
+  <title>3H-Studio | 官方首页</title>
   <style>
     :root {
       --bg-1: #fbf8f4;
@@ -33,7 +33,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
       background:
@@ -87,7 +87,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       color: var(--text);
       font-size: 1.4rem;
       font-weight: 700;
@@ -200,7 +200,7 @@
     .hero-title {
       margin: 16px 0 12px;
       max-width: 760px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: clamp(2.4rem, 5vw, 3.9rem);
       line-height: 0.98;
       letter-spacing: -0.04em;
@@ -282,7 +282,8 @@
 
     .contact-sheet {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.12fr) minmax(220px, 0.88fr);
+      grid-template-rows: repeat(2, minmax(0, 1fr));
       gap: 12px;
       padding: 14px;
       border-radius: 22px;
@@ -342,6 +343,46 @@
       text-transform: uppercase;
     }
 
+    .cover-frame {
+      grid-row: 1 / span 2;
+      aspect-ratio: auto;
+      min-height: 388px;
+    }
+
+    .cover-frame img {
+      object-position: center 28%;
+    }
+
+    .info-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(247, 244, 240, 0.88));
+      border: 1px solid rgba(31, 38, 44, 0.08);
+      box-shadow: 0 12px 18px rgba(31, 38, 44, 0.08);
+      display: grid;
+      align-content: start;
+      gap: 10px;
+    }
+
+    .insight-label {
+      display: inline-flex;
+      justify-self: start;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(41, 95, 107, 0.1);
+      color: var(--brand-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: #2a3741;
+      font-size: 0.94rem;
+      line-height: 1.75;
+    }
+
     .content-grid {
       display: grid;
       gap: 22px;
@@ -358,7 +399,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: clamp(1.45rem, 2vw, 1.85rem);
       line-height: 1.2;
     }
@@ -662,6 +703,16 @@
         width: 100%;
         text-align: center;
       }
+
+      .contact-sheet {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .cover-frame {
+        grid-row: auto;
+        min-height: 300px;
+      }
     }
   </style>
 </head>
@@ -672,15 +723,15 @@
         <span class="brand-mark">3H</span>
         <span>3H-Studio</span>
       </a>
-      <nav aria-label="Studio navigation">
+      <nav aria-label="站点导航">
         <ul class="nav-list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#galleries">Client Galleries</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="#channels">Channels</a></li>
-          <li><a href="booking.html">Book</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="#services">服务场景</a></li>
+          <li><a href="#galleries">平台优势</a></li>
+          <li><a href="#channels">双向通道</a></li>
+          <li><a href="#showcase">创作方向</a></li>
+          <li><a href="booking.html">立即预约</a></li>
+          <li><a href="#contact">联系我们</a></li>
         </ul>
       </nav>
     </div>
@@ -690,195 +741,191 @@
     <section class="hero-card" aria-labelledby="page-title">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow">Official Studio Website</span>
-          <h1 id="page-title" class="hero-title">Visual storytelling for portraits, graduation milestones, and destination sessions.</h1>
+          <span class="eyebrow">创始灵感</span>
+          <h1 id="page-title" class="hero-title">连接摄影创作者与高品质影像需求者</h1>
           <p class="hero-text">
-            3H-Studio is a photography studio built around atmosphere, memory, and intentional presentation. We create polished sessions for individual clients while also keeping the experience organized through bookings, client galleries, and delivery workflows.
+            我们致力于连接摄影创作者与高品质影像需求者，构建一个高效、可信赖的双向服务平台。摄影师可灵活接单、拓展机会，客户则可自由选择风格契合的专业摄影师，实现理想影像的精准呈现。平台同时提供多重安全保障，为每一次合作保驾护航。
           </p>
-          <div class="chip-row" aria-label="Studio highlights">
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Portrait and graduation photography</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Landscape and destination sessions</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client galleries and booking flow</span>
+          <div class="chip-row" aria-label="平台亮点">
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>摄影师灵活接单</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>客户自由匹配风格</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>多重安全保障</span>
           </div>
           <div class="hero-actions">
-            <a class="cta-button" href="booking.html">Book a session</a>
-            <a class="ghost-button" href="#galleries">Explore the studio flow</a>
+            <a class="cta-button" href="booking.html">立即发起预约</a>
+            <a class="ghost-button" href="#galleries">了解平台优势</a>
           </div>
         </div>
 
-        <aside class="contact-sheet" aria-hidden="true">
-          <figure class="sheet-frame">
-            <img src="assets/portrait-editorial.svg" alt="" />
-            <figcaption>Portrait</figcaption>
+        <aside class="contact-sheet">
+          <figure class="sheet-frame cover-frame">
+            <img src="assets/picture1.jpg" alt="3H-Studio 首页封面图" />
+            <figcaption>创始灵感</figcaption>
           </figure>
-          <figure class="sheet-frame">
-            <img src="assets/graduation-campus.svg" alt="" />
-            <figcaption>Graduation</figcaption>
-          </figure>
-          <figure class="sheet-frame">
-            <img src="assets/landscape-travel.svg" alt="" />
-            <figcaption>Landscape</figcaption>
-          </figure>
-          <figure class="sheet-frame">
-            <img src="assets/studio-concept.svg" alt="" />
-            <figcaption>Studio concept</figcaption>
-          </figure>
+          <article class="info-card">
+            <span class="insight-label">平台使命</span>
+            <p>让优秀摄影创作者与真实影像需求高效相遇，让风格、能力与合作机会被更精准地看见。</p>
+          </article>
+          <article class="info-card">
+            <span class="insight-label">合作保障</span>
+            <p>从需求沟通、预约确认到服务交付，平台通过清晰流程与安全机制提升每一次合作的确定性。</p>
+          </article>
         </aside>
       </div>
     </section>
 
     <div class="content-grid">
       <section id="services" class="section-card" aria-labelledby="services-title">
-        <h2 id="services-title" class="section-title">Services</h2>
+        <h2 id="services-title" class="section-title">服务场景</h2>
         <p class="section-copy">
-          A studio offering built around elegant photography presentation, client clarity, and well-structured booking flows.
+          围绕高品质影像需求，平台首期聚焦三类高频服务场景，帮助客户更快找到适合的摄影创作者。
         </p>
 
         <div class="service-grid">
           <article class="service-card">
             <div class="service-image">
-              <img src="assets/landscape-travel.svg" alt="Stylized landscape session scene" loading="lazy" />
+              <img src="assets/landscape-travel.svg" alt="旅拍与目的地影像场景" loading="lazy" />
             </div>
             <div class="service-copy">
-              <div class="service-mark">LS</div>
-              <h3>Landscape Sessions</h3>
-              <p>Travel-focused outdoor sessions with strong location storytelling, scenic composition, and natural light direction.</p>
-              <span class="service-meta">Scenic and destination work</span>
+              <div class="service-mark">旅</div>
+              <h3>旅拍与目的地影像</h3>
+              <p>适合户外、人文、城市漫游与目的地拍摄，强调场景叙事、氛围感与画面表达。</p>
+              <span class="service-meta">风格化出片</span>
             </div>
           </article>
 
           <article class="service-card">
             <div class="service-image">
-              <img src="assets/graduation-campus.svg" alt="Stylized graduation session scene" loading="lazy" />
+              <img src="assets/graduation-campus.svg" alt="毕业纪念拍摄场景" loading="lazy" />
             </div>
             <div class="service-copy">
-              <div class="service-mark">GR</div>
-              <h3>Graduation Portraits</h3>
-              <p>Clean, celebratory coverage for graduates, solo portraits, family add-ons, and landmark campus locations.</p>
-              <span class="service-meta">Milestone photography</span>
+              <div class="service-mark">毕</div>
+              <h3>毕业纪念拍摄</h3>
+              <p>支持个人、好友与家庭同行需求，在重要节点时刻留下更完整、更有温度的影像记录。</p>
+              <span class="service-meta">里程碑时刻</span>
             </div>
           </article>
 
           <article class="service-card">
             <div class="service-image">
-              <img src="assets/portrait-editorial.svg" alt="Stylized editorial portrait scene" loading="lazy" />
+              <img src="assets/portrait-editorial.svg" alt="品牌形象与创意写真场景" loading="lazy" />
             </div>
             <div class="service-copy">
-              <div class="service-mark">AP</div>
-              <h3>Artistic Portraits</h3>
-              <p>Editorial and concept-driven portrait sessions for personal branding, creative identity, and mood-led storytelling.</p>
-              <span class="service-meta">Studio and creative direction</span>
+              <div class="service-mark">品</div>
+              <h3>品牌形象与创意写真</h3>
+              <p>适用于个人品牌、创作者主页、商业展示与概念影像，匹配更契合的风格摄影师。</p>
+              <span class="service-meta">品牌与创作表达</span>
             </div>
           </article>
         </div>
       </section>
 
       <section id="galleries" class="section-card" aria-labelledby="galleries-title">
-        <h2 id="galleries-title" class="section-title">Client Galleries</h2>
+        <h2 id="galleries-title" class="section-title">平台优势</h2>
         <p class="section-copy">
-          Inspired by the best photography platforms, the studio site is structured around more than just a gallery: it is meant to support presentation, proofing, booking, and delivery in one polished experience.
+          我们不只提供展示页面，更希望把匹配、沟通、保障与交付整合为完整的平台体验。
         </p>
 
         <div class="feature-grid">
           <article class="feature-card">
-            <div class="feature-mark">GL</div>
-            <h3>Beautiful gallery delivery</h3>
-            <p>Present finished work with a clean, elevated visual style that feels premium and easy for clients to browse.</p>
+            <div class="feature-mark">配</div>
+            <h3>风格精准匹配</h3>
+            <p>客户可根据审美风格、拍摄方向与城市需求筛选更合适的专业摄影师。</p>
           </article>
           <article class="feature-card">
-            <div class="feature-mark">PR</div>
-            <h3>Proofing workflow</h3>
-            <p>Give clients a simple way to review, shortlist, and respond without getting lost in email threads.</p>
+            <div class="feature-mark">沟</div>
+            <h3>双向高效沟通</h3>
+            <p>在预约前明确时间、地点、预算与预期效果，让合作沟通更顺畅、更高效。</p>
           </article>
           <article class="feature-card">
-            <div class="feature-mark">BK</div>
-            <h3>Booking and scheduling</h3>
-            <p>Let clients request sessions at any time while photographers maintain availability and workload visibility.</p>
+            <div class="feature-mark">保</div>
+            <h3>多重安全保障</h3>
+            <p>通过清晰的订单流程、身份信息与关键节点确认机制，为每次合作保驾护航。</p>
           </article>
           <article class="feature-card">
-            <div class="feature-mark">DL</div>
-            <h3>Digital delivery and packages</h3>
-            <p>Set up the site so it can later support downloads, print packages, and commercial-ready delivery steps.</p>
+            <div class="feature-mark">交</div>
+            <h3>标准化交付体验</h3>
+            <p>从需求提交到最终交付，平台帮助双方建立更稳定、更可信赖的合作闭环。</p>
           </article>
         </div>
       </section>
 
       <section id="channels" class="section-card" aria-labelledby="channels-title">
-        <h2 id="channels-title" class="section-title">Separate Channels</h2>
+        <h2 id="channels-title" class="section-title">双向服务通道</h2>
         <p class="section-copy">
-          The official studio workflow is separated into two perspectives so the website can serve both the client experience and the photographer workflow.
+          平台以双端视角设计体验，让需求方与摄影师都能在同一体系内高效协作。
         </p>
 
         <div class="channel-grid">
           <article class="channel-card">
-            <h3>Client Channel</h3>
-            <p>Clients can choose a session type, request a date, describe the mood of the shoot, and get a clear package summary before follow-up.</p>
+            <h3>客户端</h3>
+            <p>自由选择风格契合的专业摄影师，快速提交需求、确认档期，并查看清晰的服务摘要。</p>
             <div class="channel-actions">
-              <a class="mini-link" href="booking.html">Open booking flow</a>
+              <a class="mini-link" href="booking.html">进入预约流程</a>
             </div>
           </article>
 
           <article class="channel-card">
-            <h3>Photographer Channel</h3>
-            <p>Photographers can review incoming requests, track open slots, and keep specialties and workload visible inside the same booking experience.</p>
+            <h3>摄影师端</h3>
+            <p>摄影师可灵活接单、管理档期、展示擅长风格，并持续拓展更高质量的合作机会。</p>
             <div class="channel-actions">
-              <a class="mini-link" href="booking.html#channel-switcher">Open photographer workspace</a>
+              <a class="mini-link" href="booking.html#channel-switcher">查看摄影师工作台</a>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section-card" aria-labelledby="showcase-title">
-        <h2 id="showcase-title" class="section-title">Studio Direction</h2>
+      <section id="showcase" class="section-card" aria-labelledby="showcase-title">
+        <h2 id="showcase-title" class="section-title">创作方向</h2>
         <p class="section-copy">
-          The visual direction of the site is meant to feel commercial, modern, and photography-first rather than academic or portfolio-only.
+          我们希望平台汇聚更多具有审美表达力与专业交付能力的摄影创作者，共同服务多元化的影像需求。
         </p>
 
         <div class="showcase-grid">
           <article class="showcase-card">
             <div>
-              <h3>Signature portraits</h3>
-              <p>Expressive portrait work for individuals, creative projects, and personal branding.</p>
+              <h3>人物写真</h3>
+              <p>更适合个人表达、风格写真与自然情绪记录。</p>
             </div>
           </article>
           <article class="showcase-card">
             <div>
-              <h3>Graduation moments</h3>
-              <p>Milestone sessions designed to feel polished, warm, and memorable.</p>
+              <h3>毕业纪念</h3>
+              <p>为重要节点留下更完整、更真诚的视觉纪念。</p>
             </div>
           </article>
           <article class="showcase-card">
             <div>
-              <h3>Outdoor narratives</h3>
-              <p>Landscape-driven sessions that use place and atmosphere as part of the story.</p>
+              <h3>城市旅拍</h3>
+              <p>在城市、自然与旅途场景中呈现情绪、节奏与故事感。</p>
             </div>
           </article>
           <article class="showcase-card">
             <div>
-              <h3>Concept and studio work</h3>
-              <p>Creative direction for images that need mood, styling, or a stronger editorial identity.</p>
+              <h3>品牌视觉</h3>
+              <p>面向创作者、工作室与品牌项目的形象表达与内容生产。</p>
             </div>
           </article>
         </div>
 
         <div class="cta-strip">
           <div>
-            <h3>Ready to turn this into the public studio site?</h3>
+            <h3>准备开启你的第一次合作？</h3>
             <p>
-              The next step is to connect the booking page to email, payments, and a live gallery backend so 3H-Studio can operate as a complete client-facing platform.
+              无论你是正在寻找合适摄影师，还是希望以更高效率获得拍摄机会，3H-Studio 都希望成为值得信赖的连接平台。
             </p>
           </div>
-          <a class="cta-button" href="booking.html">Continue to booking</a>
+          <a class="cta-button" href="booking.html">进入预约页面</a>
         </div>
       </section>
     </div>
 
     <footer id="contact" class="footer-card">
-      <span>3H-Studio official website concept with separate studio identity, booking flow, and client-facing presentation.</span>
+      <span>3H-Studio 致力于打造连接摄影创作者与高品质影像需求者的可信赖服务平台。</span>
       <div class="footer-links">
-        <a href="booking.html">Book a Session</a>
-        <a href="mailto:jiajieh1@umbc.edu">Email</a>
-        <a href="portfolio.html">Portfolio</a>
+        <a href="booking.html">立即预约</a>
+        <a href="#galleries">平台优势</a>
+        <a href="#showcase">创作方向</a>
       </div>
     </footer>
   </main>
