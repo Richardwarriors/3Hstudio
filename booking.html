@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking | 3H-Studio Official Website</title>
+  <title>预约中心 | 3H-Studio</title>
   <style>
     :root {
       --bg-1: #f7fafb;
@@ -34,7 +34,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
       background:
@@ -100,7 +100,7 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: 1.42rem;
       font-weight: 700;
       letter-spacing: 0.02em;
@@ -218,7 +218,7 @@
     .hero-title {
       margin: 16px 0 12px;
       max-width: 760px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: clamp(2.2rem, 5vw, 3.6rem);
       line-height: 1.02;
       letter-spacing: -0.03em;
@@ -438,7 +438,7 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: clamp(1.45rem, 2vw, 1.8rem);
       line-height: 1.2;
     }
@@ -807,7 +807,7 @@
     .summary-total strong {
       display: block;
       margin-top: 4px;
-      font-family: "Optima", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
       font-size: 2rem;
       line-height: 1;
       color: #102434;
@@ -1108,8 +1108,9 @@
       <nav aria-label="站点导航">
         <ul class="nav-list">
           <li><a href="index.html">首页</a></li>
+          <li><a href="index.html#services">服务场景</a></li>
           <li><a href="booking.html" aria-current="page">立即预约</a></li>
-          <li><a href="contact.html">联系我们</a></li>
+          <li><a href="index.html#contact">联系我们</a></li>
         </ul>
       </nav>
     </div>
@@ -1119,62 +1120,62 @@
     <section class="hero-card" aria-labelledby="page-title">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow">Official Booking</span>
-          <h1 id="page-title" class="hero-title">Book a polished 3H-Studio session with a client flow built for a real studio business.</h1>
+          <span class="eyebrow">预约中心</span>
+          <h1 id="page-title" class="hero-title">提交你的影像需求，快速匹配合适的摄影创作者</h1>
           <p class="hero-text">
-            This booking page is designed as part of the 3H-Studio official website: clients can explore services, submit inquiries, and receive structured follow-up while the studio team manages availability, specialties, and incoming requests in one place.
+            这是 3H-Studio 平台的中文预约页面。客户可以在这里选择拍摄类型、填写需求并提交预约，平台团队则可在同一页面中查看订单、管理档期与分配摄影师，让整个合作流程更高效、更清晰。
           </p>
-          <div class="chip-row" aria-label="Booking highlights">
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Client booking and studio operations views</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Portrait, graduation, and destination session inquiries</span>
-            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>Live quote summary and inquiry dashboard</span>
+          <div class="chip-row" aria-label="预约亮点">
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>客户端预约与平台工作台</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>写真、毕业与旅拍需求统一提交</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>实时费用摘要与预约看板</span>
           </div>
           <div class="hero-actions">
-            <a class="cta-button" href="#booking-studio">Start a booking request</a>
-            <a class="ghost-button" href="#channel-switcher">Open studio dashboard</a>
+            <a class="cta-button" href="#booking-studio">开始提交需求</a>
+            <a class="ghost-button" href="#channel-switcher">查看平台工作台</a>
           </div>
         </div>
 
         <aside class="hero-panel">
-          <h2 class="panel-title">Built for 3H-Studio client operations</h2>
+          <h2 class="panel-title">为 3H-Studio 双向服务流程而设计</h2>
           <p class="panel-copy">
-            A clean front-end booking experience that can later connect to CRM, payment, email, and calendar tools when the studio is ready to launch it in production.
+            当前页面是一个可演示的前端预约原型，后续可以继续接入消息通知、支付、日历和订单系统，逐步升级为正式上线的平台业务页面。
           </p>
           <div class="feature-stack">
             <div class="feature-row">
-              <div class="feature-mark">CL</div>
+              <div class="feature-mark">客</div>
               <div>
-                <h3>Client bookings</h3>
-                <p>Choose a shoot type, preferred date, style, and add-ons without sending messy email chains.</p>
+                <h3>客户端预约</h3>
+                <p>选择拍摄场景、偏好时间、视觉风格与加项需求，无需反复来回沟通。</p>
               </div>
             </div>
             <div class="feature-row">
-              <div class="feature-mark">PH</div>
+              <div class="feature-mark">摄</div>
               <div>
-                <h3>Studio workspace</h3>
-                <p>Track inquiries, manage open slots, and keep team specialties visible for client routing.</p>
+                <h3>摄影师工作台</h3>
+                <p>查看预约请求、管理空闲档期，并根据风格与能力进行更合理的订单分配。</p>
               </div>
             </div>
             <div class="feature-row">
-              <div class="feature-mark">BR</div>
+              <div class="feature-mark">保</div>
               <div>
-                <h3>Official brand flow</h3>
-                <p>Present 3H-Studio as a complete business website with a dedicated studio booking experience.</p>
+                <h3>平台化流程</h3>
+                <p>将匹配、预约、确认与后续交付串联起来，让合作体验更专业、更可信赖。</p>
               </div>
             </div>
           </div>
           <div class="hero-gallery">
             <figure class="hero-shot hero-shot-wide">
-              <img src="assets/landscape-travel.svg" alt="Stylized destination photography scene" />
-              <figcaption>Destination stories</figcaption>
+              <img src="assets/landscape-travel.svg" alt="旅拍与目的地影像场景" />
+              <figcaption>旅拍故事</figcaption>
             </figure>
             <figure class="hero-shot">
-              <img src="assets/portrait-editorial.svg" alt="Stylized editorial portrait scene" />
-              <figcaption>Portrait direction</figcaption>
+              <img src="assets/portrait-editorial.svg" alt="品牌与创意写真场景" />
+              <figcaption>品牌写真</figcaption>
             </figure>
             <figure class="hero-shot">
-              <img src="assets/graduation-campus.svg" alt="Stylized graduation session scene" />
-              <figcaption>Milestone sessions</figcaption>
+              <img src="assets/graduation-campus.svg" alt="毕业纪念拍摄场景" />
+              <figcaption>毕业纪念</figcaption>
             </figure>
           </div>
         </aside>
@@ -1183,204 +1184,204 @@
 
     <div class="content-grid">
       <section class="section-card" aria-labelledby="session-title">
-        <h2 id="session-title" class="section-title">Session Types</h2>
+        <h2 id="session-title" class="section-title">预约场景</h2>
         <p class="section-copy">
-          These are the core 3H-Studio services currently featured on the site. Clicking a card pre-fills the booking form below.
+          这是当前平台重点展示的三类预约需求。点击任意卡片后，下面的预约表单会自动填入对应场景。
         </p>
 
         <div class="service-grid">
           <article class="service-card" data-theme="amber">
             <div class="service-visual">
-              <img src="assets/landscape-travel.svg" alt="Stylized landscape booking illustration" loading="lazy" />
-              <span>Outdoor session</span>
+              <img src="assets/landscape-travel.svg" alt="旅拍预约示意图" loading="lazy" />
+              <span>户外旅拍</span>
             </div>
             <div class="service-body">
-              <h3 class="service-title">Landscape Photography</h3>
-              <p class="service-meta">From $280 · 90 minutes · 18 edited images</p>
+              <h3 class="service-title">旅拍与目的地影像</h3>
+              <p class="service-meta">$280 起 · 90 分钟 · 18 张精修照片</p>
               <ul class="service-list">
-                <li>Travel and location storytelling</li>
-                <li>Golden hour direction and route planning</li>
-                <li>Great for destination portraits and scenic sessions</li>
+                <li>适合城市漫游、户外叙事与目的地影像</li>
+                <li>支持黄金时刻拍摄建议与路线规划</li>
+                <li>兼顾氛围感表达与场景故事性</li>
               </ul>
-              <button class="service-button" type="button" data-fill-session="landscape">Use for booking</button>
+              <button class="service-button" type="button" data-fill-session="landscape">选择此场景</button>
             </div>
           </article>
 
           <article class="service-card" data-theme="rose">
             <div class="service-visual">
-              <img src="assets/graduation-campus.svg" alt="Stylized graduation booking illustration" loading="lazy" />
-              <span>Campus session</span>
+              <img src="assets/graduation-campus.svg" alt="毕业纪念预约示意图" loading="lazy" />
+              <span>毕业纪念</span>
             </div>
             <div class="service-body">
-              <h3 class="service-title">Graduation Photos</h3>
-              <p class="service-meta">From $360 · 75 minutes · 25 edited images</p>
+              <h3 class="service-title">毕业纪念拍摄</h3>
+              <p class="service-meta">$360 起 · 75 分钟 · 25 张精修照片</p>
               <ul class="service-list">
-                <li>Cap and gown coverage with family options</li>
-                <li>Efficient location flow for campus landmarks</li>
-                <li>Perfect for solo or group graduation shoots</li>
+                <li>支持学士服、校园地标与家庭合影需求</li>
+                <li>适合个人、好友或小团队预约</li>
+                <li>帮助在重要节点留下更完整的纪念影像</li>
               </ul>
-              <button class="service-button" type="button" data-fill-session="graduation">Use for booking</button>
+              <button class="service-button" type="button" data-fill-session="graduation">选择此场景</button>
             </div>
           </article>
 
           <article class="service-card">
             <div class="service-visual">
-              <img src="assets/portrait-editorial.svg" alt="Stylized portrait booking illustration" loading="lazy" />
-              <span>Creative portrait</span>
+              <img src="assets/portrait-editorial.svg" alt="创意写真预约示意图" loading="lazy" />
+              <span>品牌写真</span>
             </div>
             <div class="service-body">
-              <h3 class="service-title">Artistic Portraits</h3>
-              <p class="service-meta">From $420 · 2 hours · 18 retouched portraits</p>
+              <h3 class="service-title">品牌形象与创意写真</h3>
+              <p class="service-meta">$420 起 · 2 小时 · 18 张精修人像</p>
               <ul class="service-list">
-                <li>Editorial, cinematic, or studio-inspired direction</li>
-                <li>Wardrobe, mood, and concept planning support</li>
-                <li>Built for brand campaigns, founder portraits, and editorial storytelling</li>
+                <li>适合个人品牌、创作者主页与商业展示</li>
+                <li>支持造型、氛围、画面概念的前期沟通</li>
+                <li>更适合强调风格表达与视觉辨识度的拍摄需求</li>
               </ul>
-              <button class="service-button" type="button" data-fill-session="portrait">Use for booking</button>
+              <button class="service-button" type="button" data-fill-session="portrait">选择此场景</button>
             </div>
           </article>
         </div>
       </section>
 
       <section id="booking-studio" class="section-card" aria-labelledby="booking-title">
-        <h2 id="booking-title" class="section-title">Booking Studio</h2>
+        <h2 id="booking-title" class="section-title">预约工作台</h2>
         <p class="section-copy">
-          Switch between the client experience and the studio operations dashboard. This prototype keeps everything local in the browser, so it works as a front-end concept without a backend yet.
+          你可以在客户端预约视角与平台运营视角之间切换。当前原型会把数据保存在浏览器本地，便于演示完整流程。
         </p>
 
-        <div id="channel-switcher" class="channel-bar" role="tablist" aria-label="Booking channels">
-          <button class="channel-tab active" type="button" role="tab" aria-selected="true" data-channel="client-panel">Client Booking</button>
-          <button class="channel-tab" type="button" role="tab" aria-selected="false" data-channel="photographer-panel">Studio Operations</button>
+        <div id="channel-switcher" class="channel-bar" role="tablist" aria-label="预约通道">
+          <button class="channel-tab active" type="button" role="tab" aria-selected="true" data-channel="client-panel">客户端预约</button>
+          <button class="channel-tab" type="button" role="tab" aria-selected="false" data-channel="photographer-panel">平台工作台</button>
         </div>
 
         <section id="client-panel" class="channel-panel active" aria-labelledby="client-panel-title">
           <div class="workflow-grid">
             <article class="form-card">
-              <h3 id="client-panel-title" class="card-heading">Client Request Form</h3>
+              <h3 id="client-panel-title" class="card-heading">预约需求表单</h3>
               <p class="card-copy">
-                Choose a session type, select a preferred slot, and send a booking request with enough detail for the 3H-Studio team to reply quickly.
+                选择拍摄场景、偏好时间与风格信息，提交足够完整的需求，方便平台团队快速跟进。
               </p>
 
               <form id="booking-form" class="booking-form">
                 <div class="field-grid">
                   <div class="field">
-                    <label for="client-name">Client name</label>
-                    <input id="client-name" name="client-name" type="text" placeholder="Your full name" required />
+                    <label for="client-name">客户姓名</label>
+                    <input id="client-name" name="client-name" type="text" placeholder="请输入你的姓名" required />
                   </div>
                   <div class="field">
-                    <label for="client-email">Email</label>
-                    <input id="client-email" name="client-email" type="email" placeholder="you@example.com" required />
+                    <label for="client-email">联系邮箱</label>
+                    <input id="client-email" name="client-email" type="email" placeholder="请输入常用邮箱地址" required />
                   </div>
                 </div>
 
                 <div class="field-grid">
                   <div class="field">
-                    <label for="session-type">Session type</label>
+                    <label for="session-type">拍摄场景</label>
                     <select id="session-type" name="session-type" required>
-                      <option value="landscape">Landscape Photography</option>
-                      <option value="graduation">Graduation Photos</option>
-                      <option value="portrait">Artistic Portraits</option>
+                      <option value="landscape">旅拍与目的地影像</option>
+                      <option value="graduation">毕业纪念拍摄</option>
+                      <option value="portrait">品牌形象与创意写真</option>
                     </select>
                   </div>
                   <div class="field">
-                    <label for="photographer">Studio assignment</label>
+                    <label for="photographer">摄影师分配</label>
                     <select id="photographer" name="photographer">
-                      <option value="lead">Lead Photographer</option>
-                      <option value="studio">3H-Studio Team</option>
-                      <option value="associate">Associate Photographer</option>
+                      <option value="lead">首席摄影师</option>
+                      <option value="studio">平台摄影团队</option>
+                      <option value="associate">合作摄影师</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="field-grid">
                   <div class="field">
-                    <label for="city">Location or city</label>
-                    <input id="city" name="city" type="text" placeholder="Baltimore, New York, campus, studio..." required />
+                    <label for="city">城市或拍摄地点</label>
+                    <input id="city" name="city" type="text" placeholder="例如：上海、杭州、西湖、摄影棚..." required />
                   </div>
                   <div class="field">
-                    <label for="shoot-date">Preferred date</label>
+                    <label for="shoot-date">期望日期</label>
                     <input id="shoot-date" name="shoot-date" type="date" required />
                   </div>
                 </div>
 
                 <div class="field">
-                  <label>Preferred time slot</label>
+                  <label>偏好时段</label>
                   <div class="slot-grid" id="slot-grid">
-                    <button class="slot-button active" type="button" data-slot="Golden hour">Golden hour</button>
-                    <button class="slot-button" type="button" data-slot="Morning light">Morning light</button>
-                    <button class="slot-button" type="button" data-slot="Studio evening">Studio evening</button>
-                    <button class="slot-button" type="button" data-slot="Flexible">Flexible</button>
+                    <button class="slot-button active" type="button" data-slot="黄金时刻">黄金时刻</button>
+                    <button class="slot-button" type="button" data-slot="晨间自然光">晨间自然光</button>
+                    <button class="slot-button" type="button" data-slot="棚内夜景">棚内夜景</button>
+                    <button class="slot-button" type="button" data-slot="时间灵活">时间灵活</button>
                   </div>
                 </div>
 
                 <div class="field-grid">
                   <div class="field">
-                    <label for="group-size">Group size</label>
+                    <label for="group-size">人数规模</label>
                     <select id="group-size" name="group-size">
-                      <option value="1">1 person</option>
-                      <option value="2">2 people</option>
-                      <option value="3-5">3-5 people</option>
-                      <option value="6+">6+ people</option>
+                      <option value="1">1 人</option>
+                      <option value="2">2 人</option>
+                      <option value="3-5">3-5 人</option>
+                      <option value="6+">6 人以上</option>
                     </select>
                   </div>
                   <div class="field">
-                    <label for="style">Visual style</label>
+                    <label for="style">偏好风格</label>
                     <select id="style" name="style">
-                      <option value="Natural and cinematic">Natural and cinematic</option>
-                      <option value="Clean and classic">Clean and classic</option>
-                      <option value="Editorial and artistic">Editorial and artistic</option>
-                      <option value="Travel documentary">Travel documentary</option>
+                      <option value="自然电影感">自然电影感</option>
+                      <option value="简洁经典">简洁经典</option>
+                      <option value="编辑感创意">编辑感创意</option>
+                      <option value="城市纪实">城市纪实</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="field">
-                  <label>Add-ons</label>
+                  <label>可选加项</label>
                   <div class="addon-grid" id="addon-grid">
-                    <button class="addon-chip" type="button" data-addon="rush">Rush edit</button>
-                    <button class="addon-chip" type="button" data-addon="retouch">Extra retouching</button>
-                    <button class="addon-chip" type="button" data-addon="reel">Short highlight reel</button>
-                    <button class="addon-chip" type="button" data-addon="looks">Extra look change</button>
+                    <button class="addon-chip" type="button" data-addon="rush">加急修图</button>
+                    <button class="addon-chip" type="button" data-addon="retouch">额外精修</button>
+                    <button class="addon-chip" type="button" data-addon="reel">短视频花絮</button>
+                    <button class="addon-chip" type="button" data-addon="looks">额外造型</button>
                   </div>
                 </div>
 
                 <div class="field">
-                  <label for="notes">Notes for the studio team</label>
-                  <textarea id="notes" name="notes" placeholder="Tell us about the mood, purpose of the shoot, or any must-have details."></textarea>
+                  <label for="notes">补充说明</label>
+                  <textarea id="notes" name="notes" placeholder="请描述拍摄目的、画面氛围、必须包含的元素或其他重要信息。"></textarea>
                 </div>
 
                 <div class="form-actions">
-                  <button class="submit-button" type="submit">Submit booking request</button>
-                  <span class="form-note">This demo stores requests locally in your browser and mirrors them into the studio dashboard below.</span>
+                  <button class="submit-button" type="submit">提交预约需求</button>
+                  <span class="form-note">当前演示版本会把预约数据保存在你的浏览器中，并同步显示到下方平台工作台。</span>
                 </div>
               </form>
 
               <div id="success-banner" class="success-banner">
-                Booking request submitted. A new inquiry has been added to the studio dashboard.
+                预约需求已提交，新的订单请求已同步到平台工作台。
               </div>
             </article>
 
             <aside class="summary-card">
-              <h3 class="card-heading">Live Booking Summary</h3>
+              <h3 class="card-heading">实时预约摘要</h3>
               <p class="card-copy">
-                A quick view of the current package, team assignment, timing, and estimated starting investment.
+                这里会实时展示当前选择的拍摄场景、摄影师分配、时间偏好与预估起始费用。
               </p>
 
               <div class="summary-panel">
-                <div class="summary-row"><span>Session</span><strong id="summary-session">Landscape Photography</strong></div>
-                <div class="summary-row"><span>Assignment</span><strong id="summary-photographer">Lead Photographer</strong></div>
-                <div class="summary-row"><span>Duration</span><strong id="summary-duration">90 minutes</strong></div>
-                <div class="summary-row"><span>Deliverables</span><strong id="summary-deliverables">18 edited images</strong></div>
-                <div class="summary-row"><span>Time slot</span><strong id="summary-slot">Golden hour</strong></div>
-                <div class="summary-row"><span>Add-ons</span><strong id="summary-addons">None selected</strong></div>
-                <div class="summary-row"><span>Location</span><strong id="summary-location">To be decided</strong></div>
+                <div class="summary-row"><span>拍摄场景</span><strong id="summary-session">旅拍与目的地影像</strong></div>
+                <div class="summary-row"><span>摄影师分配</span><strong id="summary-photographer">首席摄影师</strong></div>
+                <div class="summary-row"><span>时长</span><strong id="summary-duration">90 分钟</strong></div>
+                <div class="summary-row"><span>交付内容</span><strong id="summary-deliverables">18 张精修照片</strong></div>
+                <div class="summary-row"><span>偏好时段</span><strong id="summary-slot">黄金时刻</strong></div>
+                <div class="summary-row"><span>可选加项</span><strong id="summary-addons">未选择</strong></div>
+                <div class="summary-row"><span>拍摄地点</span><strong id="summary-location">待确认</strong></div>
                 <div class="summary-total">
-                  <span>Estimated starting total</span>
+                  <span>预估起始费用</span>
                   <strong id="summary-total">$280</strong>
                 </div>
                 <div class="note-card">
-                  <h3>Suggested workflow</h3>
-                  <p>Client submits the request, the studio confirms the concept, and then date, payment, and delivery are finalized through the production backend later.</p>
+                  <h3>建议流程</h3>
+                  <p>客户先提交预约需求，平台完成匹配与初步确认，随后再进入日期确认、支付安排与最终交付环节。</p>
                 </div>
               </div>
             </aside>
@@ -1390,49 +1391,49 @@
         <section id="photographer-panel" class="channel-panel" aria-labelledby="photographer-panel-title">
           <div class="photographer-grid">
             <article class="dashboard-card">
-              <h3 id="photographer-panel-title" class="card-heading">Studio Operations Dashboard</h3>
+              <h3 id="photographer-panel-title" class="card-heading">平台运营工作台</h3>
               <p class="card-copy">
-                Review incoming requests, keep booking capacity visible, and present core specialties so clients understand the studio's main service lanes.
+                这里用于查看新的预约请求、了解当前可接单能力，并展示平台核心拍摄方向，帮助完成更准确的订单匹配。
               </p>
 
               <div class="stat-grid">
                 <div class="stat-card">
-                  <strong>24h</strong>
-                  <span>Reply goal</span>
+                  <strong>24小时</strong>
+                  <span>首次响应目标</span>
                 </div>
                 <div class="stat-card">
                   <strong>3</strong>
-                  <span>Core shoot types</span>
+                  <span>核心场景</span>
                 </div>
                 <div class="stat-card">
                   <strong>6</strong>
-                  <span>Weekly open slots</span>
+                  <span>本周可预约档期</span>
                 </div>
               </div>
 
               <div class="specialty-grid" style="margin-top: 18px;">
-                <span class="specialty-chip">Landscape direction</span>
-                <span class="specialty-chip">Graduation sessions</span>
-                <span class="specialty-chip">Artistic portraits</span>
-                <span class="specialty-chip">Studio booking workflow</span>
+                <span class="specialty-chip">旅拍叙事</span>
+                <span class="specialty-chip">毕业纪念</span>
+                <span class="specialty-chip">创意写真</span>
+                <span class="specialty-chip">平台预约流程</span>
               </div>
 
-              <ul id="request-list" class="request-list" aria-label="Incoming booking requests"></ul>
+              <ul id="request-list" class="request-list" aria-label="平台收到的预约请求"></ul>
             </article>
 
             <div style="display: grid; gap: 18px;">
               <article class="dashboard-card">
-                <h3 class="card-heading">Availability Board</h3>
+                <h3 class="card-heading">档期看板</h3>
                 <p class="card-copy">
-                  Toggle open slots for the next booking cycle. This helps illustrate how a future studio scheduling backend could work.
+                  切换下一轮可开放预约的时段，用来演示后续平台档期管理能力会如何工作。
                 </p>
 
-                <div id="availability-grid" class="availability-grid" aria-label="Availability slots"></div>
+                <div id="availability-grid" class="availability-grid" aria-label="可预约档期"></div>
               </article>
 
               <article class="note-card">
-                <h3>Studio operations essentials</h3>
-                <p>For a production build, this area would connect to a database for real inquiries, team profiles, payments, and final calendar syncing.</p>
+                <h3>后续平台能力</h3>
+                <p>正式上线后，这里可以继续连接订单数据库、摄影师资料、支付流程与日历同步，形成完整的业务后台。</p>
               </article>
             </div>
           </div>
@@ -1440,34 +1441,34 @@
       </section>
 
       <section class="section-card" aria-labelledby="faq-title">
-        <h2 id="faq-title" class="section-title">Helpful Details</h2>
+        <h2 id="faq-title" class="section-title">补充说明</h2>
         <p class="section-copy">
-          Key pieces that clients and studio teams usually want clarified before a booking site goes live.
+          这些内容通常是平台正式上线前，客户与摄影师双方都会关心的关键问题。
         </p>
 
         <div class="faq-grid">
           <article class="note-card">
-            <h3>Client journey</h3>
-            <p>Choose a session, submit the inquiry, receive a follow-up, confirm date and package, then move into payment and delivery.</p>
+            <h3>客户端流程</h3>
+            <p>选择拍摄场景，提交需求，等待平台跟进，确认档期与方案后，再进入支付与最终交付阶段。</p>
           </article>
           <article class="note-card">
-            <h3>Studio team journey</h3>
-            <p>Review requests, accept or reschedule, lock availability, and route each shoot to the right team member based on specialty and capacity.</p>
+            <h3>平台端流程</h3>
+            <p>平台审核预约请求、确认是否接单、调整档期，并根据摄影师风格与产能完成合理分配。</p>
           </article>
           <article class="note-card">
-            <h3>Next production step</h3>
-            <p>Connect this front-end to a form backend, email notifications, Stripe, and a shared calendar once you are happy with the workflow.</p>
+            <h3>下一步开发方向</h3>
+            <p>确认前端流程后，可以继续接入表单后端、消息通知、支付能力与共享日历，完善正式业务闭环。</p>
           </article>
         </div>
       </section>
     </div>
 
     <footer class="footer-card">
-      <span>3H-Studio booking experience with separate client and studio operations views.</span>
+      <span>3H-Studio 预约中心为客户端与平台运营端提供统一、清晰的双向服务体验。联系邮箱：p41197954@gmail.com</span>
       <div class="footer-links">
         <a href="index.html">首页</a>
         <a href="booking.html">立即预约</a>
-        <a href="contact.html">联系我们</a>
+        <a href="mailto:p41197954@gmail.com">联系邮箱</a>
       </div>
     </footer>
   </main>
@@ -1475,64 +1476,64 @@
   <script>
     const sessionTypes = {
       landscape: {
-        label: "Landscape Photography",
-        duration: "90 minutes",
-        deliverables: "18 edited images",
+        label: "旅拍与目的地影像",
+        duration: "90 分钟",
+        deliverables: "18 张精修照片",
         price: 280
       },
       graduation: {
-        label: "Graduation Photos",
-        duration: "75 minutes",
-        deliverables: "25 edited images",
+        label: "毕业纪念拍摄",
+        duration: "75 分钟",
+        deliverables: "25 张精修照片",
         price: 360
       },
       portrait: {
-        label: "Artistic Portraits",
-        duration: "2 hours",
-        deliverables: "18 retouched portraits",
+        label: "品牌形象与创意写真",
+        duration: "2 小时",
+        deliverables: "18 张精修人像",
         price: 420
       }
     };
 
     const photographerNames = {
-      lead: "Lead Photographer",
-      studio: "3H-Studio Team",
-      associate: "Associate Photographer"
+      lead: "首席摄影师",
+      studio: "平台摄影团队",
+      associate: "合作摄影师"
     };
 
     const addonConfig = {
-      rush: { label: "Rush edit", price: 90 },
-      retouch: { label: "Extra retouching", price: 60 },
-      reel: { label: "Short highlight reel", price: 120 },
-      looks: { label: "Extra look change", price: 80 }
+      rush: { label: "加急修图", price: 90 },
+      retouch: { label: "额外精修", price: 60 },
+      reel: { label: "短视频花絮", price: 120 },
+      looks: { label: "额外造型", price: 80 }
     };
 
     const sampleRequests = [
       {
-        client: "Mei Lin",
-        session: "Graduation Photos",
-        meta: "May 18, 2026 · Golden hour · Baltimore campus",
-        notes: "Looking for cap-and-gown plus a few family images after the main set.",
+        client: "李玥",
+        session: "毕业纪念拍摄",
+        meta: "2026年5月18日 · 黄金时刻 · 校园主楼",
+        notes: "希望以学士服主拍为主，并安排几张与家人的合影。",
         status: "pending",
-        badge: "Pending"
+        badge: "待处理"
       },
       {
-        client: "Aaron Park",
-        session: "Artistic Portraits",
-        meta: "April 12, 2026 · Studio evening · New York",
-        notes: "Interested in cinematic portrait lighting with one wardrobe change.",
+        client: "周明",
+        session: "品牌形象与创意写真",
+        meta: "2026年4月12日 · 棚内夜景 · 上海静安",
+        notes: "偏向电影感人像，希望安排一次换装与更明显的光影氛围。",
         status: "review",
-        badge: "In Review"
+        badge: "审核中"
       }
     ];
 
     const availabilityDefaults = [
-      { key: "thu-golden", title: "Thu · Golden hour", note: "Landscape and portrait", open: true },
-      { key: "fri-morning", title: "Fri · Morning light", note: "Graduation friendly", open: true },
-      { key: "sat-golden", title: "Sat · Golden hour", note: "High demand slot", open: true },
-      { key: "sat-evening", title: "Sat · Studio evening", note: "Portrait and concept work", open: false },
-      { key: "sun-morning", title: "Sun · Morning light", note: "Family and graduation", open: true },
-      { key: "sun-flex", title: "Sun · Flexible", note: "Travel or destination shoot", open: false }
+      { key: "thu-golden", title: "周四 · 黄金时刻", note: "适合旅拍与写真", open: true },
+      { key: "fri-morning", title: "周五 · 晨间自然光", note: "适合毕业纪念", open: true },
+      { key: "sat-golden", title: "周六 · 黄金时刻", note: "热门预约时段", open: true },
+      { key: "sat-evening", title: "周六 · 棚内夜景", note: "适合品牌写真与概念拍摄", open: false },
+      { key: "sun-morning", title: "周日 · 晨间自然光", note: "适合家庭与毕业合影", open: true },
+      { key: "sun-flex", title: "周日 · 时间灵活", note: "适合旅拍与外景需求", open: false }
     ];
 
     const storageKeys = {
@@ -1591,7 +1592,7 @@
 
     function getSelectedSlot() {
       const active = document.querySelector(".slot-button.active");
-      return active ? active.dataset.slot : "Flexible";
+      return active ? active.dataset.slot : "时间灵活";
     }
 
     function getSelectedAddons() {
@@ -1604,7 +1605,7 @@
       const addonTotal = selectedAddons.reduce((sum, key) => sum + addonConfig[key].price, 0);
       const addonLabel = selectedAddons.length
         ? selectedAddons.map((key) => addonConfig[key].label).join(", ")
-        : "None selected";
+        : "未选择";
 
       summaryEls.session.textContent = session.label;
       summaryEls.photographer.textContent = photographerNames[photographerField.value];
@@ -1612,7 +1613,7 @@
       summaryEls.deliverables.textContent = session.deliverables;
       summaryEls.slot.textContent = getSelectedSlot();
       summaryEls.addons.textContent = addonLabel;
-      summaryEls.location.textContent = cityField.value.trim() || "To be decided";
+      summaryEls.location.textContent = cityField.value.trim() || "待确认";
       summaryEls.total.textContent = "$" + String(session.price + addonTotal);
     }
 
@@ -1637,11 +1638,11 @@
     });
 
     function formatDate(dateValue) {
-      if (!dateValue) return "Date not selected";
+      if (!dateValue) return "未选择日期";
       const date = new Date(dateValue + "T12:00:00");
-      return date.toLocaleDateString(undefined, {
+      return date.toLocaleDateString("zh-CN", {
         year: "numeric",
-        month: "short",
+        month: "long",
         day: "numeric"
       });
     }
@@ -1702,7 +1703,7 @@
         const button = document.createElement("button");
         button.type = "button";
         button.className = "availability-slot " + (slot.open ? "open" : "closed");
-        button.innerHTML = slot.title + "<small>" + (slot.open ? "Open for requests" : "Marked unavailable") + " · " + slot.note + "</small>";
+        button.innerHTML = slot.title + "<small>" + (slot.open ? "可接受预约" : "暂不开放") + " · " + slot.note + "</small>";
         button.addEventListener("click", () => {
           const updated = readAvailability().map((item) =>
             item.key === slot.key ? { ...item, open: !item.open } : item
@@ -1718,7 +1719,7 @@
       event.preventDefault();
 
       const session = sessionTypes[sessionField.value];
-      const notes = document.getElementById("notes").value.trim() || "No extra notes provided.";
+      const notes = document.getElementById("notes").value.trim() || "未补充其他需求。";
       const request = {
         client: document.getElementById("client-name").value.trim(),
         session: session.label,
@@ -1727,10 +1728,10 @@
           " · " +
           getSelectedSlot() +
           " · " +
-          (cityField.value.trim() || "Location TBD"),
+          (cityField.value.trim() || "地点待确认"),
         notes: notes,
         status: "new",
-        badge: "New"
+        badge: "新提交"
       };
 
       const stored = readStoredRequests();
