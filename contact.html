@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3H-Studio | 联系我们</title>
+  <style>
+    :root {
+      --bg-1: #fbf8f4;
+      --bg-2: #f1eee8;
+      --surface: rgba(255, 255, 255, 0.84);
+      --surface-strong: #fffdf9;
+      --text: #1f262c;
+      --muted: #6c737b;
+      --brand: #8b5a4a;
+      --brand-2: #295f6b;
+      --line: rgba(31, 38, 44, 0.12);
+      --ring: rgba(41, 95, 107, 0.18);
+      --shadow: 0 20px 44px rgba(31, 38, 44, 0.1);
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(900px circle at -10% -10%, #f4ddcf 0%, transparent 38%),
+        radial-gradient(860px circle at 100% 0%, #dbeef1 0%, transparent 32%),
+        linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(31, 38, 44, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31, 38, 44, 0.028) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: var(--brand-2);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(251, 248, 244, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      color: var(--text);
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(139, 90, 74, 0.16), rgba(41, 95, 107, 0.14));
+      color: var(--brand);
+      font-size: 0.96rem;
+      font-weight: 900;
+      box-shadow: inset 0 0 0 1px rgba(139, 90, 74, 0.14);
+    }
+
+    .brand:hover {
+      text-decoration: none;
+      opacity: 0.9;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .nav-list a {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 160ms ease, background-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .nav-list a:hover {
+      text-decoration: none;
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .nav-list a[aria-current="page"] {
+      background: linear-gradient(135deg, rgba(139, 90, 74, 0.12), rgba(41, 95, 107, 0.12));
+      box-shadow: inset 0 0 0 1px rgba(41, 95, 107, 0.14);
+    }
+
+    .page-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .hero-card,
+    .section-card,
+    .contact-card,
+    .form-card,
+    .note-card,
+    .footer-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-card {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(26px, 4vw, 44px);
+      animation: fade-up 520ms ease both;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: -130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(139, 90, 74, 0.18) 0%, transparent 68%);
+      pointer-events: none;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(139, 90, 74, 0.1);
+      color: var(--brand);
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-title {
+      margin: 16px 0 12px;
+      max-width: 760px;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-text {
+      max-width: 700px;
+      margin: 0;
+      color: #495159;
+      font-size: 1.02rem;
+    }
+
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(31, 38, 44, 0.1);
+      background: rgba(255, 255, 255, 0.74);
+      color: #2a3741;
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .chip-mark {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 5px rgba(139, 90, 74, 0.1);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .cta-button,
+    .ghost-button,
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 1px solid transparent;
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+      cursor: pointer;
+    }
+
+    .cta-button,
+    .submit-button {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      box-shadow: 0 16px 28px rgba(41, 95, 107, 0.2);
+    }
+
+    .ghost-button {
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text);
+      border-color: var(--line);
+    }
+
+    .cta-button:hover,
+    .ghost-button:hover,
+    .submit-button:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+    }
+
+    .contact-stack {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .contact-visual {
+      position: relative;
+      grid-column: 1 / -1;
+      min-height: 230px;
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid rgba(31, 38, 44, 0.08);
+    }
+
+    .contact-visual img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    .contact-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(10, 15, 18, 0.04) 14%, rgba(10, 15, 18, 0.56) 100%),
+        linear-gradient(35deg, rgba(255, 255, 255, 0.1), transparent 54%);
+    }
+
+    .visual-label {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+      z-index: 1;
+      display: inline-flex;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .contact-card,
+    .form-card,
+    .note-card {
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.94), rgba(250, 247, 243, 0.94));
+      border: 1px solid rgba(31, 38, 44, 0.08);
+    }
+
+    .contact-card h3,
+    .note-card h3,
+    .form-card h3 {
+      margin: 0;
+      font-size: 1.04rem;
+      color: #182126;
+    }
+
+    .contact-card p,
+    .note-card p,
+    .form-card p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .content-grid {
+      display: grid;
+      gap: 22px;
+      margin-top: 22px;
+    }
+
+    .section-card {
+      padding: 28px clamp(18px, 4vw, 34px);
+      animation: fade-up 560ms ease both;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Optima", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next Condensed", "Trebuchet MS", sans-serif;
+      font-size: clamp(1.45rem, 2vw, 1.85rem);
+      line-height: 1.2;
+    }
+
+    .section-title::after {
+      content: "";
+      width: 44px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--brand), var(--brand-2));
+    }
+
+    .section-copy {
+      margin: 0;
+      color: var(--muted);
+      max-width: 760px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 18px;
+      margin-top: 22px;
+      align-items: start;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #23384a;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      min-height: 48px;
+      border-radius: 14px;
+      border: 1px solid rgba(19, 37, 52, 0.12);
+      background: rgba(255, 255, 255, 0.94);
+      padding: 12px 14px;
+      color: var(--text);
+      transition: border-color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .field textarea {
+      min-height: 132px;
+      resize: vertical;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: rgba(41, 95, 107, 0.28);
+      box-shadow: 0 0 0 4px rgba(41, 95, 107, 0.12);
+    }
+
+    .form-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .note-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-list {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .info-list li + li {
+      margin-top: 8px;
+    }
+
+    .footer-card {
+      margin-top: 22px;
+      padding: 18px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      font-weight: 700;
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(14px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .detail-grid,
+      .form-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .header-inner,
+      .hero-actions,
+      .footer-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-list {
+        width: 100%;
+      }
+
+      .nav-list li {
+        flex: 1 1 auto;
+      }
+
+      .nav-list a {
+        width: 100%;
+        text-align: center;
+      }
+
+      .contact-stack,
+      .field-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">3H</span>
+        <span>3H-Studio</span>
+      </a>
+      <nav aria-label="站点导航">
+        <ul class="nav-list">
+          <li><a href="index.html">首页</a></li>
+          <li><a href="booking.html">立即预约</a></li>
+          <li><a href="contact.html" aria-current="page">联系我们</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero-card" aria-labelledby="page-title">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">合作联系</span>
+          <h1 id="page-title" class="hero-title">联系我们，开启下一次高质量影像合作</h1>
+          <p class="hero-text">
+            无论你是正在寻找风格契合的摄影师、希望入驻平台拓展接单机会，还是想与 3H-Studio 洽谈品牌合作，我们都欢迎你在这里留下信息。
+          </p>
+          <div class="chip-row" aria-label="联系方向">
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>客户咨询</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>摄影师入驻</span>
+            <span class="chip"><span class="chip-mark" aria-hidden="true"></span>商务合作</span>
+          </div>
+          <div class="hero-actions">
+            <a class="cta-button" href="booking.html">前往预约页</a>
+            <a class="ghost-button" href="index.html">返回首页</a>
+          </div>
+        </div>
+
+        <aside class="contact-stack">
+          <div class="contact-visual">
+            <img src="assets/picture1.jpg" alt="3H-Studio 联系页面主视觉" />
+            <span class="visual-label">Contact & Collaboration</span>
+          </div>
+          <article class="contact-card">
+            <h3>客户咨询</h3>
+            <p>适合拍摄预约、风格匹配、服务报价与项目沟通。</p>
+          </article>
+          <article class="contact-card">
+            <h3>摄影师入驻</h3>
+            <p>适合自由摄影师、工作室成员与内容创作者申请加入平台。</p>
+          </article>
+        </aside>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="section-card" aria-labelledby="pathways-title">
+        <h2 id="pathways-title" class="section-title">合作入口</h2>
+        <p class="section-copy">
+          根据你的身份与需求，选择最适合的合作方向，我们会在后续版本中接入统一的企业沟通与跟进流程。
+        </p>
+
+        <div class="detail-grid">
+          <article class="contact-card">
+            <h3>客户拍摄咨询</h3>
+            <p>适用于个人写真、毕业纪念、品牌形象、旅拍与定制影像需求。</p>
+          </article>
+          <article class="contact-card">
+            <h3>摄影师入驻申请</h3>
+            <p>适用于希望展示作品风格、灵活接单并拓展合作机会的摄影创作者。</p>
+          </article>
+          <article class="contact-card">
+            <h3>品牌商务合作</h3>
+            <p>适用于活动拍摄、品牌内容、联合推广与平台合作洽谈。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-card" aria-labelledby="form-title">
+        <h2 id="form-title" class="section-title">联系表单</h2>
+        <p class="section-copy">
+          先用这一版前端页面承接你的联系需求，后续可继续接入企业邮箱、微信、客服系统或 CRM。
+        </p>
+
+        <div class="form-layout">
+          <article class="form-card">
+            <h3>留下你的信息</h3>
+            <p>我们建议尽量写清楚身份、需求方向、城市与时间预期，方便后续快速响应。</p>
+
+            <form class="contact-form">
+              <div class="field-grid">
+                <div class="field">
+                  <label for="contact-name">姓名</label>
+                  <input id="contact-name" type="text" placeholder="请输入你的姓名" />
+                </div>
+                <div class="field">
+                  <label for="contact-role">身份</label>
+                  <select id="contact-role">
+                    <option>客户</option>
+                    <option>摄影师</option>
+                    <option>品牌方</option>
+                    <option>合作伙伴</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <label for="contact-method">联系方式</label>
+                  <input id="contact-method" type="text" placeholder="邮箱 / 手机 / 微信" />
+                </div>
+                <div class="field">
+                  <label for="contact-city">所在城市</label>
+                  <input id="contact-city" type="text" placeholder="例如：上海 / 北京 / 深圳" />
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="contact-type">咨询方向</label>
+                <select id="contact-type">
+                  <option>拍摄预约</option>
+                  <option>摄影师入驻</option>
+                  <option>商务合作</option>
+                  <option>其他咨询</option>
+                </select>
+              </div>
+
+              <div class="field">
+                <label for="contact-message">留言内容</label>
+                <textarea id="contact-message" placeholder="请简要描述你的需求、时间安排、预算或合作目标。"></textarea>
+              </div>
+
+              <button class="submit-button" type="button">提交联系信息</button>
+              <p class="form-note">当前页面为静态演示版本，提交按钮尚未接入后端。</p>
+            </form>
+          </article>
+
+          <div class="note-stack">
+            <article class="note-card">
+              <h3>建议准备的信息</h3>
+              <ul class="info-list">
+                <li>你的身份与合作方向</li>
+                <li>所在城市与期望时间</li>
+                <li>风格偏好或项目目标</li>
+                <li>预算区间与交付预期</li>
+              </ul>
+            </article>
+
+            <article class="note-card">
+              <h3>响应说明</h3>
+              <p>正式上线后，这里可接入统一客服渠道、工单系统与自动分发逻辑，让客户、摄影师与平台团队沟通更顺畅。</p>
+            </article>
+
+            <article class="note-card">
+              <h3>下一步建议</h3>
+              <p>如果你希望先体验完整流程，可以直接进入预约页，再由平台承接后续确认与协作。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="footer-card">
+      <span>3H-Studio 正在构建更高效、更可信赖的双向影像服务平台。</span>
+      <div class="footer-links">
+        <a href="index.html">首页</a>
+        <a href="booking.html">立即预约</a>
+        <a href="contact.html">联系我们</a>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
