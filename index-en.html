@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3H-Studio | Official Website</title>
   <link rel="stylesheet" href="assets/customer-support-widget.css" />
+  <link rel="stylesheet" href="assets/service-card-flip.css" />
   <style>
     :root {
       --bg-1: #fbf8f4;
@@ -784,39 +785,87 @@
         </p>
 
         <div class="service-grid">
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture6.jpg" alt="Travel and destination photography scene" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">TR</div>
-              <h3>Travel and Destination Sessions</h3>
-              <p>Built for outdoor shoots, city walks, and destination storytelling with a strong focus on atmosphere and visual narrative.</p>
-              <span class="service-meta">Story-driven visuals</span>
+          <article class="service-card service-card-interactive" data-scene="travel" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture6.jpg" alt="Travel and destination photography scene" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">TR</div>
+                  <h3>Travel and Destination Sessions</h3>
+                  <p>Built for outdoor shoots, city walks, and destination storytelling with a strong focus on atmosphere and visual narrative.</p>
+                  <span class="service-meta">Story-driven visuals</span>
+                  <button class="service-preview-button" type="button" data-flip-open>Open travel community</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">Scene Feed</span>
+                  <h3>Enter the travel sharing page</h3>
+                  <p>Browse work shared by photographers and users, then register locally to publish images, react, save, and comment inside the travel scene feed.</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="travel-community-en.html">Open travel feed</a>
+                  <button class="service-back-button" type="button" data-flip-close>Back to front</button>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture4.jpg" alt="Graduation photography scene" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">GR</div>
-              <h3>Graduation Sessions</h3>
-              <p>Designed for individuals, friends, and families who want polished, warm, and memorable coverage for milestone moments.</p>
-              <span class="service-meta">Milestone coverage</span>
+          <article class="service-card service-card-interactive" data-scene="graduation" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture4.jpg" alt="Graduation photography scene" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">GR</div>
+                  <h3>Graduation Sessions</h3>
+                  <p>Designed for individuals, friends, and families who want polished, warm, and memorable coverage for milestone moments.</p>
+                  <span class="service-meta">Milestone coverage</span>
+                  <button class="service-preview-button" type="button" data-flip-open>Open graduation community</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">Scene Feed</span>
+                  <h3>Enter the graduation sharing page</h3>
+                  <p>Explore campus routes, milestone returns, group image inspiration, and scene-specific comments built for graduation sessions.</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="graduation-community-en.html">Open graduation feed</a>
+                  <button class="service-back-button" type="button" data-flip-close>Back to front</button>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture3.jpg" alt="Brand and creative portrait scene" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">BR</div>
-              <h3>Brand Portraits and Creative Editorial</h3>
-              <p>Ideal for personal brands, creator profiles, commercial positioning, and concept-led image making.</p>
-              <span class="service-meta">Brand and creative expression</span>
+          <article class="service-card service-card-interactive" data-scene="brand" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture3.jpg" alt="Brand and creative portrait scene" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">BR</div>
+                  <h3>Brand Portraits and Creative Editorial</h3>
+                  <p>Ideal for personal brands, creator profiles, commercial positioning, and concept-led image making.</p>
+                  <span class="service-meta">Brand and creative expression</span>
+                  <button class="service-preview-button" type="button" data-flip-open>Open brand community</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">Scene Feed</span>
+                  <h3>Enter the brand sharing page</h3>
+                  <p>Share brand cases, moodboards, client references, and community feedback with reactions, favorites, and threaded comments.</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="brand-community-en.html">Open brand feed</a>
+                  <button class="service-back-button" type="button" data-flip-close>Back to front</button>
+                </div>
+              </div>
             </div>
           </article>
         </div>
@@ -942,6 +991,7 @@
     data-api-endpoint=""
     data-api-model="qwen3"
   ></div>
+  <script src="assets/service-card-flip.js"></script>
   <script src="assets/customer-support-widget.js"></script>
 </body>
 </html>

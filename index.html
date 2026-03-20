@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3H-Studio | 官方首页</title>
   <link rel="stylesheet" href="assets/customer-support-widget.css" />
+  <link rel="stylesheet" href="assets/service-card-flip.css" />
   <style>
     :root {
       --bg-1: #fbf8f4;
@@ -784,39 +785,87 @@
         </p>
 
         <div class="service-grid">
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture6.jpg" alt="旅拍与目的地影像场景" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">旅</div>
-              <h3>旅拍与目的地影像</h3>
-              <p>适合户外、人文、城市漫游与目的地拍摄，强调场景叙事、氛围感与画面表达。</p>
-              <span class="service-meta">风格化出片</span>
+          <article class="service-card service-card-interactive" data-scene="travel" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture6.jpg" alt="旅拍与目的地影像场景" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">旅</div>
+                  <h3>旅拍与目的地影像</h3>
+                  <p>适合户外、人文、城市漫游与目的地拍摄，强调场景叙事、氛围感与画面表达。</p>
+                  <span class="service-meta">风格化出片</span>
+                  <button class="service-preview-button" type="button" data-flip-open>翻开旅拍社区</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">场景社区</span>
+                  <h3>进入旅拍与目的地影像分享页</h3>
+                  <p>浏览摄影师与用户发布的作品、返图和路线灵感，并支持注册、点赞、收藏、喜爱、拉踩和评论互动。</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="travel-community.html">进入旅拍社区</a>
+                  <button class="service-back-button" type="button" data-flip-close>返回正面</button>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture4.jpg" alt="毕业纪念拍摄场景" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">毕</div>
-              <h3>毕业纪念拍摄</h3>
-              <p>支持个人、好友与家庭同行需求，在重要节点时刻留下更完整、更有温度的影像记录。</p>
-              <span class="service-meta">里程碑时刻</span>
+          <article class="service-card service-card-interactive" data-scene="graduation" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture4.jpg" alt="毕业纪念拍摄场景" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">毕</div>
+                  <h3>毕业纪念拍摄</h3>
+                  <p>支持个人、好友与家庭同行需求，在重要节点时刻留下更完整、更有温度的影像记录。</p>
+                  <span class="service-meta">里程碑时刻</span>
+                  <button class="service-preview-button" type="button" data-flip-open>翻开毕业社区</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">场景社区</span>
+                  <h3>进入毕业纪念拍摄分享页</h3>
+                  <p>查看校园路线、毕业返图、多人合影灵感和摄影师案例，让毕业社区成为更活跃的内容入口。</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="graduation-community.html">进入毕业社区</a>
+                  <button class="service-back-button" type="button" data-flip-close>返回正面</button>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="service-card">
-            <div class="service-image">
-              <img src="assets/picture3.jpg" alt="品牌形象与创意写真场景" loading="lazy" />
-            </div>
-            <div class="service-copy">
-              <div class="service-mark">品</div>
-              <h3>品牌形象与创意写真</h3>
-              <p>适用于个人品牌、创作者主页、商业展示与概念影像，匹配更契合的风格摄影师。</p>
-              <span class="service-meta">品牌与创作表达</span>
+          <article class="service-card service-card-interactive" data-scene="brand" data-flip-card>
+            <div class="service-flip">
+              <div class="service-face service-face-front">
+                <div class="service-image">
+                  <img src="assets/picture3.jpg" alt="品牌形象与创意写真场景" loading="lazy" />
+                </div>
+                <div class="service-copy">
+                  <div class="service-mark">品</div>
+                  <h3>品牌形象与创意写真</h3>
+                  <p>适用于个人品牌、创作者主页、商业展示与概念影像，匹配更契合的风格摄影师。</p>
+                  <span class="service-meta">品牌与创作表达</span>
+                  <button class="service-preview-button" type="button" data-flip-open>翻开品牌社区</button>
+                </div>
+              </div>
+              <div class="service-face service-face-back">
+                <div>
+                  <span class="service-access-label">场景社区</span>
+                  <h3>进入品牌与创意分享页</h3>
+                  <p>发布品牌案例、视觉参考和返图内容，并围绕点赞、收藏、喜爱、拉踩和评论建立更完整的互动沉淀。</p>
+                </div>
+                <div class="service-back-actions">
+                  <a class="service-enter-link" href="brand-community.html">进入品牌社区</a>
+                  <button class="service-back-button" type="button" data-flip-close>返回正面</button>
+                </div>
+              </div>
             </div>
           </article>
         </div>
@@ -942,6 +991,7 @@
     data-api-endpoint=""
     data-api-model="qwen3"
   ></div>
+  <script src="assets/service-card-flip.js"></script>
   <script src="assets/customer-support-widget.js"></script>
 </body>
 </html>
