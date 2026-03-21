@@ -29,6 +29,7 @@ body {
   font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
   color: var(--community-text);
   background:
+    radial-gradient(720px circle at 18% 12%, rgba(255, 255, 255, 0.52) 0%, transparent 40%),
     radial-gradient(900px circle at -10% -10%, var(--scene-glow) 0%, transparent 36%),
     radial-gradient(860px circle at 100% 0%, rgba(219, 238, 241, 0.72) 0%, transparent 34%),
     linear-gradient(180deg, var(--community-bg-1) 0%, var(--community-bg-2) 100%);
@@ -67,9 +68,10 @@ select {
   position: sticky;
   top: 0;
   z-index: 32;
-  backdrop-filter: blur(12px);
-  background: rgba(251, 248, 244, 0.84);
+  backdrop-filter: blur(18px);
+  background: rgba(251, 248, 244, 0.74);
   border-bottom: 1px solid var(--community-line);
+  box-shadow: 0 8px 24px rgba(31, 38, 44, 0.06);
 }
 
 .community-header-inner {
@@ -147,7 +149,7 @@ select {
 .post-card,
 .sidebar-card {
   border-radius: var(--community-radius-xl);
-  background: var(--community-surface);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(249, 246, 241, 0.9));
   border: 1px solid var(--community-line);
   box-shadow: var(--community-shadow);
   backdrop-filter: blur(14px);
@@ -157,6 +159,16 @@ select {
   position: relative;
   overflow: hidden;
   padding: clamp(24px, 4vw, 42px);
+}
+
+.community-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.28), transparent 46%),
+    radial-gradient(640px circle at 0% 20%, rgba(255, 255, 255, 0.34), transparent 52%);
+  pointer-events: none;
 }
 
 .community-hero::after {
@@ -243,10 +255,21 @@ select {
 }
 
 .community-stat-card {
+  position: relative;
   border-radius: 18px;
   padding: 16px;
-  background: rgba(255, 255, 255, 0.76);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(247, 244, 239, 0.78));
   border: 1px solid rgba(31, 38, 44, 0.08);
+}
+
+.community-stat-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--scene-accent), rgba(139, 90, 74, 0.78));
 }
 
 .community-stat-card strong {
@@ -321,7 +344,19 @@ select {
 }
 
 .panel-card {
+  position: relative;
+  overflow: hidden;
   padding: 22px;
+}
+
+.panel-card::before,
+.sidebar-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(41, 95, 107, 0.4), rgba(139, 90, 74, 0.08), transparent);
 }
 
 .panel-heading {
@@ -335,6 +370,97 @@ select {
   color: var(--community-muted);
   font-size: 0.92rem;
   line-height: 1.65;
+}
+
+.scene-spotlight {
+  background:
+    radial-gradient(420px circle at 100% 0%, rgba(255, 255, 255, 0.28), transparent 44%),
+    linear-gradient(160deg, rgba(255, 255, 255, 0.92), rgba(245, 242, 238, 0.9));
+}
+
+.scene-spotlight::after {
+  content: "";
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: -110px;
+  top: -110px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--scene-glow) 0%, transparent 68%);
+  pointer-events: none;
+}
+
+.spotlight-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: var(--scene-wash);
+  color: var(--scene-accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.spotlight-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--scene-accent);
+  box-shadow: 0 0 0 6px rgba(41, 95, 107, 0.08);
+}
+
+.spotlight-title {
+  margin: 14px 0 10px;
+  max-width: 560px;
+  color: #162127;
+  font-size: 1.44rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.spotlight-lead {
+  max-width: 620px;
+}
+
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 18px;
+  padding: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(250, 247, 243, 0.76));
+  border: 1px solid rgba(31, 38, 44, 0.08);
+}
+
+.spotlight-card::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--scene-accent), transparent);
+}
+
+.spotlight-card h3 {
+  margin: 0;
+  color: #182126;
+  font-size: 0.98rem;
+}
+
+.spotlight-card p {
+  margin: 8px 0 0;
+  color: #57616b;
+  font-size: 0.86rem;
+  line-height: 1.6;
 }
 
 .identity-card {
@@ -473,7 +599,13 @@ select {
   gap: 18px;
 }
 
+.sidebar-stack {
+  position: sticky;
+  top: 92px;
+}
+
 .sidebar-card {
+  position: relative;
   padding: 22px;
 }
 
@@ -550,7 +682,14 @@ select {
 }
 
 .post-card {
+  position: relative;
   overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.post-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 26px 46px rgba(31, 38, 44, 0.14);
 }
 
 .post-image {
@@ -572,7 +711,7 @@ select {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(10, 14, 18, 0.02) 15%, rgba(10, 14, 18, 0.24) 100%),
+    linear-gradient(180deg, rgba(10, 14, 18, 0.02) 15%, rgba(10, 14, 18, 0.32) 100%),
     linear-gradient(35deg, rgba(255, 255, 255, 0.08), transparent 52%);
 }
 
@@ -666,7 +805,7 @@ select {
 
 .reaction-button {
   border: 1px solid rgba(31, 38, 44, 0.1);
-  background: rgba(255, 255, 255, 0.86);
+  background: rgba(255, 255, 255, 0.92);
   color: var(--community-text);
   font-size: 0.82rem;
   font-weight: 800;
@@ -708,7 +847,7 @@ select {
 .comment-item {
   border-radius: 16px;
   padding: 12px 14px;
-  background: rgba(250, 247, 242, 0.92);
+  background: linear-gradient(180deg, rgba(251, 248, 244, 0.96), rgba(248, 245, 240, 0.9));
   border: 1px solid rgba(31, 38, 44, 0.06);
 }
 
@@ -807,6 +946,14 @@ select {
   .community-dashboard,
   .community-feed-shell {
     grid-template-columns: 1fr;
+  }
+
+  .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-stack {
+    position: static;
   }
 }
 

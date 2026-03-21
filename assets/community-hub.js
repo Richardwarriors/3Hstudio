@@ -14,12 +14,12 @@
       postStat: "分享帖子",
       creatorStat: "摄影师",
       interactionStat: "互动总量",
-      authTitle: "社区注册",
-      authIntro: "这是一套前端演示版社区，摄影师和用户都可以先登记身份，再发布图片、评论和互动。",
+      authTitle: "加入场景社区",
+      authIntro: "摄影师和用户都可以在这里建立身份、分享图片与交流灵感，让每个场景形成更真实、更持续的内容氛围。",
       currentIdentity: "当前身份",
       logout: "退出身份",
       registerAction: "注册 / 切换身份",
-      registerNote: "登记后即可在当前浏览器中发布帖子、评论并参与互动。",
+      registerNote: "登记后即可发布帖子、评论并参与互动。",
       nameLabel: "昵称",
       namePlaceholder: "例如：林同学 / Emma",
       roleLabel: "身份",
@@ -29,14 +29,8 @@
       cityPlaceholder: "例如：纽约 / 上海 / 洛杉矶",
       authSuccess: "身份已更新，现在可以开始分享照片和参与互动。",
       authLogout: "当前身份已退出。",
-      sceneMechanism: "互动机制",
-      mechanismItems: [
-        "支持帖子图片分享与本地前端演示发布",
-        "每条内容都可进行点赞、收藏、喜爱、拉踩和评论",
-        "适合作为后续接入账号系统与数据库前的交互原型"
-      ],
       composerTitle: "发布你的图片",
-      composerIntro: "你可以上传本地图片，或填写图片链接，把拍摄作品、灵感板和用户回传内容发布到当前场景社区。",
+      composerIntro: "上传作品、返图或灵感图，把真实的拍摄故事、生活片段和审美参考留在这个场景社区。",
       titleLabel: "帖子标题",
       titlePlaceholder: "给这组图片起一个标题",
       captionLabel: "分享内容",
@@ -45,8 +39,8 @@
       tagsPlaceholder: "例如：纽约, 毕业, 胶片感",
       imageUrlLabel: "图片链接",
       imageUrlPlaceholder: "可选：粘贴图片 URL",
-      fileLabel: "本地上传",
-      fileHelp: "建议上传一张主图用于演示；当前版本会保存在浏览器本地。",
+      fileLabel: "上传主图",
+      fileHelp: "建议上传一张清晰主图，方便其他用户快速浏览和交流。",
       publishAction: "发布帖子",
       publishNeedIdentity: "请先登记身份，再发布图片内容。",
       publishNeedImage: "请上传图片文件，或填写一条图片链接后再发布。",
@@ -74,16 +68,16 @@
       deleteComment: "删除评论",
       deletePostConfirm: "确定要删除这条帖子吗？删除后将无法恢复。",
       deleteCommentConfirm: "确定要删除这条评论吗？删除后将无法恢复。",
-      guideTitle: "参与提示",
+      guideTitle: "分享建议",
       guideItems: [
-        "摄影师适合分享作品、风格样张、拍摄地点和服务案例",
-        "用户适合发布合作返图、风格参考和体验反馈",
-        "如果你已经准备好需求，也可以直接前往预约页提交时间与地点"
+        "摄影师适合分享作品、风格样张、拍摄地点与合作故事",
+        "用户适合发布返图、灵感参考和真实体验反馈",
+        "当你已经明确时间、地点与需求时，也可以直接进入预约页继续沟通"
       ],
-      footerNote: "当前为社区前端演示版，账号、图片和互动数据仅保存在当前浏览器本地。",
+      footerNote: "3H-Studio 场景社区欢迎摄影师与用户共同分享作品、灵感与真实反馈。",
       openBooking: "前往预约页",
       registerPrompt: "先登记身份，即可开启发帖与互动。",
-      fileSelected: "已选择本地图片：",
+      fileSelected: "已选择图片：",
       timeJustNow: "刚刚",
       by: "来自"
     },
@@ -95,12 +89,12 @@
       postStat: "Shared Posts",
       creatorStat: "Photographers",
       interactionStat: "Interactions",
-      authTitle: "Community Registration",
-      authIntro: "This is a front-end community prototype where photographers and users can register a local identity, share images, and interact with posts.",
+      authTitle: "Join the Scene Community",
+      authIntro: "Photographers and users can build an identity here, share images, and exchange ideas so each category feels more alive, social, and inspiring.",
       currentIdentity: "Current identity",
       logout: "Sign Out",
       registerAction: "Register / Switch Identity",
-      registerNote: "After registering, you can post, comment, and interact inside this browser session.",
+      registerNote: "After registering, you can publish posts, comment, and interact with the feed.",
       nameLabel: "Display name",
       namePlaceholder: "e.g. Emma / Alex",
       roleLabel: "Role",
@@ -110,14 +104,8 @@
       cityPlaceholder: "e.g. New York / Shanghai / Los Angeles",
       authSuccess: "Identity updated. You can now share photos and join the conversation.",
       authLogout: "The current identity has been signed out.",
-      sceneMechanism: "Interaction Model",
-      mechanismItems: [
-        "Supports image sharing and local front-end posting flows",
-        "Each post includes like, favorite, love, dislike, and comment interactions",
-        "Designed as a community prototype before a full account system and backend are connected"
-      ],
       composerTitle: "Share Your Images",
-      composerIntro: "Upload a local image or paste an image URL to publish work samples, inspiration references, or client return images into this scene-specific feed.",
+      composerIntro: "Share finished work, return images, or inspiration references so the feed feels grounded in real stories, daily moments, and visual taste.",
       titleLabel: "Post title",
       titlePlaceholder: "Give this image set a title",
       captionLabel: "Post copy",
@@ -126,8 +114,8 @@
       tagsPlaceholder: "e.g. New York, graduation, film mood",
       imageUrlLabel: "Image URL",
       imageUrlPlaceholder: "Optional: paste an image URL",
-      fileLabel: "Local upload",
-      fileHelp: "A single cover image is enough for this prototype; it will be stored locally in the browser.",
+      fileLabel: "Upload cover image",
+      fileHelp: "A clean cover image helps other visitors browse, discover style, and join the conversation faster.",
       publishAction: "Publish Post",
       publishNeedIdentity: "Register an identity before publishing images.",
       publishNeedImage: "Please upload an image file or paste an image URL before publishing.",
@@ -155,16 +143,16 @@
       deleteComment: "Delete Comment",
       deletePostConfirm: "Are you sure you want to delete this post? This cannot be undone.",
       deleteCommentConfirm: "Are you sure you want to delete this comment? This cannot be undone.",
-      guideTitle: "Participation Tips",
+      guideTitle: "Sharing Tips",
       guideItems: [
-        "Photographers can share finished work, style samples, locations, and service cases",
-        "Users can post delivered images, inspiration references, and experience feedback",
-        "If your request is already clear, you can move straight to the booking page next"
+        "Photographers can share finished work, style samples, locations, and collaboration stories",
+        "Users can post delivered images, inspiration references, and real feedback",
+        "If your request is already clear, you can head to the booking page to continue the conversation"
       ],
-      footerNote: "This is a front-end community prototype. Accounts, images, and interactions are stored locally in the current browser only.",
+      footerNote: "3H-Studio scene communities are built to help photographers and users share work, references, and authentic feedback together.",
       openBooking: "Go to Booking",
       registerPrompt: "Register an identity first to unlock posting and interactions.",
-      fileSelected: "Selected local image:",
+      fileSelected: "Selected image:",
       timeJustNow: "Just now",
       by: "From"
     }
@@ -186,7 +174,24 @@
           description: "这里聚合城市漫游、目的地写真与户外故事影像。摄影师和用户都可以在这里发布图片、互动评论，并为真实作品建立更活跃的内容社区。",
           chips: ["旅拍样张分享", "城市路线灵感", "摄影师与用户双向互动"],
           noteTitle: "适合的分享内容",
-          noteCopy: "城市街拍、目的地写真、旅行叙事、路线参考、拍摄前后对比和客户返图都很适合在这里沉淀。"
+          noteCopy: "城市街拍、目的地写真、旅行叙事、路线参考、拍摄前后对比和客户返图都很适合在这里沉淀。",
+          showcaseBadge: "社区亮点",
+          showcaseTitle: "把路线灵感、真实成片和生活感瞬间放进同一个旅拍社区",
+          showcaseLead: "这里强调的是人与城市、故事与情绪之间的连接，让旅拍内容既有审美表达，也有真实生活感。",
+          showcaseItems: [
+            {
+              title: "地点灵感更直观",
+              text: "用真实路线、街区和时段内容，帮助用户更快理解不同城市的气质。"
+            },
+            {
+              title: "成片反馈更真实",
+              text: "摄影师样张和用户返图同时出现，让风格选择更有参考价值。"
+            },
+            {
+              title: "生活感更强",
+              text: "从旅途片段到日常街拍，这里不仅展示作品，也保留人与场景的温度。"
+            }
+          ]
         },
         en: {
           eyebrow: "Travel Community",
@@ -194,7 +199,24 @@
           description: "This feed brings together city walks, destination portraits, and outdoor visual stories. Both photographers and users can publish images, comment, and build a more active scene-based community around real work.",
           chips: ["Travel portfolio sharing", "Route and location inspiration", "Two-sided interaction for photographers and users"],
           noteTitle: "What belongs here",
-          noteCopy: "City sessions, destination portraits, outdoor storytelling, route references, before-and-after edits, and client return images all fit naturally in this category."
+          noteCopy: "City sessions, destination portraits, outdoor storytelling, route references, before-and-after edits, and client return images all fit naturally in this category.",
+          showcaseBadge: "Community Highlights",
+          showcaseTitle: "Bring route ideas, finished work, and everyday atmosphere into one travel-focused feed",
+          showcaseLead: "This category is designed around the connection between people, place, mood, and movement, so the experience feels both visual and lived-in.",
+          showcaseItems: [
+            {
+              title: "Places feel easier to imagine",
+              text: "Real routes, neighborhoods, and time-of-day references help visitors understand the character of each city faster."
+            },
+            {
+              title: "Delivered work feels more trustworthy",
+              text: "Photographer samples and user return images appear side by side, making style decisions easier and more grounded."
+            },
+            {
+              title: "Daily life stays visible",
+              text: "From travel fragments to casual street moments, the feed keeps warmth and real-life texture alongside polished images."
+            }
+          ]
         }
       },
       seedPosts: [
@@ -287,7 +309,24 @@
           description: "这是面向毕业纪念、校园写真和节点记录的图片社区。摄影师可以分享样张与校园路线，用户也可以发布返图、风格偏好和评论反馈。",
           chips: ["毕业返图分享", "校园路线灵感", "多人互动评论"],
           noteTitle: "适合的分享内容",
-          noteCopy: "学士服、校园地标、好友合影、家庭返图、毕业花束和节点纪念都适合在这里持续沉淀。"
+          noteCopy: "学士服、校园地标、好友合影、家庭返图、毕业花束和节点纪念都适合在这里持续沉淀。",
+          showcaseBadge: "社区亮点",
+          showcaseTitle: "让重要节点的纪念感、青春气息和真实陪伴在这里持续发生",
+          showcaseLead: "毕业场景不只是成片展示，更是把校园氛围、好友互动和家庭参与感沉淀成一条完整内容线。",
+          showcaseItems: [
+            {
+              title: "校园路线更清楚",
+              text: "通过真实样张和返图，用户可以更直观看到地标、光线和多人合影的效果。"
+            },
+            {
+              title: "纪念氛围更完整",
+              text: "从个人到朋友再到家庭，这里能自然呈现毕业节点的层次感。"
+            },
+            {
+              title: "互动更有人情味",
+              text: "评论和反馈让每一组毕业内容不止被浏览，也被认真回应和延续。"
+            }
+          ]
         },
         en: {
           eyebrow: "Graduation Community",
@@ -295,7 +334,24 @@
           description: "This image community is built for graduation memories, campus portraits, and milestone coverage. Photographers can share samples and route ideas, while users can publish return images, style preferences, and feedback.",
           chips: ["Graduation return images", "Campus route inspiration", "Multi-user comments and interaction"],
           noteTitle: "What belongs here",
-          noteCopy: "Caps and gowns, campus landmarks, friend groups, family return images, bouquets, and milestone memory sets all fit naturally in this category."
+          noteCopy: "Caps and gowns, campus landmarks, friend groups, family return images, bouquets, and milestone memory sets all fit naturally in this category.",
+          showcaseBadge: "Community Highlights",
+          showcaseTitle: "Keep milestone emotion, campus energy, and real companionship active in one place",
+          showcaseLead: "Graduation content is not only about polished finals. It is also about atmosphere, friend groups, family presence, and the feeling of a meaningful transition.",
+          showcaseItems: [
+            {
+              title: "Campus routes feel clearer",
+              text: "Real samples and return images help visitors understand landmarks, lighting, and group compositions more quickly."
+            },
+            {
+              title: "Memory feels more layered",
+              text: "From solo frames to friend groups and family add-ons, the feed shows how graduation sessions build emotional depth."
+            },
+            {
+              title: "Interaction feels warmer",
+              text: "Comments and feedback make each graduation story feel responded to, not just displayed."
+            }
+          ]
         }
       },
       seedPosts: [
@@ -388,7 +444,24 @@
           description: "这里聚焦个人品牌、创作者主页和商业表达。摄影师可以发布风格案例，用户则可以分享视觉参考、成片反馈和合作需求线索。",
           chips: ["品牌案例分享", "创意参考板", "视觉风格互动"],
           noteTitle: "适合的分享内容",
-          noteCopy: "品牌肖像、创作者主页、工作室海报、商业表达、Moodboard 和交付前后对比都很适合沉淀在这里。"
+          noteCopy: "品牌肖像、创作者主页、工作室海报、商业表达、Moodboard 和交付前后对比都很适合沉淀在这里。",
+          showcaseBadge: "社区亮点",
+          showcaseTitle: "把品牌表达、创意灵感和真实合作反馈放进同一个视觉社区",
+          showcaseLead: "这里既适合专业感强的品牌案例，也欢迎更生活化、更真实的灵感参考和使用场景反馈。",
+          showcaseItems: [
+            {
+              title: "风格判断更快",
+              text: "品牌案例、参考板和返图并列出现，能帮助双方更快判断审美方向。"
+            },
+            {
+              title: "内容氛围更现代",
+              text: "从人物表达、布景到成片用途，这里更强调当代视觉语言和清晰定位。"
+            },
+            {
+              title: "合作感更明确",
+              text: "用户可以直接沉淀需求线索，摄影师也能展示自己适合的品牌调性。"
+            }
+          ]
         },
         en: {
           eyebrow: "Brand Community",
@@ -396,7 +469,24 @@
           description: "This feed focuses on personal brands, creator profiles, and commercial expression. Photographers can publish style cases while users can share references, delivered results, and early collaboration signals.",
           chips: ["Brand case studies", "Creative reference boards", "Visual style interaction"],
           noteTitle: "What belongs here",
-          noteCopy: "Brand portraits, creator profile images, studio posters, editorial looks, moodboards, and before-and-after delivery comparisons all belong naturally in this category."
+          noteCopy: "Brand portraits, creator profile images, studio posters, editorial looks, moodboards, and before-and-after delivery comparisons all belong naturally in this category.",
+          showcaseBadge: "Community Highlights",
+          showcaseTitle: "Bring brand expression, creative references, and real collaboration signals into one visual space",
+          showcaseLead: "This feed should feel modern and well-positioned, while still leaving room for more personal, lived-in references and practical feedback.",
+          showcaseItems: [
+            {
+              title: "Style decisions happen faster",
+              text: "Brand cases, moodboards, and return images appear together, making visual direction easier to judge."
+            },
+            {
+              title: "The atmosphere feels more current",
+              text: "From portrait styling to background treatment and usage context, the feed supports a sharper contemporary brand language."
+            },
+            {
+              title: "Collaboration signals stay visible",
+              text: "Users can leave clear direction cues, while photographers can show the brand energy they are strongest at delivering."
+            }
+          ]
         }
       },
       seedPosts: [
@@ -940,12 +1030,18 @@
       '          <div id="auth-status" class="form-status" aria-live="polite"></div>',
       "        </form>",
       "      </article>",
-      '      <article class="panel-card">',
-      '        <h2 class="panel-heading">' + escapeHtml(payload.copy.sceneMechanism) + "</h2>",
-      '        <p class="panel-copy">' + escapeHtml(payload.sceneCopy.description) + "</p>",
-      '        <ul class="panel-list">' + payload.copy.mechanismItems.map(function (item) {
-            return "<li>" + escapeHtml(item) + "</li>";
-          }).join("") + "</ul>",
+      '      <article class="panel-card scene-spotlight">',
+      '        <span class="spotlight-badge">' + escapeHtml(payload.sceneCopy.showcaseBadge) + "</span>",
+      '        <h2 class="spotlight-title">' + escapeHtml(payload.sceneCopy.showcaseTitle) + "</h2>",
+      '        <p class="panel-copy spotlight-lead">' + escapeHtml(payload.sceneCopy.showcaseLead) + "</p>",
+      '        <div class="spotlight-grid">' + payload.sceneCopy.showcaseItems.map(function (item) {
+            return [
+              '<article class="spotlight-card">',
+              '  <h3>' + escapeHtml(item.title) + "</h3>",
+              '  <p>' + escapeHtml(item.text) + "</p>",
+              "</article>"
+            ].join("");
+          }).join("") + "</div>",
       "      </article>",
       "    </section>",
       '    <section class="community-feed-shell">',
