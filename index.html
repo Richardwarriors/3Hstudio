@@ -173,11 +173,30 @@
       border-radius: 0 0 38px 38px;
       box-shadow: none;
       backdrop-filter: none;
-      background:
-        linear-gradient(90deg, rgba(8, 11, 14, 0.82) 0%, rgba(8, 11, 14, 0.62) 36%, rgba(8, 11, 14, 0.42) 58%, rgba(8, 11, 14, 0.7) 100%),
-        linear-gradient(180deg, rgba(8, 11, 14, 0.08) 0%, rgba(8, 11, 14, 0.34) 100%),
-        url("assets/picture1.jpg") center 32% / cover no-repeat;
+      background: #0c1114;
       animation: fade-up 520ms ease both;
+    }
+
+    .hero-backgrounds {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      background-position: center 32%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      opacity: 0;
+      transform: scale(1.04);
+      transition: opacity 900ms ease, transform 5200ms ease;
+    }
+
+    .hero-background.is-active {
+      opacity: 1;
+      transform: scale(1);
     }
 
     .hero-card::before {
@@ -732,7 +751,8 @@
   </header>
 
   <main class="page-shell">
-    <section class="hero-card" aria-labelledby="page-title">
+    <section class="hero-card" aria-labelledby="page-title" data-hero-slideshow>
+      <div class="hero-backgrounds" aria-hidden="true"></div>
       <div class="hero-grid">
         <div>
           <span class="eyebrow">创始灵感</span>
@@ -983,6 +1003,65 @@
     data-api-endpoint=""
     data-api-model="qwen3"
   ></div>
+  <script>
+    (function () {
+      const hero = document.querySelector("[data-hero-slideshow]");
+
+      if (!hero) {
+        return;
+      }
+
+      const backgroundLayer = hero.querySelector(".hero-backgrounds");
+      const sources = [
+        "assets/scenery1.jpg",
+        "assets/scenery2.jpg",
+        "assets/scenery3.jpg",
+        "assets/scenery4.jpg",
+        "assets/scenery5.jpg"
+      ];
+
+      function preloadImage(src) {
+        return new Promise(function (resolve) {
+          const image = new Image();
+
+          image.onload = function () {
+            resolve(src);
+          };
+
+          image.onerror = function () {
+            resolve(null);
+          };
+
+          image.src = src;
+        });
+      }
+
+      Promise.all(sources.map(preloadImage)).then(function (items) {
+        const validSources = items.filter(Boolean);
+
+        if (!validSources.length) {
+          return;
+        }
+
+        backgroundLayer.innerHTML = validSources.map(function (src, index) {
+          return '<div class="hero-background' + (index === 0 ? " is-active" : "") + '" style="background-image: url(&quot;' + src + '&quot;);"></div>';
+        }).join("");
+
+        if (validSources.length === 1) {
+          return;
+        }
+
+        const slides = Array.from(backgroundLayer.querySelectorAll(".hero-background"));
+        let currentIndex = 0;
+
+        window.setInterval(function () {
+          slides[currentIndex].classList.remove("is-active");
+          currentIndex = (currentIndex + 1) % slides.length;
+          slides[currentIndex].classList.add("is-active");
+        }, 4200);
+      });
+    })();
+  </script>
   <script src="assets/service-card-flip.js"></script>
   <script src="assets/customer-support-widget.js"></script>
 </body>
