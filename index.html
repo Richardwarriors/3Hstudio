@@ -38,6 +38,7 @@
       font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
+      overflow-x: clip;
       background:
         radial-gradient(900px circle at -10% -10%, #f4ddcf 0%, transparent 38%),
         radial-gradient(860px circle at 100% 0%, #dbeef1 0%, transparent 32%),
@@ -146,7 +147,6 @@
       padding: 0 28px 56px;
     }
 
-    .section-card,
     .service-card,
     .feature-card,
     .channel-card,
@@ -386,19 +386,28 @@
 
     .content-grid {
       display: grid;
-      gap: 24px;
-      width: 100vw;
+      gap: 0;
       margin-top: -72px;
-      margin-left: calc(50% - 50vw);
-      padding: 0 28px;
       position: relative;
       z-index: 2;
     }
 
     .section-card {
-      padding: 30px clamp(20px, 4vw, 38px);
-      background: rgba(255, 255, 255, 0.92);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 244, 240, 0.94));
+      box-shadow: none;
+      border: 0;
+      border-radius: 0;
+      backdrop-filter: none;
       animation: fade-up 560ms ease both;
+    }
+
+    .section-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 32px 28px;
     }
 
     .section-title {
@@ -731,7 +740,10 @@
 
       .content-grid {
         margin-top: -36px;
-        padding: 0 16px;
+      }
+
+      .section-inner {
+        padding: 28px 16px;
       }
     }
   </style>
@@ -795,6 +807,7 @@
 
     <div class="content-grid">
       <section id="services" class="section-card" aria-labelledby="services-title">
+        <div class="section-inner">
         <h2 id="services-title" class="section-title">服务场景</h2>
         <p class="section-copy">
           围绕高品质影像需求，平台首期聚焦三类高频服务场景，帮助客户更快找到适合的摄影创作者。
@@ -885,9 +898,11 @@
             </div>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="galleries" class="section-card" aria-labelledby="galleries-title">
+        <div class="section-inner">
         <h2 id="galleries-title" class="section-title">平台优势</h2>
         <p class="section-copy">
           我们不只提供展示页面，更希望把匹配、沟通、保障与交付整合为完整的平台体验。
@@ -915,9 +930,11 @@
             <p>从需求提交到最终交付，平台帮助双方建立更稳定、更可信赖的合作闭环。</p>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="channels" class="section-card" aria-labelledby="channels-title">
+        <div class="section-inner">
         <h2 id="channels-title" class="section-title">双向服务通道</h2>
         <p class="section-copy">
           平台以双端视角设计体验，让需求方与摄影师都能在同一体系内高效协作。
@@ -940,9 +957,11 @@
             </div>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="showcase" class="section-card" aria-labelledby="showcase-title">
+        <div class="section-inner">
         <h2 id="showcase-title" class="section-title">创作方向</h2>
         <p class="section-copy">
           我们希望平台汇聚更多具有审美表达力与专业交付能力的摄影创作者，共同服务多元化的影像需求。
@@ -983,6 +1002,7 @@
             </p>
           </div>
           <a class="cta-button" href="booking.html">进入预约页面</a>
+        </div>
         </div>
       </section>
     </div>

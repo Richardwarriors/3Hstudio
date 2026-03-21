@@ -38,6 +38,7 @@
       font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", "Avenir Next", "Trebuchet MS", "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
+      overflow-x: clip;
       background:
         radial-gradient(900px circle at -10% -10%, #f4ddcf 0%, transparent 38%),
         radial-gradient(860px circle at 100% 0%, #dbeef1 0%, transparent 32%),
@@ -146,7 +147,6 @@
       padding: 0 28px 56px;
     }
 
-    .section-card,
     .service-card,
     .feature-card,
     .channel-card,
@@ -386,19 +386,28 @@
 
     .content-grid {
       display: grid;
-      gap: 24px;
-      width: 100vw;
+      gap: 0;
       margin-top: -72px;
-      margin-left: calc(50% - 50vw);
-      padding: 0 28px;
       position: relative;
       z-index: 2;
     }
 
     .section-card {
-      padding: 30px clamp(20px, 4vw, 38px);
-      background: rgba(255, 255, 255, 0.92);
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 244, 240, 0.94));
+      box-shadow: none;
+      border: 0;
+      border-radius: 0;
+      backdrop-filter: none;
       animation: fade-up 560ms ease both;
+    }
+
+    .section-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 32px 28px;
     }
 
     .section-title {
@@ -731,7 +740,10 @@
 
       .content-grid {
         margin-top: -36px;
-        padding: 0 16px;
+      }
+
+      .section-inner {
+        padding: 28px 16px;
       }
     }
   </style>
@@ -795,6 +807,7 @@
 
     <div class="content-grid">
       <section id="services" class="section-card" aria-labelledby="services-title">
+        <div class="section-inner">
         <h2 id="services-title" class="section-title">Service Scenarios</h2>
         <p class="section-copy">
           The first release focuses on three core service categories so clients can quickly find photographers who fit their needs.
@@ -885,9 +898,11 @@
             </div>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="galleries" class="section-card" aria-labelledby="galleries-title">
+        <div class="section-inner">
         <h2 id="galleries-title" class="section-title">Platform Advantages</h2>
         <p class="section-copy">
           We are building more than a showcase site. The goal is a complete platform flow that covers matching, communication, protection, and delivery.
@@ -915,9 +930,11 @@
             <p>From inquiry to final handoff, the platform creates a more stable and trustworthy service experience.</p>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="channels" class="section-card" aria-labelledby="channels-title">
+        <div class="section-inner">
         <h2 id="channels-title" class="section-title">Two-Sided Service Flow</h2>
         <p class="section-copy">
           The experience is designed from both sides so clients and photographers can collaborate within one consistent system.
@@ -940,9 +957,11 @@
             </div>
           </article>
         </div>
+        </div>
       </section>
 
       <section id="showcase" class="section-card" aria-labelledby="showcase-title">
+        <div class="section-inner">
         <h2 id="showcase-title" class="section-title">Creative Directions</h2>
         <p class="section-copy">
           We hope to bring together photographers with strong artistic taste and reliable execution across a wide range of visual needs.
@@ -983,6 +1002,7 @@
             </p>
           </div>
           <a class="cta-button" href="booking-en.html">Go to Booking</a>
+        </div>
         </div>
       </section>
     </div>
