@@ -664,12 +664,116 @@
 
     .footer-card {
       margin-top: 22px;
-      padding: 18px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      padding: 24px 22px;
+      display: grid;
       gap: 18px;
       color: var(--muted);
+    }
+
+    .footer-intro {
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer-kicker {
+      display: inline-flex;
+      align-items: center;
+      justify-self: start;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(41, 95, 107, 0.1);
+      color: var(--brand-2);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-title {
+      margin: 0;
+      color: #182126;
+      font-size: 1.2rem;
+    }
+
+    .footer-copy {
+      margin: 0;
+      max-width: 760px;
+      color: var(--muted);
+    }
+
+    .footer-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .footer-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .footer-field {
+      display: grid;
+      gap: 7px;
+    }
+
+    .footer-label {
+      color: #33414a;
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .footer-input,
+    .footer-textarea {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(31, 38, 44, 0.12);
+      background: rgba(251, 248, 244, 0.94);
+      padding: 12px 14px;
+      color: var(--text);
+      font: inherit;
+    }
+
+    .footer-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .footer-input:focus,
+    .footer-textarea:focus {
+      outline: none;
+      border-color: rgba(41, 95, 107, 0.28);
+      box-shadow: 0 0 0 3px rgba(41, 95, 107, 0.12);
+    }
+
+    .footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-submit {
+      border: 0;
+      border-radius: 14px;
+      min-height: 46px;
+      padding: 11px 18px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #ffffff;
+      font: inherit;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 16px 28px rgba(41, 95, 107, 0.2);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .footer-submit:hover {
+      transform: translateY(-2px);
+    }
+
+    .footer-status {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
 
     .footer-links {
@@ -714,6 +818,10 @@
       .footer-card {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .footer-form-grid {
+        grid-template-columns: 1fr;
       }
 
       .nav-list {
@@ -1008,13 +1116,31 @@
     </div>
 
     <footer id="contact" class="footer-card">
-      <span>3H-Studio 致力于打造连接摄影创作者与高品质影像需求者的可信赖服务平台。联系邮箱：p41197954@gmail.com</span>
-      <div class="footer-links">
-        <a href="index.html">首页</a>
-        <a href="booking.html">立即预约</a>
-        <a href="mailto:p41197954@gmail.com">联系邮箱</a>
-        <a href="index-en.html" lang="en">English Version</a>
+      <div class="footer-intro">
+        <span class="footer-kicker">联系我们</span>
+        <h2 class="footer-title">直接把问题发送给 3H-Studio</h2>
+        <p class="footer-copy">填写 `User ID`、邮件主题和内容后点击提交，页面会自动调用你的默认邮箱应用，并把邮件收件人预设为 `p41197954@gmail.com`。</p>
       </div>
+      <form class="footer-form" data-mailto-form data-recipient="p41197954@gmail.com" data-locale="zh">
+        <div class="footer-form-grid">
+          <label class="footer-field">
+            <span class="footer-label">User ID</span>
+            <input class="footer-input" type="text" placeholder="请输入你的邮箱、微信或用户 ID" data-mailto-userid />
+          </label>
+          <label class="footer-field">
+            <span class="footer-label">Subject</span>
+            <input class="footer-input" type="text" placeholder="例如：毕业拍摄咨询 / 商务合作" data-mailto-subject />
+          </label>
+        </div>
+        <label class="footer-field">
+          <span class="footer-label">Content</span>
+          <textarea class="footer-textarea" placeholder="请直接写下你的问题、需求、预算范围或期望时间。" data-mailto-content></textarea>
+        </label>
+        <div class="footer-actions">
+          <button class="footer-submit" type="submit">Submit</button>
+          <p class="footer-status" data-mailto-status aria-live="polite">提交后会打开你的默认邮箱应用。</p>
+        </div>
+      </form>
     </footer>
   </main>
   <div
@@ -1086,6 +1212,7 @@
       });
     })();
   </script>
+  <script src="assets/mailto-form.js"></script>
   <script src="assets/service-card-flip.js"></script>
   <script src="assets/customer-support-widget.js"></script>
 </body>

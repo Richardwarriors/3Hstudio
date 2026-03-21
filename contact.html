@@ -633,81 +633,55 @@
       <section class="section-card" aria-labelledby="form-title">
         <h2 id="form-title" class="section-title">联系表单</h2>
         <p class="section-copy">
-          先用这一版前端页面承接你的联系需求，后续可继续接入企业邮箱、微信、客服系统或 CRM。
+          使用下方邮件式表单即可直接整理问题并发送给 3H-Studio。点击提交后，页面会调用你的默认邮箱应用，并把收件人预设为 `p41197954@gmail.com`。
         </p>
 
         <div class="form-layout">
           <article class="form-card">
-            <h3>留下你的信息</h3>
-            <p>我们建议尽量写清楚身份、需求方向、城市与时间预期，方便后续快速响应。</p>
+            <h3>直接发送邮件咨询</h3>
+            <p>填写 `User ID`、`Subject` 和 `Content`，并尽量补充拍摄方向、城市、时间与预算，方便我们更快回应。</p>
 
-            <form class="contact-form">
+            <form class="contact-form" data-mailto-form data-recipient="p41197954@gmail.com" data-locale="zh">
               <div class="field-grid">
                 <div class="field">
-                  <label for="contact-name">姓名</label>
-                  <input id="contact-name" type="text" placeholder="请输入你的姓名" />
+                  <label for="contact-userid">User ID</label>
+                  <input id="contact-userid" type="text" placeholder="请输入你的邮箱、微信或用户 ID" data-mailto-userid />
                 </div>
                 <div class="field">
-                  <label for="contact-role">身份</label>
-                  <select id="contact-role">
-                    <option>客户</option>
-                    <option>摄影师</option>
-                    <option>品牌方</option>
-                    <option>合作伙伴</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="field-grid">
-                <div class="field">
-                  <label for="contact-method">联系方式</label>
-                  <input id="contact-method" type="text" placeholder="邮箱 / 手机 / 微信" />
-                </div>
-                <div class="field">
-                  <label for="contact-city">所在城市</label>
-                  <input id="contact-city" type="text" placeholder="例如：上海 / 北京 / 深圳" />
+                  <label for="contact-subject">Subject</label>
+                  <input id="contact-subject" type="text" placeholder="例如：拍摄咨询 / 摄影师入驻 / 商务合作" data-mailto-subject />
                 </div>
               </div>
 
               <div class="field">
-                <label for="contact-type">咨询方向</label>
-                <select id="contact-type">
-                  <option>拍摄预约</option>
-                  <option>摄影师入驻</option>
-                  <option>商务合作</option>
-                  <option>其他咨询</option>
-                </select>
+                <label for="contact-message">Content</label>
+                <textarea id="contact-message" placeholder="请直接写下你的问题、拍摄需求、预算范围、城市与期望时间。" data-mailto-content></textarea>
               </div>
 
-              <div class="field">
-                <label for="contact-message">留言内容</label>
-                <textarea id="contact-message" placeholder="请简要描述你的需求、时间安排、预算或合作目标。"></textarea>
-              </div>
-
-              <button class="submit-button" type="button">提交联系信息</button>
-              <p class="form-note">当前页面为静态演示版本，提交按钮尚未接入后端。</p>
+              <button class="submit-button" type="submit">Submit</button>
+              <p class="form-note" data-mailto-status aria-live="polite">提交后会打开你的默认邮箱应用。</p>
             </form>
           </article>
 
           <div class="note-stack">
             <article class="note-card">
-              <h3>建议准备的信息</h3>
+              <h3>建议写入的信息</h3>
               <ul class="info-list">
-                <li>你的身份与合作方向</li>
-                <li>所在城市与期望时间</li>
-                <li>风格偏好或项目目标</li>
-                <li>预算区间与交付预期</li>
+                <li>你的身份、所在城市与联系方式</li>
+                <li>想咨询的拍摄场景或合作方向</li>
+                <li>计划时间、预算范围与风格偏好</li>
+                <li>希望我们如何回访你</li>
               </ul>
             </article>
 
             <article class="note-card">
-              <h3>响应说明</h3>
-              <p>正式上线后，这里可接入统一客服渠道、工单系统与自动分发逻辑，让客户、摄影师与平台团队沟通更顺畅。</p>
+              <h3>发送方式说明</h3>
+              <p>点击提交后，页面会生成一封发往 `p41197954@gmail.com` 的邮件草稿；你确认发送后，我们就可以在邮箱中收到你的问题。</p>
             </article>
 
             <article class="note-card">
               <h3>下一步建议</h3>
-              <p>如果你希望先体验完整流程，可以直接进入预约页，再由平台承接后续确认与协作。</p>
+              <p>如果你已经准备好拍摄时间、地点和服务需求，也可以直接进入预约页，提交更完整的预约信息。</p>
             </article>
           </div>
         </div>
@@ -715,14 +689,9 @@
     </div>
 
     <footer class="footer-card">
-      <span>3H-Studio 正在构建更高效、更可信赖的双向影像服务平台。联系邮箱：p41197954@gmail.com</span>
-      <div class="footer-links">
-        <a href="index.html">首页</a>
-        <a href="booking.html">立即预约</a>
-        <a href="mailto:p41197954@gmail.com">邮箱联系</a>
-        <a href="contact-en.html" lang="en">English Version</a>
-      </div>
+      <span>3H-Studio 联系邮箱：p41197954@gmail.com。如果页面没有自动唤起邮箱应用，也可以手动发送邮件，并附上你的需求内容。</span>
     </footer>
   </main>
+  <script src="assets/mailto-form.js"></script>
 </body>
 </html>

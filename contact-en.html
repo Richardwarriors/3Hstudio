@@ -633,81 +633,55 @@
       <section class="section-card" aria-labelledby="form-title">
         <h2 id="form-title" class="section-title">Contact Form</h2>
         <p class="section-copy">
-          This front-end page can handle early contact needs now, and later connect to company email, WeChat, customer support tools, or a CRM.
+          Use the email-style form below to send your question to 3H-Studio directly. After you click submit, the page will open your default email app with `p41197954@gmail.com` prefilled as the recipient.
         </p>
 
         <div class="form-layout">
           <article class="form-card">
-            <h3>Leave your information</h3>
-            <p>We recommend sharing your role, inquiry type, city, and expected timing so we can respond more efficiently.</p>
+            <h3>Send an email inquiry directly</h3>
+            <p>Fill in `User ID`, `Subject`, and `Content`, and include your shoot direction, city, timeline, or budget so we can respond faster.</p>
 
-            <form class="contact-form">
+            <form class="contact-form" data-mailto-form data-recipient="p41197954@gmail.com" data-locale="en">
               <div class="field-grid">
                 <div class="field">
-                  <label for="contact-name">Name</label>
-                  <input id="contact-name" type="text" placeholder="Enter your name" />
+                  <label for="contact-userid">User ID</label>
+                  <input id="contact-userid" type="text" placeholder="Enter your email, WeChat, or user ID" data-mailto-userid />
                 </div>
                 <div class="field">
-                  <label for="contact-role">Role</label>
-                  <select id="contact-role">
-                    <option>Client</option>
-                    <option>Photographer</option>
-                    <option>Brand</option>
-                    <option>Partner</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="field-grid">
-                <div class="field">
-                  <label for="contact-method">Contact method</label>
-                  <input id="contact-method" type="text" placeholder="Email / phone / WeChat" />
-                </div>
-                <div class="field">
-                  <label for="contact-city">City</label>
-                  <input id="contact-city" type="text" placeholder="e.g. New York / Los Angeles / San Francisco" />
+                  <label for="contact-subject">Subject</label>
+                  <input id="contact-subject" type="text" placeholder="Example: Booking inquiry / Photographer onboarding / Brand collaboration" data-mailto-subject />
                 </div>
               </div>
 
               <div class="field">
-                <label for="contact-type">Inquiry type</label>
-                <select id="contact-type">
-                  <option>Booking request</option>
-                  <option>Photographer application</option>
-                  <option>Business partnership</option>
-                  <option>Other inquiry</option>
-                </select>
+                <label for="contact-message">Content</label>
+                <textarea id="contact-message" placeholder="Write your question, project details, city, timing, and budget range here." data-mailto-content></textarea>
               </div>
 
-              <div class="field">
-                <label for="contact-message">Message</label>
-                <textarea id="contact-message" placeholder="Briefly describe your needs, schedule, budget, or collaboration goals."></textarea>
-              </div>
-
-              <button class="submit-button" type="button">Submit Contact Request</button>
-              <p class="form-note">This page is currently a static demo. The submit button is not connected to a backend yet.</p>
+              <button class="submit-button" type="submit">Submit</button>
+              <p class="form-note" data-mailto-status aria-live="polite">Submitting will open your default email app.</p>
             </form>
           </article>
 
           <div class="note-stack">
             <article class="note-card">
-              <h3>Helpful details to prepare</h3>
+              <h3>Helpful details to include</h3>
               <ul class="info-list">
-                <li>Your role and collaboration direction</li>
-                <li>Your city and preferred timeline</li>
-                <li>Style preferences or project goals</li>
-                <li>Budget range and delivery expectations</li>
+                <li>Your role, city, and preferred contact method</li>
+                <li>The shoot category or collaboration direction you need</li>
+                <li>Your timeline, budget range, and style preference</li>
+                <li>How you would like us to follow up</li>
               </ul>
             </article>
 
             <article class="note-card">
-              <h3>Response notes</h3>
-              <p>After launch, this section can connect to a unified support channel, ticketing system, and automated routing workflow to make communication smoother for clients, photographers, and the platform team.</p>
+              <h3>How delivery works</h3>
+              <p>When you click submit, the page creates an email draft addressed to `p41197954@gmail.com`; once you send it, we can receive your message in that inbox.</p>
             </article>
 
             <article class="note-card">
               <h3>Next step suggestion</h3>
-              <p>If you would like to experience the full workflow first, you can go straight to the booking page and let the platform continue the follow-up process there.</p>
+              <p>If you already know your preferred timing, city, and service needs, you can also continue to the booking page and submit a fuller request there.</p>
             </article>
           </div>
         </div>
@@ -715,14 +689,9 @@
     </div>
 
     <footer class="footer-card">
-      <span>3H-Studio is building a more efficient and trustworthy two-sided visual service platform. Contact: p41197954@gmail.com</span>
-      <div class="footer-links">
-        <a href="index-en.html">Home</a>
-        <a href="booking-en.html">Book Now</a>
-        <a href="mailto:p41197954@gmail.com">Email</a>
-        <a href="contact.html" lang="zh-CN">中文版</a>
-      </div>
+      <span>3H-Studio contact email: p41197954@gmail.com. If your email app does not open automatically, you can also send your message to this address manually.</span>
     </footer>
   </main>
+  <script src="assets/mailto-form.js"></script>
 </body>
 </html>
