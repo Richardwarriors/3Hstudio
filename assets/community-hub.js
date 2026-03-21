@@ -15,7 +15,7 @@
       creatorStat: "摄影师",
       interactionStat: "互动总量",
       authTitle: "加入场景社区",
-      authIntro: "摄影师和用户都可以在这里建立身份、分享图片与交流灵感，让每个场景形成更真实、更持续的内容氛围。",
+      authIntro: "摄影师和用户都可以在这里建立身份、分享图片、视频与交流灵感，让每个场景形成更真实、更持续的内容氛围。",
       currentIdentity: "当前身份",
       logout: "退出身份",
       registerAction: "注册 / 切换身份",
@@ -29,29 +29,31 @@
       cityPlaceholder: "例如：纽约 / 上海 / 洛杉矶",
       authSuccess: "身份已更新，现在可以开始分享照片和参与互动。",
       authLogout: "当前身份已退出。",
-      composerTitle: "发布你的图片",
-      composerIntro: "上传作品、返图或灵感图，把真实的拍摄故事、生活片段和审美参考留在这个场景社区。",
+      composerTitle: "发布你的内容",
+      composerIntro: "上传多张作品、返图、短视频或灵感素材，把真实的拍摄故事、生活片段和审美参考留在这个场景社区。",
       titleLabel: "帖子标题",
-      titlePlaceholder: "给这组图片起一个标题",
+      titlePlaceholder: "给这组内容起一个标题",
       captionLabel: "分享内容",
       captionPlaceholder: "写下你的拍摄故事、风格想法、地点信息或合作背景。",
       tagsLabel: "标签",
       tagsPlaceholder: "例如：纽约, 毕业, 胶片感",
-      imageUrlLabel: "图片链接",
-      imageUrlPlaceholder: "可选：粘贴图片 URL",
-      fileLabel: "上传主图",
-      fileHelp: "建议上传一张清晰主图，方便其他用户快速浏览和交流。",
+      mediaUrlLabel: "媒体链接",
+      mediaUrlPlaceholder: "可选：每行粘贴一条图片或视频 URL",
+      mediaUrlHelp: "支持补充多条外链图片或视频，建议一行一条，方便帖子更完整地表达内容。",
+      fileLabel: "上传图片 / 视频",
+      fileHelp: "支持多张图片与短视频一起发布，让帖子更完整、更有现场感。",
       publishAction: "发布帖子",
-      publishNeedIdentity: "请先登记身份，再发布图片内容。",
-      publishNeedImage: "请上传图片文件，或填写一条图片链接后再发布。",
+      publishNeedIdentity: "请先登记身份，再发布内容。",
+      publishNeedImage: "请至少上传一项图片或视频内容，或填写媒体链接后再发布。",
       publishSuccess: "帖子已经发布到当前场景社区。",
-      publishError: "图片处理失败了，请换一张图或使用图片链接重试。",
+      publishError: "媒体处理失败了，请换一个文件、压缩视频，或使用媒体链接重试。",
+      publishTooLarge: "内容体积较大，暂时发布失败，请压缩视频或改用媒体链接。",
       toolbarTitle: "分享动态",
       filterAll: "全部内容",
       filterPhotographer: "摄影师分享",
       filterUser: "用户分享",
       emptyTitle: "当前筛选下还没有内容",
-      emptyCopy: "你可以先切换筛选，或者直接注册身份后发布第一条图片帖子。",
+      emptyCopy: "你可以先切换筛选，或者直接注册身份后发布第一条多媒体帖子。",
       reactions: {
         like: "点赞",
         favorite: "收藏",
@@ -77,7 +79,7 @@
       footerNote: "3H-Studio 场景社区欢迎摄影师与用户共同分享作品、灵感与真实反馈。",
       openBooking: "前往预约页",
       registerPrompt: "先登记身份，即可开启发帖与互动。",
-      fileSelected: "已选择图片：",
+      fileSelected: "已选择媒体：",
       timeJustNow: "刚刚",
       by: "来自"
     },
@@ -90,7 +92,7 @@
       creatorStat: "Photographers",
       interactionStat: "Interactions",
       authTitle: "Join the Scene Community",
-      authIntro: "Photographers and users can build an identity here, share images, and exchange ideas so each category feels more alive, social, and inspiring.",
+      authIntro: "Photographers and users can build an identity here, share images, videos, and ideas so each category feels more alive, social, and inspiring.",
       currentIdentity: "Current identity",
       logout: "Sign Out",
       registerAction: "Register / Switch Identity",
@@ -104,29 +106,31 @@
       cityPlaceholder: "e.g. New York / Shanghai / Los Angeles",
       authSuccess: "Identity updated. You can now share photos and join the conversation.",
       authLogout: "The current identity has been signed out.",
-      composerTitle: "Share Your Images",
-      composerIntro: "Share finished work, return images, or inspiration references so the feed feels grounded in real stories, daily moments, and visual taste.",
+      composerTitle: "Publish Your Media",
+      composerIntro: "Share multiple finished images, short videos, return assets, or inspiration references so the feed feels grounded in real stories, daily moments, and visual taste.",
       titleLabel: "Post title",
-      titlePlaceholder: "Give this image set a title",
+      titlePlaceholder: "Give this post a title",
       captionLabel: "Post copy",
       captionPlaceholder: "Share the story behind the images, style direction, location, or collaboration context.",
       tagsLabel: "Tags",
       tagsPlaceholder: "e.g. New York, graduation, film mood",
-      imageUrlLabel: "Image URL",
-      imageUrlPlaceholder: "Optional: paste an image URL",
-      fileLabel: "Upload cover image",
-      fileHelp: "A clean cover image helps other visitors browse, discover style, and join the conversation faster.",
+      mediaUrlLabel: "Media URLs",
+      mediaUrlPlaceholder: "Optional: paste one image or video URL per line",
+      mediaUrlHelp: "You can add multiple hosted images or videos here. One URL per line works best.",
+      fileLabel: "Upload Images / Videos",
+      fileHelp: "Supports multi-image posts and short video clips so each post feels richer and more immersive.",
       publishAction: "Publish Post",
-      publishNeedIdentity: "Register an identity before publishing images.",
-      publishNeedImage: "Please upload an image file or paste an image URL before publishing.",
+      publishNeedIdentity: "Register an identity before publishing.",
+      publishNeedImage: "Please upload at least one image or video, or paste media URLs before publishing.",
       publishSuccess: "The post has been published in this scene community.",
-      publishError: "Image processing failed. Please try another file or use an image URL instead.",
+      publishError: "Media processing failed. Please try another file, compress the video, or use hosted media URLs instead.",
+      publishTooLarge: "This post is too large to publish right now. Please compress the video or switch to hosted media URLs.",
       toolbarTitle: "Community Feed",
       filterAll: "All Posts",
       filterPhotographer: "Photographer Posts",
       filterUser: "User Posts",
       emptyTitle: "No posts match this filter yet",
-      emptyCopy: "Try another filter, or register an identity and publish the first image post.",
+      emptyCopy: "Try another filter, or register an identity and publish the first media post.",
       reactions: {
         like: "Like",
         favorite: "Favorite",
@@ -152,7 +156,7 @@
       footerNote: "3H-Studio scene communities are built to help photographers and users share work, references, and authentic feedback together.",
       openBooking: "Go to Booking",
       registerPrompt: "Register an identity first to unlock posting and interactions.",
-      fileSelected: "Selected image:",
+      fileSelected: "Selected media:",
       timeJustNow: "Just now",
       by: "From"
     }
@@ -171,7 +175,7 @@
         zh: {
           eyebrow: "旅拍场景社区",
           title: "旅拍与目的地影像分享页",
-          description: "这里聚合城市漫游、目的地写真与户外故事影像。摄影师和用户都可以在这里发布图片、互动评论，并为真实作品建立更活跃的内容社区。",
+          description: "这里聚合城市漫游、目的地写真与户外故事影像。摄影师和用户都可以在这里发布图片、视频、互动评论，并为真实作品建立更活跃的内容社区。",
           chips: ["旅拍样张分享", "城市路线灵感", "摄影师与用户双向互动"],
           noteTitle: "适合的分享内容",
           noteCopy: "城市街拍、目的地写真、旅行叙事、路线参考、拍摄前后对比和客户返图都很适合在这里沉淀。",
@@ -196,7 +200,7 @@
         en: {
           eyebrow: "Travel Community",
           title: "Travel and Destination Sharing Feed",
-          description: "This feed brings together city walks, destination portraits, and outdoor visual stories. Both photographers and users can publish images, comment, and build a more active scene-based community around real work.",
+          description: "This feed brings together city walks, destination portraits, and outdoor visual stories. Both photographers and users can publish images, videos, and comments to build a more active scene-based community around real work.",
           chips: ["Travel portfolio sharing", "Route and location inspiration", "Two-sided interaction for photographers and users"],
           noteTitle: "What belongs here",
           noteCopy: "City sessions, destination portraits, outdoor storytelling, route references, before-and-after edits, and client return images all fit naturally in this category.",
@@ -306,7 +310,7 @@
         zh: {
           eyebrow: "毕业场景社区",
           title: "毕业纪念拍摄分享页",
-          description: "这是面向毕业纪念、校园写真和节点记录的图片社区。摄影师可以分享样张与校园路线，用户也可以发布返图、风格偏好和评论反馈。",
+          description: "这是面向毕业纪念、校园写真和节点记录的内容社区。摄影师可以分享样张、短视频与校园路线，用户也可以发布返图、风格偏好和评论反馈。",
           chips: ["毕业返图分享", "校园路线灵感", "多人互动评论"],
           noteTitle: "适合的分享内容",
           noteCopy: "学士服、校园地标、好友合影、家庭返图、毕业花束和节点纪念都适合在这里持续沉淀。",
@@ -331,7 +335,7 @@
         en: {
           eyebrow: "Graduation Community",
           title: "Graduation Sharing Feed",
-          description: "This image community is built for graduation memories, campus portraits, and milestone coverage. Photographers can share samples and route ideas, while users can publish return images, style preferences, and feedback.",
+          description: "This media community is built for graduation memories, campus portraits, and milestone coverage. Photographers can share samples, clips, and route ideas, while users can publish return photos, style preferences, and feedback.",
           chips: ["Graduation return images", "Campus route inspiration", "Multi-user comments and interaction"],
           noteTitle: "What belongs here",
           noteCopy: "Caps and gowns, campus landmarks, friend groups, family return images, bouquets, and milestone memory sets all fit naturally in this category.",
@@ -659,8 +663,8 @@
     });
 
     fileInput.addEventListener("change", function () {
-      const file = fileInput.files && fileInput.files[0];
-      fileStatus.textContent = file ? copy.fileSelected + " " + file.name : "";
+      const files = Array.from(fileInput.files || []);
+      fileStatus.textContent = formatSelectedFiles(files, copy.fileSelected, state.locale);
     });
 
     composerForm.addEventListener("submit", async function (event) {
@@ -674,10 +678,11 @@
       const title = root.querySelector("#post-title").value.trim();
       const caption = root.querySelector("#post-caption").value.trim();
       const tagsValue = root.querySelector("#post-tags").value.trim();
-      const imageUrl = root.querySelector("#post-image-url").value.trim();
-      const file = fileInput.files && fileInput.files[0];
+      const mediaUrlsValue = root.querySelector("#post-media-urls").value.trim();
+      const files = Array.from(fileInput.files || []);
+      const mediaUrls = parseMediaUrls(mediaUrlsValue);
 
-      if (!file && !imageUrl) {
+      if (!files.length && !mediaUrls.length) {
         composerStatus.textContent = copy.publishNeedImage;
         return;
       }
@@ -685,7 +690,15 @@
       composerStatus.textContent = "";
 
       try {
-        const image = file ? await fileToImageData(file) : imageUrl;
+        const uploadedMedia = await Promise.all(files.map(fileToMediaItem));
+        const linkedMedia = mediaUrls.map(function (url) {
+          return {
+            id: createId("media"),
+            type: detectMediaType(url),
+            src: url
+          };
+        });
+        const mediaItems = uploadedMedia.concat(linkedMedia);
         const post = {
           id: createId("post"),
           authorId: state.currentUser.id,
@@ -693,8 +706,9 @@
           authorRole: state.currentUser.role,
           authorCity: state.currentUser.city || "",
           createdAt: Date.now(),
-          image: image,
-          title: title || (state.locale === "en" ? "Untitled image share" : "未命名图片分享"),
+          image: mediaItems[0] ? mediaItems[0].src : "",
+          mediaItems: mediaItems,
+          title: title || (state.locale === "en" ? "Untitled media post" : "未命名多媒体分享"),
           caption: caption || "",
           tags: tagsValue ? tagsValue.split(",").map(function (tag) { return tag.trim(); }).filter(Boolean) : [],
           reactions: {
@@ -707,7 +721,11 @@
         };
 
         state.posts.unshift(post);
-        savePosts(state.sceneKey, state.posts);
+        if (!savePosts(state.sceneKey, state.posts)) {
+          state.posts.shift();
+          composerStatus.textContent = copy.publishTooLarge;
+          return;
+        }
         composerForm.reset();
         fileStatus.textContent = "";
         composerStatus.textContent = copy.publishSuccess;
@@ -1063,12 +1081,13 @@
       '              <input id="post-tags" type="text" placeholder="' + escapeHtml(payload.copy.tagsPlaceholder) + '" />',
       "            </div>",
       '            <div class="form-field">',
-      '              <label for="post-image-url">' + escapeHtml(payload.copy.imageUrlLabel) + "</label>",
-      '              <input id="post-image-url" type="text" placeholder="' + escapeHtml(payload.copy.imageUrlPlaceholder) + '" />',
+      '              <label for="post-media-urls">' + escapeHtml(payload.copy.mediaUrlLabel) + "</label>",
+      '              <textarea id="post-media-urls" class="media-url-input" placeholder="' + escapeHtml(payload.copy.mediaUrlPlaceholder) + '"></textarea>',
+      '              <p class="form-help">' + escapeHtml(payload.copy.mediaUrlHelp) + "</p>",
       "            </div>",
       '            <div class="form-field">',
       '              <label for="post-file">' + escapeHtml(payload.copy.fileLabel) + "</label>",
-      '              <input id="post-file" class="file-input" type="file" accept="image/*" />',
+      '              <input id="post-file" class="file-input" type="file" accept="image/*,video/*" multiple />',
       '              <div id="file-status" class="form-status"></div>',
       '              <p class="form-help">' + escapeHtml(payload.copy.fileHelp) + "</p>",
       "            </div>",
@@ -1116,11 +1135,12 @@
     const caption = resolveLocalized(post.caption, state.locale);
     const comments = Array.isArray(post.comments) ? post.comments : [];
     const tags = Array.isArray(post.tags) ? post.tags : [];
+    const mediaItems = getPostMediaItems(post);
     const canDeletePost = Boolean(state.currentUser && post.authorId === state.currentUser.id);
 
     return [
       '<article class="post-card">',
-      '  <div class="post-image"><img src="' + escapeHtml(post.image) + '" alt="' + escapeHtml(title) + '" /></div>',
+      renderMediaGallery(mediaItems, title, state.locale),
       '  <div class="post-body">',
       '    <div class="post-meta">',
       '      <div class="post-author">',
@@ -1206,7 +1226,7 @@
   }
 
   function savePosts(sceneKey, posts) {
-    saveStoredJson(STORAGE_KEYS.postsPrefix + sceneKey, posts);
+    return saveStoredJson(STORAGE_KEYS.postsPrefix + sceneKey, posts);
   }
 
   function normalizePosts(posts) {
@@ -1215,6 +1235,8 @@
 
   function normalizePost(post) {
     const normalized = Object.assign({}, post);
+    normalized.mediaItems = normalizeMediaItems(normalized);
+    normalized.image = normalized.image || (normalized.mediaItems[0] ? normalized.mediaItems[0].src : "");
     normalized.reactions = normalized.reactions || {};
     ["like", "favorite", "love", "dislike"].forEach(function (reaction) {
       normalized.reactions[reaction] = ensureArray(normalized.reactions[reaction]);
@@ -1226,6 +1248,31 @@
     return normalized;
   }
 
+  function normalizeMediaItems(post) {
+    const rawItems = Array.isArray(post.mediaItems) && post.mediaItems.length
+      ? post.mediaItems
+      : (post.image ? [{ src: post.image }] : []);
+
+    return rawItems.map(function (item, index) {
+      return normalizeMediaItem(item, index);
+    }).filter(Boolean);
+  }
+
+  function normalizeMediaItem(item, index) {
+    const raw = typeof item === "string" ? { src: item } : Object.assign({}, item);
+    const src = String(raw.src || raw.url || raw.image || "").trim();
+
+    if (!src) {
+      return null;
+    }
+
+    return {
+      id: raw.id || "media-" + index,
+      type: normalizeMediaType(raw.type || raw.mimeType, src),
+      src: src
+    };
+  }
+
   function ensureReactionArray(post, reaction) {
     post.reactions = post.reactions || {};
     post.reactions[reaction] = ensureArray(post.reactions[reaction]);
@@ -1234,6 +1281,136 @@
 
   function ensureArray(value) {
     return Array.isArray(value) ? value : [];
+  }
+
+  function getPostMediaItems(post) {
+    if (!Array.isArray(post.mediaItems) || !post.mediaItems.length) {
+      post.mediaItems = normalizeMediaItems(post);
+    }
+    return ensureArray(post.mediaItems);
+  }
+
+  function renderMediaGallery(mediaItems, title, locale) {
+    const galleryItems = mediaItems.length ? mediaItems : [{
+      id: "fallback-media",
+      type: "image",
+      src: "assets/picture1.jpg"
+    }];
+    const galleryClass = galleryItems.length === 1
+      ? "is-single"
+      : (galleryItems.length === 2 ? "is-double" : "is-multi");
+    const summary = describeMediaCollection(galleryItems, locale);
+
+    return [
+      '  <div class="post-media-shell">',
+      summary ? '    <div class="post-media-summary">' + escapeHtml(summary) + "</div>" : "",
+      '    <div class="post-media-gallery ' + galleryClass + '">',
+      galleryItems.map(function (item, index) {
+        const isFeatured = galleryItems.length > 2 && index === 0;
+        const itemClass = "post-media-item"
+          + (item.type === "video" ? " is-video" : " is-image")
+          + (isFeatured ? " is-featured" : "");
+        return [
+          '      <figure class="' + itemClass + '">',
+          item.type === "video"
+            ? '        <video controls playsinline preload="metadata" src="' + escapeHtml(item.src) + '"></video>'
+            : '        <img src="' + escapeHtml(item.src) + '" alt="' + escapeHtml(title) + '" loading="lazy" />',
+          '        <span class="post-media-badge">' + escapeHtml(getMediaBadgeText(item.type, index, locale)) + "</span>",
+          "      </figure>"
+        ].join("");
+      }).join(""),
+      "    </div>",
+      "  </div>"
+    ].join("");
+  }
+
+  function describeMediaCollection(mediaItems, locale) {
+    let imageCount = 0;
+    let videoCount = 0;
+
+    ensureArray(mediaItems).forEach(function (item) {
+      if (item.type === "video") {
+        videoCount += 1;
+      } else {
+        imageCount += 1;
+      }
+    });
+
+    const parts = [];
+
+    if (imageCount) {
+      parts.push(locale === "en"
+        ? imageCount + (imageCount === 1 ? " photo" : " photos")
+        : imageCount + " 张照片");
+    }
+
+    if (videoCount) {
+      parts.push(locale === "en"
+        ? videoCount + (videoCount === 1 ? " video" : " videos")
+        : videoCount + " 条视频");
+    }
+
+    return parts.join(" · ");
+  }
+
+  function getMediaBadgeText(type, index, locale) {
+    if (type === "video") {
+      return locale === "en" ? "Video" : "视频";
+    }
+    return locale === "en" ? "Photo " + (index + 1) : "图片 " + (index + 1);
+  }
+
+  function formatSelectedFiles(files, label, locale) {
+    if (!files.length) {
+      return "";
+    }
+
+    const names = files.slice(0, 3).map(function (file) {
+      return file.name;
+    }).join(locale === "en" ? ", " : "、");
+    const extraCount = files.length - 3;
+    const countText = locale === "en"
+      ? files.length + (files.length === 1 ? " item" : " items")
+      : "共 " + files.length + " 项";
+
+    return label + " " + countText + (names ? " · " + names : "") + (extraCount > 0 ? (locale === "en" ? " +" + extraCount + " more" : " 等更多内容") : "");
+  }
+
+  function parseMediaUrls(value) {
+    return String(value || "")
+      .split(/\r?\n/)
+      .map(function (item) {
+        return item.trim();
+      })
+      .filter(Boolean);
+  }
+
+  function normalizeMediaType(type, src) {
+    const lowered = String(type || "").trim().toLowerCase();
+
+    if (lowered === "video" || lowered.indexOf("video/") === 0) {
+      return "video";
+    }
+
+    if (lowered === "image" || lowered.indexOf("image/") === 0) {
+      return "image";
+    }
+
+    return detectMediaType(src);
+  }
+
+  function detectMediaType(value) {
+    const src = String(value || "").trim();
+
+    if (/^data:video\//i.test(src)) {
+      return "video";
+    }
+
+    if (/^data:image\//i.test(src)) {
+      return "image";
+    }
+
+    return /\.(mp4|webm|ogg|mov|m4v)(?:[?#].*)?$/i.test(src) ? "video" : "image";
   }
 
   function totalInteractions(post) {
@@ -1336,6 +1513,28 @@
     root.style.setProperty("--scene-glow", theme.glow);
   }
 
+  function fileToMediaItem(file) {
+    const type = normalizeMediaType(file.type, file.name);
+
+    if (type === "video") {
+      return readFileAsDataUrl(file).then(function (src) {
+        return {
+          id: createId("media"),
+          type: "video",
+          src: src
+        };
+      });
+    }
+
+    return fileToImageData(file).then(function (src) {
+      return {
+        id: createId("media"),
+        type: "image",
+        src: src
+      };
+    });
+  }
+
   function fileToImageData(file) {
     return new Promise(function (resolve, reject) {
       const reader = new FileReader();
@@ -1373,6 +1572,22 @@
         };
 
         image.src = reader.result;
+      };
+
+      reader.onerror = function () {
+        reject(new Error("Read failed"));
+      };
+
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function readFileAsDataUrl(file) {
+    return new Promise(function (resolve, reject) {
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        resolve(String(reader.result || ""));
       };
 
       reader.onerror = function () {
