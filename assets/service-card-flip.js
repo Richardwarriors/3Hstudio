@@ -13,19 +13,43 @@
     });
   }
 
+  function openCard(card) {
+    closeAll(card);
+    card.classList.add("is-flipped");
+  }
+
   cards.forEach(function (card) {
+    const frontFace = card.querySelector(".service-face-front");
+
+    if (frontFace) {
+      frontFace.addEventListener("click", function (event) {
+        if (event.target.closest("a, button")) {
+          return;
+        }
+
+        openCard(card);
+      });
+    }
+
     card.querySelectorAll("[data-flip-open]").forEach(function (button) {
       button.addEventListener("click", function (event) {
         event.preventDefault();
-        closeAll(card);
-        card.classList.add("is-flipped");
+        event.stopPropagation();
+        openCard(card);
       });
     });
 
     card.querySelectorAll("[data-flip-close]").forEach(function (button) {
       button.addEventListener("click", function (event) {
         event.preventDefault();
+        event.stopPropagation();
         card.classList.remove("is-flipped");
+      });
+    });
+
+    card.querySelectorAll(".service-enter-link").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.stopPropagation();
       });
     });
   });

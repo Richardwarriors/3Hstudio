@@ -1,4 +1,5 @@
 .service-card.service-card-interactive {
+  position: relative;
   perspective: 1600px;
   background: transparent;
   border: 0;
@@ -19,6 +20,7 @@
 }
 
 .service-card-interactive .service-face {
+  position: relative;
   min-height: 100%;
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -32,6 +34,7 @@
   display: grid;
   grid-template-rows: auto 1fr;
   height: 100%;
+  pointer-events: auto;
 }
 
 .service-card-interactive .service-face-back {
@@ -43,6 +46,16 @@
   padding: 22px;
   transform: rotateY(180deg);
   color: #fff;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.service-card-interactive.is-flipped .service-face-front {
+  pointer-events: none;
+}
+
+.service-card-interactive.is-flipped .service-face-back {
+  pointer-events: auto;
 }
 
 .service-card-interactive[data-scene="travel"] .service-face-back {
@@ -120,6 +133,13 @@
 
 .service-preview-button {
   justify-self: start;
+}
+
+.service-card-interactive .service-face-front,
+.service-preview-button,
+.service-enter-link,
+.service-back-button {
+  touch-action: manipulation;
 }
 
 .service-access-label {
