@@ -70,6 +70,10 @@
       commentNeedIdentity: "请先登记身份再评论。",
       commentNeedText: "评论内容不能为空。",
       commentSuccess: "评论已发布。",
+      deletePost: "删除帖子",
+      deleteComment: "删除评论",
+      deletePostConfirm: "确定要删除这条帖子吗？删除后将无法恢复。",
+      deleteCommentConfirm: "确定要删除这条评论吗？删除后将无法恢复。",
       guideTitle: "参与提示",
       guideItems: [
         "摄影师适合分享作品、风格样张、拍摄地点和服务案例",
@@ -147,6 +151,10 @@
       commentNeedIdentity: "Register an identity before commenting.",
       commentNeedText: "The comment cannot be empty.",
       commentSuccess: "Comment posted.",
+      deletePost: "Delete Post",
+      deleteComment: "Delete Comment",
+      deletePostConfirm: "Are you sure you want to delete this post? This cannot be undone.",
+      deleteCommentConfirm: "Are you sure you want to delete this comment? This cannot be undone.",
       guideTitle: "Participation Tips",
       guideItems: [
         "Photographers can share finished work, style samples, locations, and service cases",
@@ -532,7 +540,8 @@
         return;
       }
 
-      const user = {
+      const existingUser = findExistingIdentity(state.users, name, role, city);
+      const user = existingUser || {
         id: createId("user"),
         name: name,
         role: role,
@@ -630,6 +639,18 @@
     });
 
     feedList.addEventListener("click", function (event) {
+      const deletePostButton = event.target.closest("[data-delete-post]");
+      if (deletePostButton) {
+        deletePost(deletePostButton.dataset.postId);
+        return;
+      }
+
+      const deleteCommentButton = event.target.closest("[data-delete-comment]");
+      if (deleteCommentButton) {
+        deleteComment(deleteCommentButton.dataset.postId, deleteCommentButton.dataset.commentId);
+        return;
+      }
+
       const reactionButton = event.target.closest("[data-reaction]");
       if (reactionButton) {
         const postId = reactionButton.dataset.postId;
@@ -671,6 +692,7 @@
 
       post.comments.push({
         id: createId("comment"),
+        authorId: state.currentUser.id,
         authorName: state.currentUser.name,
         authorRole: state.currentUser.role,
         text: text,
@@ -772,6 +794,64 @@
         list.push(state.currentUser.id);
       }
 
+      savePosts(state.sceneKey, state.posts);
+      updateStats();
+      renderFeed();
+    }
+
+    function deletePost(postId) {
+      if (!state.currentUser) {
+        return;
+      }
+
+      const post = state.posts.find(function (item) {
+        return item.id === postId;
+      });
+
+      if (!post || post.authorId !== state.currentUser.id) {
+        return;
+      }
+
+      if (!window.confirm(copy.deletePostConfirm)) {
+        return;
+      }
+
+      state.posts = state.posts.filter(function (item) {
+        return item.id !== postId;
+      });
+      savePosts(state.sceneKey, state.posts);
+      updateStats();
+      renderFeed();
+    }
+
+    function deleteComment(postId, commentId) {
+      if (!state.currentUser) {
+        return;
+      }
+
+      const post = state.posts.find(function (item) {
+        return item.id === postId;
+      });
+
+      if (!post) {
+        return;
+      }
+
+      const comment = ensureArray(post.comments).find(function (item) {
+        return item.id === commentId;
+      });
+
+      if (!comment || comment.authorId !== state.currentUser.id) {
+        return;
+      }
+
+      if (!window.confirm(copy.deleteCommentConfirm)) {
+        return;
+      }
+
+      post.comments = ensureArray(post.comments).filter(function (item) {
+        return item.id !== commentId;
+      });
       savePosts(state.sceneKey, state.posts);
       updateStats();
       renderFeed();
@@ -940,6 +1020,7 @@
     const caption = resolveLocalized(post.caption, state.locale);
     const comments = Array.isArray(post.comments) ? post.comments : [];
     const tags = Array.isArray(post.tags) ? post.tags : [];
+    const canDeletePost = Boolean(state.currentUser && post.authorId === state.currentUser.id);
 
     return [
       '<article class="post-card">',
@@ -951,7 +1032,12 @@
       '        <span class="post-role">' + escapeHtml(getRoleLabel(post.authorRole, state.locale)) + "</span>",
       '        <span class="post-time">' + escapeHtml(formatTime(post.createdAt, state.locale, state.copy.timeJustNow)) + "</span>",
       "      </div>",
-      '      <span class="post-time">' + escapeHtml((post.authorCity || state.copy.by + " 3H-Studio")) + "</span>",
+      '      <div class="post-meta-side">',
+      '        <span class="post-time">' + escapeHtml((post.authorCity || state.copy.by + " 3H-Studio")) + "</span>",
+      canDeletePost
+        ? '        <button class="delete-button" type="button" data-delete-post data-post-id="' + escapeHtml(post.id) + '">' + escapeHtml(state.copy.deletePost) + "</button>"
+        : "",
+      "      </div>",
       "    </div>",
       '    <h3 class="post-title">' + escapeHtml(title) + "</h3>",
       '    <p class="post-caption">' + escapeHtml(caption) + "</p>",
@@ -970,7 +1056,7 @@
           }).join("") + "</div>",
       '    <div class="comment-section">',
       '      <h4 class="comment-heading">' + escapeHtml(state.copy.commentsTitle) + "</h4>",
-      '      <div class="comment-list">' + renderComments(comments, state.locale) + "</div>",
+      '      <div class="comment-list">' + renderComments(comments, state.locale, state, post.id) + "</div>",
       '      <form class="comment-form" data-comment-form data-post-id="' + escapeHtml(post.id) + '">',
       '        <div class="form-field">',
       '          <textarea placeholder="' + escapeHtml(state.copy.commentPlaceholder) + '"' + (state.currentUser ? "" : " disabled") + '></textarea>',
@@ -986,16 +1072,22 @@
     ].join("");
   }
 
-  function renderComments(comments, locale) {
+  function renderComments(comments, locale, state, postId) {
     if (!comments.length) {
       return "";
     }
 
     return comments.map(function (comment) {
       const text = resolveLocalized(comment.text, locale);
+      const canDeleteComment = Boolean(state.currentUser && comment.authorId === state.currentUser.id);
       return [
         '<div class="comment-item">',
-        '  <strong>' + escapeHtml(comment.authorName || "3H Member") + " · " + escapeHtml(getRoleLabel(comment.authorRole, locale)) + "</strong>",
+        '  <div class="comment-head">',
+        '    <strong>' + escapeHtml(comment.authorName || "3H Member") + " · " + escapeHtml(getRoleLabel(comment.authorRole, locale)) + "</strong>",
+        canDeleteComment
+          ? '    <button class="delete-button" type="button" data-delete-comment data-post-id="' + escapeHtml(postId) + '" data-comment-id="' + escapeHtml(comment.id) + '">' + escapeHtml(UI[locale].deleteComment) + "</button>"
+          : "",
+        "  </div>",
         '  <p>' + escapeHtml(text) + "</p>",
         "</div>"
       ].join("");
@@ -1031,7 +1123,9 @@
     ["like", "favorite", "love", "dislike"].forEach(function (reaction) {
       normalized.reactions[reaction] = ensureArray(normalized.reactions[reaction]);
     });
-    normalized.comments = ensureArray(normalized.comments);
+    normalized.comments = ensureArray(normalized.comments).map(function (comment) {
+      return Object.assign({}, comment);
+    });
     normalized.tags = ensureArray(normalized.tags);
     return normalized;
   }
@@ -1107,6 +1201,22 @@
 
   function createId(prefix) {
     return prefix + "-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 8);
+  }
+
+  function findExistingIdentity(users, name, role, city) {
+    const normalizedName = normalizeIdentityValue(name);
+    const normalizedRole = normalizeIdentityValue(role);
+    const normalizedCity = normalizeIdentityValue(city);
+
+    return ensureArray(users).find(function (user) {
+      return normalizeIdentityValue(user.name) === normalizedName
+        && normalizeIdentityValue(user.role) === normalizedRole
+        && normalizeIdentityValue(user.city) === normalizedCity;
+    }) || null;
+  }
+
+  function normalizeIdentityValue(value) {
+    return String(value || "").trim().toLowerCase();
   }
 
   function clone(value) {
