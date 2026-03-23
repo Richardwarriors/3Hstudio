@@ -15,11 +15,11 @@
       creatorStat: "摄影师",
       interactionStat: "互动总量",
       authTitle: "加入场景社区",
-      authIntro: "摄影师和用户都可以在这里建立身份、分享图片、视频与交流灵感，让每个场景形成更真实、更持续的内容氛围。",
+      authIntro: "摄影师和用户都可以在这里完成身份注册、完善基本信息并设置密码，然后开始分享图片、视频与交流灵感，让每个场景形成更真实、更持续的内容氛围。",
       currentIdentity: "当前身份",
       logout: "退出身份",
-      registerAction: "注册 / 切换身份",
-      registerNote: "登记后即可发布帖子、评论并参与互动。",
+      registerAction: "注册 / 登录身份",
+      registerNote: "完善基本信息并设置密码后，即可发布帖子、评论并参与互动。",
       nameLabel: "昵称",
       namePlaceholder: "例如：林同学 / Emma",
       roleLabel: "身份",
@@ -27,7 +27,18 @@
       roleUser: "用户",
       cityLabel: "城市",
       cityPlaceholder: "例如：纽约 / 上海 / 洛杉矶",
-      authSuccess: "身份已更新，现在可以开始分享照片和参与互动。",
+      emailLabel: "邮箱",
+      emailPlaceholder: "例如：name@example.com",
+      passwordLabel: "密码",
+      passwordPlaceholder: "请设置至少 8 位密码",
+      confirmPasswordLabel: "确认密码",
+      confirmPasswordPlaceholder: "请再次输入密码",
+      authNeedFields: "请完整填写昵称、身份、城市、邮箱和密码信息。",
+      authEmailInvalid: "请输入有效的邮箱地址。",
+      authPasswordLength: "密码至少需要 8 位。",
+      authPasswordMismatch: "两次输入的密码不一致。",
+      authPasswordIncorrect: "密码不正确，请重新输入后继续。",
+      authSuccess: "身份已完成登记，现在可以开始分享照片和参与互动。",
       authLogout: "当前身份已退出。",
       composerTitle: "发布你的内容",
       composerIntro: "上传多张作品、返图、短视频或灵感素材，把真实的拍摄故事、生活片段和审美参考留在这个场景社区。",
@@ -92,11 +103,11 @@
       creatorStat: "Photographers",
       interactionStat: "Interactions",
       authTitle: "Join the Scene Community",
-      authIntro: "Photographers and users can build an identity here, share images, videos, and ideas so each category feels more alive, social, and inspiring.",
+      authIntro: "Photographers and users can register here, complete their basic profile, set a password, and then start sharing images, videos, and ideas so each category feels more alive, social, and inspiring.",
       currentIdentity: "Current identity",
       logout: "Sign Out",
-      registerAction: "Register / Switch Identity",
-      registerNote: "After registering, you can publish posts, comment, and interact with the feed.",
+      registerAction: "Register / Sign In",
+      registerNote: "Complete your basic info and set a password to publish posts, comment, and interact with the feed.",
       nameLabel: "Display name",
       namePlaceholder: "e.g. Emma / Alex",
       roleLabel: "Role",
@@ -104,7 +115,18 @@
       roleUser: "User",
       cityLabel: "City",
       cityPlaceholder: "e.g. New York / Shanghai / Los Angeles",
-      authSuccess: "Identity updated. You can now share photos and join the conversation.",
+      emailLabel: "Email",
+      emailPlaceholder: "e.g. name@example.com",
+      passwordLabel: "Password",
+      passwordPlaceholder: "Use at least 8 characters",
+      confirmPasswordLabel: "Confirm password",
+      confirmPasswordPlaceholder: "Enter the password again",
+      authNeedFields: "Please complete your display name, role, city, email, and password.",
+      authEmailInvalid: "Please enter a valid email address.",
+      authPasswordLength: "Your password must be at least 8 characters.",
+      authPasswordMismatch: "The two password entries do not match.",
+      authPasswordIncorrect: "The password is incorrect. Please try again.",
+      authSuccess: "Identity saved. You can now share photos and join the conversation.",
       authLogout: "The current identity has been signed out.",
       composerTitle: "Publish Your Media",
       composerIntro: "Share multiple finished images, short videos, return assets, or inspiration references so the feed feels grounded in real stories, daily moments, and visual taste.",
@@ -592,13 +614,17 @@
       links: links
     });
 
+    const storedUsers = normalizeUsers(loadStoredJson(STORAGE_KEYS.users, []));
+    const storedCurrentUser = normalizeCurrentUser(loadStoredJson(STORAGE_KEYS.currentUser, null));
+    const matchedCurrentUser = storedCurrentUser ? findUserByIdOrEmail(storedUsers, storedCurrentUser) : null;
+
     const state = {
       sceneKey: sceneKey,
       locale: locale,
       copy: copy,
       posts: ensurePosts(sceneKey, scene.seedPosts),
-      users: loadStoredJson(STORAGE_KEYS.users, []),
-      currentUser: loadStoredJson(STORAGE_KEYS.currentUser, null),
+      users: storedUsers,
+      currentUser: matchedCurrentUser ? getPublicUser(matchedCurrentUser) : storedCurrentUser,
       filter: "all"
     };
 
@@ -623,28 +649,57 @@
     updateStats();
     renderFeed();
 
-    authForm.addEventListener("submit", function (event) {
+    authForm.addEventListener("submit", async function (event) {
       event.preventDefault();
       const name = root.querySelector("#auth-name").value.trim();
       const role = root.querySelector("#auth-role").value;
       const city = root.querySelector("#auth-city").value.trim();
+      const email = root.querySelector("#auth-email").value.trim();
+      const password = root.querySelector("#auth-password").value;
+      const confirmPassword = root.querySelector("#auth-password-confirm").value;
 
-      if (!name) {
-        authStatus.textContent = copy.registerPrompt;
+      if (!name || !city || !email || !password || !confirmPassword) {
+        authStatus.textContent = copy.authNeedFields;
         return;
       }
 
-      const existingUser = findExistingIdentity(state.users, name, role, city);
-      const user = existingUser || {
+      if (!isValidEmail(email)) {
+        authStatus.textContent = copy.authEmailInvalid;
+        return;
+      }
+
+      if (password.length < 8) {
+        authStatus.textContent = copy.authPasswordLength;
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        authStatus.textContent = copy.authPasswordMismatch;
+        return;
+      }
+
+      const passwordHash = await hashSecret(password);
+      const existingUser = findUserByEmail(state.users, email) || findExistingIdentity(state.users, name, role, city);
+
+      if (existingUser && existingUser.passwordHash && existingUser.passwordHash !== passwordHash) {
+        authStatus.textContent = copy.authPasswordIncorrect;
+        return;
+      }
+
+      const user = normalizeUserRecord(Object.assign({}, existingUser || {
         id: createId("user"),
+        createdAt: Date.now()
+      }, {
         name: name,
         role: role,
-        city: city || "",
-        createdAt: Date.now()
-      };
+        city: city,
+        email: email,
+        passwordHash: passwordHash,
+        updatedAt: Date.now()
+      }));
 
-      state.currentUser = user;
-      state.users = dedupeUsers(state.users.concat(user));
+      state.currentUser = getPublicUser(user);
+      state.users = upsertUser(state.users, user);
       saveStoredJson(STORAGE_KEYS.currentUser, state.currentUser);
       saveStoredJson(STORAGE_KEYS.users, state.users);
       authStatus.textContent = copy.authSuccess;
@@ -823,7 +878,9 @@
       identityCard.hidden = false;
       identityName.textContent = state.currentUser.name;
       identityRole.textContent = getRoleLabel(state.currentUser.role, state.locale);
-      identityMeta.textContent = state.currentUser.city ? copy.by + " " + state.currentUser.city : copy.by + " 3H-Studio";
+      identityMeta.textContent = [state.currentUser.city ? copy.by + " " + state.currentUser.city : "", state.currentUser.email || ""]
+        .filter(Boolean)
+        .join(" · ") || copy.by + " 3H-Studio";
     }
 
     function updateStats() {
@@ -1039,9 +1096,25 @@
       "              </select>",
       "            </div>",
       "          </div>",
-      '          <div class="form-field">',
-      '            <label for="auth-city">' + escapeHtml(payload.copy.cityLabel) + "</label>",
-      '            <input id="auth-city" type="text" placeholder="' + escapeHtml(payload.copy.cityPlaceholder) + '" />',
+      '          <div class="form-grid">',
+      '            <div class="form-field">',
+      '              <label for="auth-city">' + escapeHtml(payload.copy.cityLabel) + "</label>",
+      '              <input id="auth-city" type="text" placeholder="' + escapeHtml(payload.copy.cityPlaceholder) + '" />',
+      "            </div>",
+      '            <div class="form-field">',
+      '              <label for="auth-email">' + escapeHtml(payload.copy.emailLabel) + "</label>",
+      '              <input id="auth-email" type="email" placeholder="' + escapeHtml(payload.copy.emailPlaceholder) + '" autocomplete="email" />',
+      "            </div>",
+      "          </div>",
+      '          <div class="form-grid">',
+      '            <div class="form-field">',
+      '              <label for="auth-password">' + escapeHtml(payload.copy.passwordLabel) + "</label>",
+      '              <input id="auth-password" type="password" minlength="8" placeholder="' + escapeHtml(payload.copy.passwordPlaceholder) + '" />',
+      "            </div>",
+      '            <div class="form-field">',
+      '              <label for="auth-password-confirm">' + escapeHtml(payload.copy.confirmPasswordLabel) + "</label>",
+      '              <input id="auth-password-confirm" type="password" minlength="8" placeholder="' + escapeHtml(payload.copy.confirmPasswordPlaceholder) + '" />',
+      "            </div>",
       "          </div>",
       '          <button class="action-button" type="submit">' + escapeHtml(payload.copy.registerAction) + "</button>",
       '          <p class="form-help">' + escapeHtml(payload.copy.registerNote) + "</p>",
@@ -1464,10 +1537,69 @@
     }
   }
 
+  function normalizeUsers(users) {
+    return ensureArray(users).map(normalizeUserRecord);
+  }
+
+  function normalizeCurrentUser(user) {
+    return user ? getPublicUser(normalizeUserRecord(user)) : null;
+  }
+
+  function normalizeUserRecord(user) {
+    const normalized = Object.assign({}, user || {});
+
+    normalized.id = String(normalized.id || createId("user"));
+    normalized.name = String(normalized.name || "").trim();
+    normalized.role = normalized.role === "photographer" ? "photographer" : "user";
+    normalized.city = String(normalized.city || "").trim();
+    normalized.email = String(normalized.email || "").trim();
+    normalized.passwordHash = String(normalized.passwordHash || "");
+    normalized.createdAt = Number(normalized.createdAt) || Date.now();
+    normalized.updatedAt = Number(normalized.updatedAt) || normalized.createdAt;
+
+    return normalized;
+  }
+
+  function getPublicUser(user) {
+    const normalized = normalizeUserRecord(user);
+
+    return {
+      id: normalized.id,
+      name: normalized.name,
+      role: normalized.role,
+      city: normalized.city,
+      email: normalized.email,
+      createdAt: normalized.createdAt,
+      updatedAt: normalized.updatedAt
+    };
+  }
+
+  function upsertUser(users, nextUser) {
+    const normalizedNextUser = normalizeUserRecord(nextUser);
+    let replaced = false;
+    const nextUsers = ensureArray(users).map(function (user) {
+      const normalizedUser = normalizeUserRecord(user);
+
+      if (normalizedUser.id === normalizedNextUser.id) {
+        replaced = true;
+        return normalizedNextUser;
+      }
+
+      return normalizedUser;
+    });
+
+    if (!replaced) {
+      nextUsers.push(normalizedNextUser);
+    }
+
+    return dedupeUsers(nextUsers);
+  }
+
   function dedupeUsers(users) {
     const seen = new Map();
     users.forEach(function (user) {
-      seen.set(user.id, user);
+      const normalizedUser = normalizeUserRecord(user);
+      seen.set(normalizedUser.id, normalizedUser);
     });
     return Array.from(seen.values());
   }
@@ -1488,8 +1620,59 @@
     }) || null;
   }
 
+  function findUserByEmail(users, email) {
+    const normalizedEmail = normalizeEmailValue(email);
+
+    if (!normalizedEmail) {
+      return null;
+    }
+
+    return ensureArray(users).find(function (user) {
+      return normalizeEmailValue(user.email) === normalizedEmail;
+    }) || null;
+  }
+
+  function findUserByIdOrEmail(users, currentUser) {
+    const normalizedId = String((currentUser || {}).id || "").trim();
+    const normalizedEmail = normalizeEmailValue((currentUser || {}).email);
+
+    return ensureArray(users).find(function (user) {
+      return (normalizedId && String(user.id || "").trim() === normalizedId)
+        || (normalizedEmail && normalizeEmailValue(user.email) === normalizedEmail);
+    }) || null;
+  }
+
   function normalizeIdentityValue(value) {
     return String(value || "").trim().toLowerCase();
+  }
+
+  function normalizeEmailValue(value) {
+    return String(value || "").trim().toLowerCase();
+  }
+
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+  }
+
+  async function hashSecret(value) {
+    const text = String(value || "");
+
+    if (window.crypto && window.crypto.subtle && window.TextEncoder) {
+      try {
+        const buffer = await window.crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+        return "sha256:" + bufferToHex(buffer);
+      } catch (error) {
+        return "plain:" + text;
+      }
+    }
+
+    return "plain:" + text;
+  }
+
+  function bufferToHex(buffer) {
+    return Array.from(new Uint8Array(buffer)).map(function (item) {
+      return item.toString(16).padStart(2, "0");
+    }).join("");
   }
 
   function clone(value) {

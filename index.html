@@ -332,12 +332,15 @@
 
     .contact-sheet {
       display: grid;
-      gap: 12px;
-      align-self: end;
+      gap: 16px;
+      align-self: stretch;
+      align-content: end;
+      padding-bottom: 8px;
     }
 
     .info-card {
-      padding: 20px 22px;
+      min-height: 168px;
+      padding: 22px 24px;
       border-radius: 22px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
       border: 1px solid rgba(255, 255, 255, 0.14);
@@ -896,11 +899,6 @@
         </div>
 
         <aside class="contact-sheet">
-          <article class="info-card info-card-featured">
-            <span class="insight-label">平台定位</span>
-            <strong class="hero-number">中美双向运营</strong>
-            <p>以中文与英文双语触达中国与美国市场，让客户与摄影师都能在同一平台高效连接。</p>
-          </article>
           <article class="info-card">
             <span class="insight-label">平台使命</span>
             <p>让优秀摄影创作者与真实影像需求高效相遇，让风格、能力与合作机会被更精准地看见。</p>
@@ -1119,7 +1117,6 @@
       <div class="footer-intro">
         <span class="footer-kicker">联系我们</span>
         <h2 class="footer-title">直接把问题发送给 3H-Studio</h2>
-        <p class="footer-copy">填写 `User ID`、邮件主题和内容后点击提交，页面会自动调用你的默认邮箱应用，并把邮件收件人预设为 `p41197954@gmail.com`。</p>
       </div>
       <form class="footer-form" data-mailto-form data-recipient="p41197954@gmail.com" data-locale="zh">
         <div class="footer-form-grid">

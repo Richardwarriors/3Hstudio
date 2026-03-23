@@ -332,12 +332,15 @@
 
     .contact-sheet {
       display: grid;
-      gap: 12px;
-      align-self: end;
+      gap: 16px;
+      align-self: stretch;
+      align-content: end;
+      padding-bottom: 8px;
     }
 
     .info-card {
-      padding: 20px 22px;
+      min-height: 168px;
+      padding: 22px 24px;
       border-radius: 22px;
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.08));
       border: 1px solid rgba(255, 255, 255, 0.14);
@@ -896,11 +899,6 @@
         </div>
 
         <aside class="contact-sheet">
-          <article class="info-card info-card-featured">
-            <span class="insight-label">Platform Positioning</span>
-            <strong class="hero-number">China + US</strong>
-            <p>A bilingual operating model built for both China and the United States, connecting photographers and clients through one platform.</p>
-          </article>
           <article class="info-card">
             <span class="insight-label">Platform Mission</span>
             <p>Help strong photographers and real client demand find each other faster, with clearer visibility into style, capability, and fit.</p>
@@ -1119,7 +1117,6 @@
       <div class="footer-intro">
         <span class="footer-kicker">Contact</span>
         <h2 class="footer-title">Send your question directly to 3H-Studio</h2>
-        <p class="footer-copy">Fill in your `User ID`, `Subject`, and message content, then click submit. The page will open your default email app with `p41197954@gmail.com` prefilled as the recipient.</p>
       </div>
       <form class="footer-form" data-mailto-form data-recipient="p41197954@gmail.com" data-locale="en">
         <div class="footer-form-grid">
