@@ -343,6 +343,10 @@ select {
   margin-top: 22px;
 }
 
+.community-dashboard-single {
+  grid-template-columns: 1fr;
+}
+
 .panel-card {
   position: relative;
   overflow: hidden;
@@ -611,6 +615,12 @@ select {
 .sidebar-card {
   position: relative;
   padding: 22px;
+}
+
+.access-card {
+  background:
+    radial-gradient(320px circle at 100% 0%, rgba(255, 255, 255, 0.22), transparent 42%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(248, 245, 241, 0.88));
 }
 
 .toolbar-row {

@@ -6,6 +6,7 @@
   <title>3H-Studio | 官方首页</title>
   <link rel="stylesheet" href="assets/customer-support-widget.css" />
   <link rel="stylesheet" href="assets/service-card-flip.css" />
+  <link rel="stylesheet" href="assets/site-auth.css" />
   <style>
     :root {
       --bg-1: #fbf8f4;
@@ -866,14 +867,100 @@
         <span class="brand-mark">3H</span>
         <span>3H-Studio</span>
       </a>
-      <nav aria-label="站点导航">
-        <ul class="nav-list">
-          <li><a href="index.html">首页</a></li>
-          <li><a href="booking.html">立即预约</a></li>
-          <li><a href="#contact">联系我们</a></li>
-          <li><a href="index-en.html" lang="en">EN</a></li>
-        </ul>
-      </nav>
+      <div class="header-actions">
+        <nav aria-label="站点导航">
+          <ul class="nav-list">
+            <li><a href="index.html">首页</a></li>
+            <li><a href="booking.html">立即预约</a></li>
+            <li><a href="#contact">联系我们</a></li>
+            <li><a href="index-en.html" lang="en">EN</a></li>
+          </ul>
+        </nav>
+        <div id="site-auth" class="auth-entry" data-site-auth data-locale="zh">
+          <div class="auth-toolbar" data-auth-actions>
+            <button class="auth-trigger" type="button" data-auth-open="login">Log In</button>
+            <button class="auth-trigger auth-trigger-primary" type="button" data-auth-open="signup">Sign Up</button>
+          </div>
+          <div class="auth-session" data-auth-session hidden>
+            <span class="auth-chip" data-auth-name></span>
+            <button class="auth-trigger" type="button" data-auth-logout>Log Out</button>
+          </div>
+          <div class="auth-backdrop" data-auth-backdrop hidden></div>
+          <div class="auth-modal" data-auth-modal hidden>
+            <div class="auth-panel">
+              <button class="auth-close" type="button" data-auth-close aria-label="关闭">×</button>
+              <span class="auth-kicker">Community Access</span>
+              <h2 class="auth-title">连接、登录、开始分享</h2>
+              <p class="auth-copy">账号入口统一放在首页头部。登录后即可进入社区互动，注册时可完整填写基本信息与密码。</p>
+              <div class="auth-tabs" role="tablist" aria-label="账号入口">
+                <button class="auth-tab is-active" type="button" data-auth-tab="login">Log In</button>
+                <button class="auth-tab" type="button" data-auth-tab="signup">Sign Up</button>
+              </div>
+              <div class="auth-pane-wrap">
+                <section class="auth-pane" data-auth-pane="login">
+                  <form class="auth-form" data-login-form>
+                    <div class="auth-field">
+                      <label for="login-identifier-zh">Username</label>
+                      <input id="login-identifier-zh" type="text" placeholder="请输入 username 或邮箱" data-login-identifier />
+                    </div>
+                    <div class="auth-field">
+                      <label for="login-password-zh">Password</label>
+                      <input id="login-password-zh" type="password" placeholder="请输入密码" data-login-password />
+                    </div>
+                    <button class="auth-submit" type="submit">Log In</button>
+                    <div class="auth-status" data-login-status aria-live="polite"></div>
+                    <p class="auth-note">登录后即可在社区发布内容、评论、收藏并继续互动。</p>
+                  </form>
+                </section>
+                <section class="auth-pane" data-auth-pane="signup" hidden>
+                  <form class="auth-form" data-signup-form>
+                    <div class="auth-form-grid">
+                      <div class="auth-field">
+                        <label for="signup-username-zh">Username</label>
+                        <input id="signup-username-zh" type="text" placeholder="请设置你的 username" data-signup-username />
+                      </div>
+                      <div class="auth-field">
+                        <label for="signup-name-zh">昵称</label>
+                        <input id="signup-name-zh" type="text" placeholder="例如：林同学 / Emma" data-signup-name />
+                      </div>
+                    </div>
+                    <div class="auth-form-grid">
+                      <div class="auth-field">
+                        <label for="signup-email-zh">邮箱</label>
+                        <input id="signup-email-zh" type="email" placeholder="例如：name@example.com" data-signup-email />
+                      </div>
+                      <div class="auth-field">
+                        <label for="signup-role-zh">身份</label>
+                        <select id="signup-role-zh" data-signup-role>
+                          <option value="photographer">摄影师</option>
+                          <option value="user">用户</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="auth-form-grid">
+                      <div class="auth-field">
+                        <label for="signup-city-zh">城市</label>
+                        <input id="signup-city-zh" type="text" placeholder="例如：纽约 / 上海 / 洛杉矶" data-signup-city />
+                      </div>
+                      <div class="auth-field">
+                        <label for="signup-password-zh">Password</label>
+                        <input id="signup-password-zh" type="password" placeholder="请设置至少 8 位密码" data-signup-password />
+                      </div>
+                    </div>
+                    <div class="auth-field">
+                      <label for="signup-confirm-zh">确认密码</label>
+                      <input id="signup-confirm-zh" type="password" placeholder="请再次输入密码" data-signup-confirm />
+                    </div>
+                    <button class="auth-submit" type="submit">Sign Up</button>
+                    <div class="auth-status" data-signup-status aria-live="polite"></div>
+                    <p class="auth-note">注册完成后会自动登录当前设备，后续即可直接进入社区分享与互动。</p>
+                  </form>
+                </section>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -1209,6 +1296,7 @@
       });
     })();
   </script>
+  <script src="assets/site-auth.js"></script>
   <script src="assets/mailto-form.js"></script>
   <script src="assets/service-card-flip.js"></script>
   <script src="assets/customer-support-widget.js"></script>

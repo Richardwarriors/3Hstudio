@@ -20,6 +20,8 @@
       logout: "退出身份",
       registerAction: "注册 / 登录身份",
       registerNote: "完善基本信息并设置密码后，即可发布帖子、评论并参与互动。",
+      accessTitle: "社区访问",
+      accessAction: "回到首页 Log In / Sign Up",
       nameLabel: "昵称",
       namePlaceholder: "例如：林同学 / Emma",
       roleLabel: "身份",
@@ -54,7 +56,7 @@
       fileLabel: "上传图片 / 视频",
       fileHelp: "支持多张图片与短视频一起发布，让帖子更完整、更有现场感。",
       publishAction: "发布帖子",
-      publishNeedIdentity: "请先登记身份，再发布内容。",
+      publishNeedIdentity: "请先回到首页 Log In / Sign Up，再发布内容。",
       publishNeedImage: "请至少上传一项图片或视频内容，或填写媒体链接后再发布。",
       publishSuccess: "帖子已经发布到当前场景社区。",
       publishError: "媒体处理失败了，请换一个文件、压缩视频，或使用媒体链接重试。",
@@ -74,7 +76,7 @@
       commentsTitle: "评论",
       commentPlaceholder: "写下你的想法、建议或反馈",
       commentAction: "发布评论",
-      commentNeedIdentity: "请先登记身份再评论。",
+      commentNeedIdentity: "请先回到首页 Log In / Sign Up，再评论。",
       commentNeedText: "评论内容不能为空。",
       commentSuccess: "评论已发布。",
       deletePost: "删除帖子",
@@ -89,7 +91,7 @@
       ],
       footerNote: "3H-Studio 场景社区欢迎摄影师与用户共同分享作品、灵感与真实反馈。",
       openBooking: "前往预约页",
-      registerPrompt: "先登记身份，即可开启发帖与互动。",
+      registerPrompt: "请先回到首页 Log In / Sign Up，再开启发帖与互动。",
       fileSelected: "已选择媒体：",
       timeJustNow: "刚刚",
       by: "来自"
@@ -108,6 +110,8 @@
       logout: "Sign Out",
       registerAction: "Register / Sign In",
       registerNote: "Complete your basic info and set a password to publish posts, comment, and interact with the feed.",
+      accessTitle: "Community Access",
+      accessAction: "Go to Home to Log In / Sign Up",
       nameLabel: "Display name",
       namePlaceholder: "e.g. Emma / Alex",
       roleLabel: "Role",
@@ -142,7 +146,7 @@
       fileLabel: "Upload Images / Videos",
       fileHelp: "Supports multi-image posts and short video clips so each post feels richer and more immersive.",
       publishAction: "Publish Post",
-      publishNeedIdentity: "Register an identity before publishing.",
+      publishNeedIdentity: "Please go back to the homepage to log in or sign up before publishing.",
       publishNeedImage: "Please upload at least one image or video, or paste media URLs before publishing.",
       publishSuccess: "The post has been published in this scene community.",
       publishError: "Media processing failed. Please try another file, compress the video, or use hosted media URLs instead.",
@@ -162,7 +166,7 @@
       commentsTitle: "Comments",
       commentPlaceholder: "Share your thoughts, feedback, or suggestions",
       commentAction: "Post Comment",
-      commentNeedIdentity: "Register an identity before commenting.",
+      commentNeedIdentity: "Please go back to the homepage to log in or sign up before commenting.",
       commentNeedText: "The comment cannot be empty.",
       commentSuccess: "Comment posted.",
       deletePost: "Delete Post",
@@ -177,7 +181,7 @@
       ],
       footerNote: "3H-Studio scene communities are built to help photographers and users share work, references, and authentic feedback together.",
       openBooking: "Go to Booking",
-      registerPrompt: "Register an identity first to unlock posting and interactions.",
+      registerPrompt: "Go back to the homepage to log in or sign up before posting and interacting.",
       fileSelected: "Selected media:",
       timeJustNow: "Just now",
       by: "From"
@@ -628,8 +632,8 @@
       filter: "all"
     };
 
-    const authForm = root.querySelector("#auth-form");
-    const authStatus = root.querySelector("#auth-status");
+    const accessNote = root.querySelector("#access-note");
+    const accessActions = root.querySelector("#access-actions");
     const identityCard = root.querySelector("#identity-card");
     const identityName = root.querySelector("#identity-name");
     const identityRole = root.querySelector("#identity-role");
@@ -649,70 +653,9 @@
     updateStats();
     renderFeed();
 
-    authForm.addEventListener("submit", async function (event) {
-      event.preventDefault();
-      const name = root.querySelector("#auth-name").value.trim();
-      const role = root.querySelector("#auth-role").value;
-      const city = root.querySelector("#auth-city").value.trim();
-      const email = root.querySelector("#auth-email").value.trim();
-      const password = root.querySelector("#auth-password").value;
-      const confirmPassword = root.querySelector("#auth-password-confirm").value;
-
-      if (!name || !city || !email || !password || !confirmPassword) {
-        authStatus.textContent = copy.authNeedFields;
-        return;
-      }
-
-      if (!isValidEmail(email)) {
-        authStatus.textContent = copy.authEmailInvalid;
-        return;
-      }
-
-      if (password.length < 8) {
-        authStatus.textContent = copy.authPasswordLength;
-        return;
-      }
-
-      if (password !== confirmPassword) {
-        authStatus.textContent = copy.authPasswordMismatch;
-        return;
-      }
-
-      const passwordHash = await hashSecret(password);
-      const existingUser = findUserByEmail(state.users, email) || findExistingIdentity(state.users, name, role, city);
-
-      if (existingUser && existingUser.passwordHash && existingUser.passwordHash !== passwordHash) {
-        authStatus.textContent = copy.authPasswordIncorrect;
-        return;
-      }
-
-      const user = normalizeUserRecord(Object.assign({}, existingUser || {
-        id: createId("user"),
-        createdAt: Date.now()
-      }, {
-        name: name,
-        role: role,
-        city: city,
-        email: email,
-        passwordHash: passwordHash,
-        updatedAt: Date.now()
-      }));
-
-      state.currentUser = getPublicUser(user);
-      state.users = upsertUser(state.users, user);
-      saveStoredJson(STORAGE_KEYS.currentUser, state.currentUser);
-      saveStoredJson(STORAGE_KEYS.users, state.users);
-      authStatus.textContent = copy.authSuccess;
-      authForm.reset();
-      updateIdentity();
-      updateStats();
-      renderFeed();
-    });
-
     logoutButton.addEventListener("click", function () {
       state.currentUser = null;
       localStorage.removeItem(STORAGE_KEYS.currentUser);
-      authStatus.textContent = copy.authLogout;
       updateIdentity();
       renderFeed();
     });
@@ -869,6 +812,13 @@
     function updateIdentity() {
       if (!state.currentUser) {
         identityCard.hidden = true;
+        if (accessNote) {
+          accessNote.hidden = false;
+          accessNote.textContent = copy.registerPrompt;
+        }
+        if (accessActions) {
+          accessActions.hidden = false;
+        }
         identityName.textContent = "";
         identityRole.textContent = "";
         identityMeta.textContent = copy.registerPrompt;
@@ -876,6 +826,12 @@
       }
 
       identityCard.hidden = false;
+      if (accessNote) {
+        accessNote.hidden = true;
+      }
+      if (accessActions) {
+        accessActions.hidden = true;
+      }
       identityName.textContent = state.currentUser.name;
       identityRole.textContent = getRoleLabel(state.currentUser.role, state.locale);
       identityMeta.textContent = [state.currentUser.city ? copy.by + " " + state.currentUser.city : "", state.currentUser.email || ""]
@@ -1067,60 +1023,7 @@
       "        </div>",
       "      </div>",
       "    </section>",
-      '    <section class="community-dashboard">',
-      '      <article class="panel-card">',
-      '        <h2 class="panel-heading">' + escapeHtml(payload.copy.authTitle) + "</h2>",
-      '        <p class="panel-copy">' + escapeHtml(payload.copy.authIntro) + "</p>",
-      '        <div id="identity-card" class="identity-card" hidden>',
-      '          <div class="identity-row">',
-      '            <div>',
-      '              <p class="panel-copy">' + escapeHtml(payload.copy.currentIdentity) + "</p>",
-      '              <h3 id="identity-name" class="identity-name"></h3>',
-      "            </div>",
-      '            <span id="identity-role" class="identity-role"></span>',
-      "          </div>",
-      '          <div id="identity-meta" class="identity-meta"></div>',
-      '          <button id="logout-button" class="logout-button" type="button">' + escapeHtml(payload.copy.logout) + "</button>",
-      "        </div>",
-      '        <form id="auth-form" class="auth-form" style="margin-top: 16px;">',
-      '          <div class="form-grid">',
-      '            <div class="form-field">',
-      '              <label for="auth-name">' + escapeHtml(payload.copy.nameLabel) + "</label>",
-      '              <input id="auth-name" type="text" placeholder="' + escapeHtml(payload.copy.namePlaceholder) + '" />',
-      "            </div>",
-      '            <div class="form-field">',
-      '              <label for="auth-role">' + escapeHtml(payload.copy.roleLabel) + "</label>",
-      '              <select id="auth-role">',
-      '                <option value="photographer">' + escapeHtml(payload.copy.rolePhotographer) + "</option>",
-      '                <option value="user">' + escapeHtml(payload.copy.roleUser) + "</option>",
-      "              </select>",
-      "            </div>",
-      "          </div>",
-      '          <div class="form-grid">',
-      '            <div class="form-field">',
-      '              <label for="auth-city">' + escapeHtml(payload.copy.cityLabel) + "</label>",
-      '              <input id="auth-city" type="text" placeholder="' + escapeHtml(payload.copy.cityPlaceholder) + '" />',
-      "            </div>",
-      '            <div class="form-field">',
-      '              <label for="auth-email">' + escapeHtml(payload.copy.emailLabel) + "</label>",
-      '              <input id="auth-email" type="email" placeholder="' + escapeHtml(payload.copy.emailPlaceholder) + '" autocomplete="email" />',
-      "            </div>",
-      "          </div>",
-      '          <div class="form-grid">',
-      '            <div class="form-field">',
-      '              <label for="auth-password">' + escapeHtml(payload.copy.passwordLabel) + "</label>",
-      '              <input id="auth-password" type="password" minlength="8" placeholder="' + escapeHtml(payload.copy.passwordPlaceholder) + '" />',
-      "            </div>",
-      '            <div class="form-field">',
-      '              <label for="auth-password-confirm">' + escapeHtml(payload.copy.confirmPasswordLabel) + "</label>",
-      '              <input id="auth-password-confirm" type="password" minlength="8" placeholder="' + escapeHtml(payload.copy.confirmPasswordPlaceholder) + '" />',
-      "            </div>",
-      "          </div>",
-      '          <button class="action-button" type="submit">' + escapeHtml(payload.copy.registerAction) + "</button>",
-      '          <p class="form-help">' + escapeHtml(payload.copy.registerNote) + "</p>",
-      '          <div id="auth-status" class="form-status" aria-live="polite"></div>',
-      "        </form>",
-      "      </article>",
+      '    <section class="community-dashboard community-dashboard-single">',
       '      <article class="panel-card scene-spotlight">',
       '        <span class="spotlight-badge">' + escapeHtml(payload.sceneCopy.showcaseBadge) + "</span>",
       '        <h2 class="spotlight-title">' + escapeHtml(payload.sceneCopy.showcaseTitle) + "</h2>",
@@ -1137,6 +1040,24 @@
       "    </section>",
       '    <section class="community-feed-shell">',
       '      <div class="sidebar-stack">',
+      '        <article class="sidebar-card access-card">',
+      '          <h2 class="panel-heading">' + escapeHtml(payload.copy.accessTitle) + "</h2>",
+      '          <p id="access-note" class="panel-copy">' + escapeHtml(payload.copy.registerPrompt) + "</p>",
+      '          <div id="access-actions" style="margin-top: 16px;">',
+      '            <a class="ghost-button" href="' + escapeHtml(payload.links.home) + '#site-auth">' + escapeHtml(payload.copy.accessAction) + "</a>',
+      "          </div>",
+      '          <div id="identity-card" class="identity-card" hidden>',
+      '            <div class="identity-row">',
+      '              <div>',
+      '                <p class="panel-copy">' + escapeHtml(payload.copy.currentIdentity) + "</p>",
+      '                <h3 id="identity-name" class="identity-name"></h3>',
+      "              </div>",
+      '              <span id="identity-role" class="identity-role"></span>',
+      "            </div>",
+      '            <div id="identity-meta" class="identity-meta"></div>',
+      '            <button id="logout-button" class="logout-button" type="button">' + escapeHtml(payload.copy.logout) + "</button>",
+      "          </div>",
+      "        </article>",
       '        <article class="sidebar-card">',
       '          <h2 class="panel-heading">' + escapeHtml(payload.copy.composerTitle) + "</h2>",
       '          <p class="panel-copy">' + escapeHtml(payload.copy.composerIntro) + "</p>",
@@ -1549,6 +1470,7 @@
     const normalized = Object.assign({}, user || {});
 
     normalized.id = String(normalized.id || createId("user"));
+    normalized.username = String(normalized.username || "").trim();
     normalized.name = String(normalized.name || "").trim();
     normalized.role = normalized.role === "photographer" ? "photographer" : "user";
     normalized.city = String(normalized.city || "").trim();
@@ -1565,6 +1487,7 @@
 
     return {
       id: normalized.id,
+      username: normalized.username,
       name: normalized.name,
       role: normalized.role,
       city: normalized.city,
