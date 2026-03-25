@@ -167,7 +167,7 @@
       updateSession();
       setStatus(loginStatus, copy.loginSuccess);
       loginForm.reset();
-      window.setTimeout(closeModal, 220);
+      closeModal();
     });
 
     signupForm.addEventListener("submit", async function (event) {
@@ -242,7 +242,7 @@
       updateSession();
       setStatus(signupStatus, copy.signupSuccess);
       signupForm.reset();
-      window.setTimeout(closeModal, 220);
+      closeModal();
     });
 
     updateSession();
