@@ -1044,7 +1044,7 @@
       '          <h2 class="panel-heading">' + escapeHtml(payload.copy.accessTitle) + "</h2>",
       '          <p id="access-note" class="panel-copy">' + escapeHtml(payload.copy.registerPrompt) + "</p>",
       '          <div id="access-actions" style="margin-top: 16px;">',
-      '            <a class="ghost-button" href="' + escapeHtml(payload.links.home) + '#site-auth">' + escapeHtml(payload.copy.accessAction) + "</a>',
+      "            <a class=\"ghost-button\" href=\"" + escapeHtml(payload.links.home + "#site-auth") + "\">" + escapeHtml(payload.copy.accessAction) + "</a>",
       "          </div>",
       '          <div id="identity-card" class="identity-card" hidden>',
       '            <div class="identity-row">',
